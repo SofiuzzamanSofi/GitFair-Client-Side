@@ -6,7 +6,7 @@ import Header from '../Components/Share/Header/Header';
 const Main = () => {
     return (
         <div>
-            <Header />
+           <Header />
             <Outlet />
             <Footer />
         </div>
