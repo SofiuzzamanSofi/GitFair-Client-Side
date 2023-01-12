@@ -25,7 +25,7 @@ const Categories = () => {
 
 
     return (
-        <div className=' bg-black py-32'>
+        <div className=''>
             <div className='category-head-div mb-16'>
                 <div className='lime inline-block pt-3'>|</div> <div className='inline'><h1 className='inline category'>GitFair Categories</h1></div>
             </div>
