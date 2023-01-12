@@ -1,0 +1,27 @@
+.lime {
+    background-color: #66C555;
+    color: #66C555;
+    margin-right: 14px;
+    width: 12px;
+    height: 40px;
+
+}
+
+.lime-color {
+    background-color: #66C555;
+}
+
+.head-div {
+    margin-left: 116px;
+}
+
+.category {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+/* card section  */
+.card-div {
+    border: 1px solid black;
+    border-bottom-right-radius: 87px;
+}
