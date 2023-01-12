@@ -14,7 +14,7 @@ const CategoryCard = ({ fd }) => {
                 </div>
                 <h1 className='text-xl font-bold card-title'>{title}</h1>
                 <p className='mt-3 mb-6'>{para}</p>
-                <button className='btn bg-white text-black outlined  hover:text-white hover:border-none button'>Explore resources<BsArrowRight className='ml-2  text-xl'></BsArrowRight></button>
+                <button className='btn bg-white text-black outlined  hover:text-white hover:border-lime-500 button duration-700'>Explore resources<BsArrowRight className='ml-2  text-xl'></BsArrowRight></button>
             </div>
         </div>
     );
