@@ -1,6 +1,6 @@
 import React from 'react';
 import './Categories.css'
-import CategoryCard from './CategoryCard';
+import CategoryCard from '../Categories/CategoryCard';
 
 const Categories = () => {
 
