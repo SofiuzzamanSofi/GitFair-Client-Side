@@ -6,3 +6,10 @@
 .active:hover {
   background: none;
 }
+
+
+@media only screen and (max-width: 414px) {
+  .small-display {
+    padding: 0 30px;
+  }
+}
