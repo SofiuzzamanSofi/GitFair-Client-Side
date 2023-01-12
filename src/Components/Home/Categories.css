@@ -31,10 +31,10 @@
     border-bottom-right-radius: 87px;
 }
 
-.button {
+/* .button {
     width: 200.03px;
     height: 34.32px;
-}
+} */
 
 :hover.button {
     background-color: #66C555;
