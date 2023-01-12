@@ -1,11 +1,10 @@
 import React from 'react';
-import Header from '../Share/Header/Header';
+import Hero from './Hero/Hero';
 
 const Home = () => {
     return (
         <>
-            <Header />
-            <h1 className='bg-black'></h1>
+            <Hero />
         </>
     );
 };
