@@ -1,15 +1,20 @@
 import React from 'react';
-import { BsArrowRight, BsPlusSquare, IconName } from "react-icons/bs";
+import { BsArrowRight, BsPlus, BsPlusSquare, IconName } from "react-icons/bs";
 
 const CategoryCard = ({ fd }) => {
     const { id, title, para } = fd
     return (
         <div>
-            <div className='card-div px-11 pt-6 card border-r-0'>
-                <BsPlusSquare className='text-3xl mb-4'></BsPlusSquare>
-                <h1 className='text-xl font-semibold card-title'>{title}</h1>
-                <p className='mt-3 card-body'>{para}</p>
-                <button className='btn border-none lime-color'><span className='text-white my-0'>Explore resources</span><BsArrowRight className='ml-3 text-xl'></BsArrowRight></button>
+
+
+
+            <div className='card-div bg-white px-11 py-6 relative duration-500 '>
+                <div className='border mb-4 absolute top-3 border-black rounded-xl inline-block borded'>
+                    <BsPlus className='text-4xl font-bold'></BsPlus>
+                </div>
+                <h1 className='text-xl mt-9 font-semibold card-title'>{title}</h1>
+                <p className='mt-3 mb-6'>{para}</p>
+                <button className='btn bg-white text-black outlined  hover:text-white hover:border-none button'>Explore resources<BsArrowRight className='ml-2 text-xl'></BsArrowRight></button>
             </div>
         </div>
     );

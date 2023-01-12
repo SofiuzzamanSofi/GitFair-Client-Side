@@ -11,17 +11,35 @@
     background-color: #66C555;
 }
 
-.head-div {
-    margin-left: 116px;
-}
+.category-head-div {}
 
 .category {
     font-weight: 600;
     font-size: 32px;
+    color: white;
 }
 
 /* card section  */
 .card-div {
-    border: 1px solid black;
+
+
+    max-width: 321.82px;
+    width: 321.82px;
+}
+
+:hover.card-div {
     border-bottom-right-radius: 87px;
+}
+
+.button {
+    width: 200.03px;
+    height: 34.32px;
+}
+
+:hover.button {
+    background-color: #66C555;
+}
+
+.borded {
+    border: 3px solid black;
 }
