@@ -20,3 +20,7 @@
     padding-bottom: 40px;
   }
 }
+
+.border-radius {
+  border-radius: 0px 0px 87px 0px;
+}
