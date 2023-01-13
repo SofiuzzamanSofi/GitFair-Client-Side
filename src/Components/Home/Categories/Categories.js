@@ -25,7 +25,7 @@ const Categories = () => {
 
 
     return (
-        <div className=' m-auto mt-[56px] w-[1440px]'>
+        <div className='lg:w-[1440px] m-auto mt-[256px]'>
             <div className='card category-head-div mb-16'>
                 {/* <div className='lime inline-block '>|</div> <div className='inline'><h1 className='inline category'>GitFair Categories</h1></div> */}
                 <div className='flex'>
