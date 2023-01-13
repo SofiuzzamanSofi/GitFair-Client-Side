@@ -8,9 +8,12 @@
 }
 .button{
     background-color: #66C555;
-    width: 155px;
-    height: 12px;
+    width: 149px;
+    height: 34px;
     border-radius: 50px;
+    align-items: center;
+    margin-left: 70px;
+    margin-top: 10px;
 }
 /* .button FaArrowRight{
    margin-left: 10px;
@@ -26,3 +29,4 @@
     height: 300px;
     background: transparent;
 } */
+

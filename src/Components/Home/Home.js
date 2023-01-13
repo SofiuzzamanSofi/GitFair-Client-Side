@@ -1,16 +1,16 @@
-import React from "react";
-import Header from "../Share/Header/Header";
-import Resources from "./Resources";
+import React from 'react';
+import Categories from './Categories/Categories';
+import Hero from './Hero/Hero';
+import Resources from './Resources';
 
 const Home = () => {
-  return (
-    <>
-      <Header />
-      <Resources></Resources>
-      {/* <h1 className="bg-black"></h1> */}
-      
-    </>
-  );
+    return (
+        <div>
+            <Hero />          
+            <Categories></Categories>
+            <Resources />
+        </div>
+    );
 };
 
 export default Home;

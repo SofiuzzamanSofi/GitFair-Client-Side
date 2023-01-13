@@ -86,18 +86,18 @@ const Resources = () => {
   //   ]
 
   return (
-    <div className="bg-black">
-      <div className="max-w-screen-xl mx-auto ">
+    <div className="">
+      <div className=" lg:w-[1440px] m-auto">
       {/* <div className='lime inline-block pt-3'>|</div> */}
         <h2 className="text-white font-semibold text-2xl pb-10 pt-5">
          <span className="bar">|</span> User Best Resources
         </h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0 pb-5 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] px-12  pb-5 ">
           {resources.map(
             ({ id, src, name, details, userName, imge, category }) => (
-              <div className="card w-[297px] h-[400px] bg-base-100 shadow-xl">
-                <figure className="px-4 pt-4 mt-4 ">
+              <div className="card w-[297px] h-[410px] text-black shadow-xl bg-white rounded-xl">
+                <figure className="px-4 pt-4  ">
                   <img src={src} alt="Shoes" className="rounded-xl w-64 h-32" />
                 </figure>
                 <div className="flex-css mt-4">
@@ -105,19 +105,19 @@ const Resources = () => {
                     <img
                       src={imge}
                       alt="Shoes"
-                      className="rounded-full w-12 h-12"
+                      className="rounded-full w-[53px] h-[53px]"
                     />
                   </figure>
-                  <div className="">
-                    <h2 className="card-title">{userName}</h2>
-                    <p>{category}</p>
+                  <div className="pl-3 leading-[1px] pt-1">
+                    <h2 className="card-title text-[14px]">{userName}</h2>
+                    <p className="text-[8px]">{category}</p>
                   </div>
                 </div>
-                <div className="card-body items-center text-center">
-                  <h2 className="card-title">{name}</h2>
-                  <p>{details}</p>
+                <div className=" items-center text-center">
+                  <h2 className="text-center items-center  pt-[13px] text-[20px] font-medium">{name}</h2>
+                  <p className="text-[16px] mx-4 text-center pt-3 ">{details}</p>
                   <div className="card-actions">
-                    <button className="button btn ">
+                    <button className="button btn text-black">
                       SEE MORE{" "}
                       <span className="pl-7 text-xl">
                         <BsArrowRight />
