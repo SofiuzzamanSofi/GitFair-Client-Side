@@ -1,0 +1,52 @@
+.lime {
+    background-color: #66C555;
+    color: #66C555;
+    margin-right: 14px;
+    width: 12px;
+    height: 40px;
+
+}
+
+.lime-color {
+    background-color: #66C555;
+}
+
+.category-head-div {}
+
+.category {
+    font-weight: 600;
+    font-size: 32px;
+    color: white;
+}
+
+/* card section  */
+.card-div {
+
+
+    max-width: 321.82px;
+    width: 321.82px;
+    border-bottom-right-radius: 87px;
+}
+
+/* :hover.card-div {} */
+
+/* .button {
+    width: 200.03px;
+    height: 34.32px;
+} */
+
+.button {
+    background-color: #66C555;
+    border: solid#66C555;
+}
+
+:hover.button {
+    background-color: #7dd46a;
+    border: solid #7dd46a
+}
+
+.borded {
+    border: 3px solid black;
+    height: 45px;
+    width: 45px;
+}
