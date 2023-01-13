@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from './Categories/Categories';
+import Details from './FeatureDetails/Details';
 import Hero from './Hero/Hero';
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Hero />
             <Categories></Categories>
+            <Details></Details>
         </div>
     );
 };
