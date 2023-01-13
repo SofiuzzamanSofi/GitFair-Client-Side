@@ -29,10 +29,10 @@ const Categories = () => {
             <div className='card category-head-div mb-16'>
                 {/* <div className='lime inline-block '>|</div> <div className='inline'><h1 className='inline category'>GitFair Categories</h1></div> */}
                 <div className='border-l-8 border-[#66C555]'>
-                    <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4 text-white'>GitFare Categories</h2>
+                    <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4 text-white'>GitFair Categories</h2>
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] px-12  pb-5 '>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] lg:px-12  pb-5 '>
                 {
                     fakedata.map(fd => <CategoryCard
                         key={fd.id}

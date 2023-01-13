@@ -93,7 +93,7 @@ const Resources = () => {
           <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4 mb-10'>User Best Resources</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] px-12  pb-5 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] lg:px-12  pb-5 ">
           {resources.map(
             ({ id, src, name, details, userName, imge, category }) => (
               <div className="card w-[297px] h-[410px] text-black shadow-xl bg-white rounded-xl">
@@ -117,7 +117,7 @@ const Resources = () => {
                   <h2 className="text-center items-center  pt-[13px] text-[20px] font-medium">{name}</h2>
                   <p className="text-[16px] mx-4 text-center pt-3 ">{details}</p>
                   <div className="card-actions">
-                    <button className="button btn text-black">
+                    <button className="button btn text-white uppercase rounded-lg">
                       SEE MORE{" "}
                       <span className="pl-7 text-xl">
                         <BsArrowRight />

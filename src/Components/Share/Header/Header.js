@@ -26,8 +26,8 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className="btn bg-[#66C555] uppercase text-sm]">Login</Link>
-                    <Link className="btn lg:ml-4 md:ml-4 bg-[#66C555] uppercase text-sm">SIGN UP</Link>
+                    <Link className="btn bg-[#66C555] uppercase text-sm] text-white rounded-lg">Login</Link>
+                    <Link className="btn lg:ml-4 md:ml-4 bg-[#66C555] uppercase text-sm text-white rounded-lg">SIGN UP</Link>
                 </div>
             </div>
         </div>
