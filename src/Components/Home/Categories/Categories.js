@@ -25,17 +25,14 @@ const Categories = () => {
 
 
     return (
-        <div className='lg:w-[1440px] m-auto mt-[256px]'>
+        <div className='lg:w-[1240px] m-auto pt-56 small-display md:px-10 sm:px-10  '>
             <div className='card category-head-div mb-16'>
                 {/* <div className='lime inline-block '>|</div> <div className='inline'><h1 className='inline category'>GitFair Categories</h1></div> */}
-                <div className='flex'>
-                    <div className='bg-[#66C555] mr-[14px] text-[#66C555] w-[12px] h-[40px]'>
-                        |
-                    </div>
-                    <h1 className='category'>GitFair Categories</h1>
+                <div className='border-l-8 border-[#66C555]'>
+                    <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4 text-white'>GitFare Categories</h2>
                 </div>
             </div>
-            <div className=' grid sm:grid-cols-2 md:grid-cols-3  gap-24'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] px-12  pb-5 '>
                 {
                     fakedata.map(fd => <CategoryCard
                         key={fd.id}

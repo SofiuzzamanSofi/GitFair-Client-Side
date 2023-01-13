@@ -86,12 +86,12 @@ const Resources = () => {
   //   ]
 
   return (
-    <div className="">
-      <div className=" lg:w-[1440px] m-auto">
-      {/* <div className='lime inline-block pt-3'>|</div> */}
-        <h2 className="text-white font-semibold text-2xl pb-10 pt-5">
-         <span className="bar">|</span> User Best Resources
-        </h2>
+    <div className="text-white">
+      <div className=" lg:w-[1240px] m-auto pt-56 small-display md:px-10 sm:px-10">
+        {/* <div className='lime inline-block pt-3'>|</div> */}
+        <div className='border-l-8 border-[#66C555] '>
+          <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4 mb-10'>User Best Resources</h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] px-12  pb-5 ">
           {resources.map(

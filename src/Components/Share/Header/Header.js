@@ -5,7 +5,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 
 const Header = () => {
     return (
-        <div className='lg:w-[1440px] m-auto'>
+        <div className='lg:w-[1240px] m-auto'>
             <div className="navbar bg-base-100 pt-5">
                 <div className="navbar-start">
                     <div className="dropdown">
