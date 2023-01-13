@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
-        <div className='bg-[url("/src/assets/bg-banner.png")] lg:bg-[url("/src/assets/bg-banner.png")] h-screen bg-cover bg-center -mt-[107px]'>
+        <div className='bg-[url("/src/assets/bg-banner.png")] lg:bg-[url("/src/assets/bg-banner.png")] pb-[83px] bg-cover bg-center -mt-[107px]'>
             <div className='lg:w-[1240px] m-auto pt-[200px]'>
                 <div className='lg:p-0 md:p-20 sm:p-10 small-display'>
                     <div className='lg:w-4/5'>
