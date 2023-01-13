@@ -17,6 +17,7 @@
     font-weight: 600;
     font-size: 32px;
     color: white;
+
 }
 
 /* card section  */
@@ -35,15 +36,12 @@
     height: 34.32px;
 } */
 
-.button {
-    background-color: #66C555;
-    border: solid#66C555;
-}
+/* .cardi {
+    border-bottom-right-radius: 87px;
+    height: 264px;
+    width: 321px;
 
-:hover.button {
-    background-color: #7dd46a;
-    border: solid #7dd46a
-}
+} */
 
 .borded {
     border: 3px solid black;
