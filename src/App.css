@@ -13,3 +13,14 @@
     padding: 0 30px;
   }
 }
+
+@media only screen and (max-width: 414px) {
+  .small-d-p-top {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.border-radius {
+  border-radius: 0px 0px 87px 0px;
+}
