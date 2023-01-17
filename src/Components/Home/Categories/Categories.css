@@ -11,8 +11,6 @@
     background-color: #66C555;
 }
 
-
-
 .category {
     font-weight: 600;
     font-size: 32px;
@@ -29,19 +27,7 @@
     border-bottom-right-radius: 87px;
 }
 
-/* :hover.card-div {} */
 
-/* .button {
-    width: 200.03px;
-    height: 34.32px;
-} */
-
-/* .cardi {
-    border-bottom-right-radius: 87px;
-    height: 264px;
-    width: 321px;
-
-} */
 
 .borded {
     border: 3px solid black;
