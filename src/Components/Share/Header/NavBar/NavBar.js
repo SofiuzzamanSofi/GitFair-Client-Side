@@ -22,19 +22,22 @@ const mainMenu = [
         menuName: "Blog",
         menuLink: "/blog",
     },
+    {
+        id: 5,
+        menuName: "Search AI",
+        menuLink: "/searchai",
+    },
 ]
 
 const NavBar = () => {
     return (
         <>
             {
-                mainMenu?.map(menu => {
-                    return (
-                        <>
-                            <li key={menu.id} className='text-white active:bg-black text-xl'><NavLink to={menu.menuLink}>{menu.menuName}</NavLink></li>
-                        </>
-                    )
-                })
+                mainMenu?.map(menu => <li key={menu.id} className='text-white active:bg-black text-xl'>
+                    <NavLink to={menu.menuLink}>
+                        {menu.menuName}
+                    </NavLink>
+                </li>)
             }
 
         </>
