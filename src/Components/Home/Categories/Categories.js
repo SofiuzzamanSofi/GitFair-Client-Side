@@ -11,7 +11,7 @@ const Categories = () => {
                     <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4'>Gitfair Categories</h2>
                 </div>
                 <div className='grid mx-auto lg:grid-cols-3 gap-10 sm:grid-cols-1 md:grid-cols-2  lg:max-w-screen lg:px-10'>
-                    <div className='bg-white mt-16 p-8 border-radius'>
+                    <div className='bg-white mt-16 border-radius'>
                         <span className='text-black text-3xl'>
                             <FaFileCode />
                         </span>
