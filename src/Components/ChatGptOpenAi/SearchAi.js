@@ -7,6 +7,7 @@ import { TbZoomQuestion } from "react-icons/tb";
 import { FcFaq } from "react-icons/fc";
 import { SiChatbot } from "react-icons/si";
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 
 const SearchAi = () => {
@@ -47,16 +48,19 @@ const SearchAi = () => {
     const typeText = (element, text) => {
         let index = 0;
 
-        let interve
+        // let interve
     }
 
 
 
     // after clicking the arrow sign this function is exicuted----
     const handleOpenAiChatGptFunction = () => {
+
+        axios.post("http://localhost:5000/searchai", { prompt: searchInputText })
+            .then(res => {
+                console.log("this is axios back:", res?.data?.bot?.trim());
+            }).catch(error => console.log(error))
         console.log({ searchInputText });
-
-
     }
 
 
