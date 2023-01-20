@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/registerVector-removebg-preview.png'
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook, BsGithub } from 'react-icons/bs';
@@ -8,7 +8,8 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const Register = () => {
-    const { user, signUp, updateUser } = useContext(AuthContext)
+    const Navigate = useNavigate()
+    const { user, signUp, updateUser, google } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const handleSignUp = data => {
@@ -24,6 +25,7 @@ const Register = () => {
                     displayName: data.fullName
                 }
                 updateUser(userInfo)
+                Navigate('/')
 
             })
             .catch(err => {
@@ -31,6 +33,17 @@ const Register = () => {
 
             })
 
+    }
+    const googleHandler = () => {
+        google()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                Navigate('/')
+            })
+            .catch(err => {
+                setSignUpError(err.message)
+            })
     }
 
     return (
@@ -117,23 +130,7 @@ const Register = () => {
                                     <p className='text-black'>If Already Registerd,<Link to='/login' className='text-[#66C555] uppercase'>Please Login</Link></p>
                                 </label>
 
-                                <div className='flex justify-center gap-4 py-4'>
-                                    {/* social signup buttons */}
 
-                                    {/* google  */}
-                                    <button className=' rounded-full '><FcGoogle className='text-4xl hover:text-[#66C555]'></FcGoogle></button>
-                                    {/* google  */}
-
-                                    {/* facebook */}
-                                    <button className=' rounded-full'><BsFacebook className='text-[#3b5998]  text-4xl'></BsFacebook></button>
-                                    {/* facebook */}
-
-                                    {/* github */}
-                                    <button className='rounded-full'><BsGithub className='text-black text-4xl '></BsGithub></button>
-                                    {/* github */}
-
-                                    {/* social signup buttons */}
-                                </div>
                                 <p className='text-red-600'>{signUpError}</p>
                                 <div className="mx-auto">
                                     {/* <button className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase">REGISTER</button> */}
@@ -141,6 +138,23 @@ const Register = () => {
                                 </div>
 
                             </form>
+                            <div className='flex justify-center gap-4 py-4'>
+                                {/* social signup buttons */}
+
+                                {/* google  */}
+                                <button onClick={googleHandler} className=' rounded-full '><FcGoogle className='text-4xl hover:text-[#66C555]'></FcGoogle></button>
+                                {/* google  */}
+
+                                {/* facebook */}
+                                <button className=' rounded-full'><BsFacebook className='text-[#3b5998]  text-4xl'></BsFacebook></button>
+                                {/* facebook */}
+
+                                {/* github */}
+                                <button className='rounded-full'><BsGithub className='text-black text-4xl '></BsGithub></button>
+                                {/* github */}
+
+                                {/* social signup buttons */}
+                            </div>
                         </div>
                     </div>
                 </div>

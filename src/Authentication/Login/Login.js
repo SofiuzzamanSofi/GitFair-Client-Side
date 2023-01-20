@@ -4,16 +4,15 @@ import { BsFacebook, BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/registerVector-removebg-preview.png'
-import Loading from '../../Components/Share/Loading/Loading';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { user, login } = useContext(AuthContext)
+    const { user, login, google } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const location = useLocation()
-    const navigate = useNavigate()
+    const Navigate = useNavigate()
     const from = location.state?.from?.pathname || '/'
 
     const handleLogin = (data) => {
@@ -24,12 +23,23 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
-                navigate(from, { replace: true })
+                Navigate(from, { replace: true })
             })
             .catch(err => {
                 setLoginError(err.message)
                 console.error(err)
 
+            })
+    }
+    const googleHandler = () => {
+        google()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                Navigate('/')
+            })
+            .catch(err => {
+                setLoginError(err.message)
             })
     }
 
@@ -90,23 +100,7 @@ const Login = () => {
                                     <p className='text-black'>New Here?,<Link to='/register' className='text-[#66C555]'>PLEASE REGISTER</Link></p>
                                 </label>
 
-                                <div className='flex justify-center gap-4 py-4'>
-                                    {/* social signup buttons */}
 
-                                    {/* google  */}
-                                    <button className=' rounded-full '><FcGoogle className='text-4xl hover:text-[#66C555]'></FcGoogle></button>
-                                    {/* google  */}
-
-                                    {/* facebook */}
-                                    <button className=' rounded-full'><BsFacebook className='text-[#3b5998]  text-4xl'></BsFacebook></button>
-                                    {/* facebook */}
-
-                                    {/* github */}
-                                    <button className='rounded-full'><BsGithub className='text-black text-4xl '></BsGithub></button>
-                                    {/* github */}
-
-                                    {/* social signup buttons */}
-                                </div>
                                 <p className='text-red-600'>{loginError}</p>
                                 <div className="mx-auto">
                                     {/* <button className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase">REGISTER</button> */}
@@ -114,6 +108,23 @@ const Login = () => {
                                 </div>
 
                             </form>
+                            <div className='flex justify-center gap-4 py-4'>
+                                {/* social signup buttons */}
+
+                                {/* google  */}
+                                <button className=' rounded-full '><FcGoogle onClick={googleHandler} className='text-4xl hover:text-[#66C555]'></FcGoogle></button>
+                                {/* google  */}
+
+                                {/* facebook */}
+                                <button className=' rounded-full'><BsFacebook className='text-[#3b5998]  text-4xl'></BsFacebook></button>
+                                {/* facebook */}
+
+                                {/* github */}
+                                <button className='rounded-full'><BsGithub className='text-black text-4xl '></BsGithub></button>
+                                {/* github */}
+
+                                {/* social signup buttons */}
+                            </div>
                         </div>
                     </div>
                 </div>
