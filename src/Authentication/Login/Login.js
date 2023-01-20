@@ -1,8 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { BsFacebook, BsGithub } from 'react-icons/bs';
+import { FcGoogle } from 'react-icons/fc';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/registerVector-removebg-preview.png'
+import Loading from '../../Components/Share/Loading/Loading';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { user, login } = useContext(AuthContext)
+    const [loginError, setLoginError] = useState('')
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/'
+
+    const handleLogin = (data) => {
+        console.log(data)
+        setLoginError('')
+
+        login(data.email, data.password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                setLoginError(err.message)
+                console.error(err)
+
+            })
+    }
+
     return (
 
         <div>
@@ -13,7 +43,7 @@ const Login = () => {
                     </div>
 
 
-                    <div className="card  h-[528px] sm:w-full lg:w-[570px] rounded-[10px] bg-white shadow-2xl ">
+                    <div className="card  min-h-[528px] sm:w-full lg:w-[570px] rounded-[10px] bg-white shadow-2xl ">
 
                         <div className="card-body">
                             <h1 className='card-title lg:text-[32px] font-bold mx-auto text-black'>LOGIN</h1>
@@ -21,32 +51,69 @@ const Login = () => {
 
 
 
-                            {/* email field  */}
-                            <div className="form-control">
+                            <form onSubmit={handleSubmit(handleLogin)}>
+
+                                {/* email field  */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text text-xl text-black">Email:</span>
+                                    </label>
+
+                                    {/* input field  */}
+                                    <input type="email" className="input input-bordered  bg-[#817878] h-[45px] rounded-lg" {...register("email", { required: 'email is required' })} name='email' />
+                                    {errors.email && <p className='text-red-600'>{errors.email.message}</p>}
+                                    {/* input field  */}
+
+                                </div>
+                                {/* email field  */}
+
+                                {/* password field */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text text-xl text-black">Password:</span>
+                                    </label>
+
+                                    {/* input field  */}
+                                    <input type="password" className="input cursor-text input-bordered  bg-[#817878] h-[45px] rounded-lg" {...register("password", {
+                                        required: 'please provide a password Sir!'
+
+
+                                    })} name='password' />
+                                    {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
+                                    {/* input field  */}
+
+                                </div>
+                                {/* password field */}
+
+
                                 <label className="label">
-                                    <span className="label-text text-xl text-black">Email:</span>
+                                    <p className='text-black'>New Here?,<Link to='/register' className='text-[#66C555]'>PLEASE REGISTER</Link></p>
                                 </label>
-                                <input type="email" placeholder="" className="input input-bordered  bg-[#817878] rounded-lg" />
-                            </div>
-                            {/* email field  */}
 
-                            {/* password field  */}
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-xl text-black">Password:</span>
-                                </label>
-                                <input type="password" placeholder="" className="input input-bordered  bg-[#817878] rounded-lg" />
-                            </div>
-                            {/* password field  */}
+                                <div className='flex justify-center gap-4 py-4'>
+                                    {/* social signup buttons */}
 
+                                    {/* google  */}
+                                    <button className=' rounded-full '><FcGoogle className='text-4xl hover:text-[#66C555]'></FcGoogle></button>
+                                    {/* google  */}
 
-                            <label className="label">
-                                <p className='text-black'>New Here?,<Link to='/register' className='text-[#66C555]'>PLEASE REGISTER</Link></p>
-                            </label>
+                                    {/* facebook */}
+                                    <button className=' rounded-full'><BsFacebook className='text-[#3b5998]  text-4xl'></BsFacebook></button>
+                                    {/* facebook */}
 
-                            <div className="mx-auto mt-6">
-                                <button className="btn text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase">LOGIN</button>
-                            </div>
+                                    {/* github */}
+                                    <button className='rounded-full'><BsGithub className='text-black text-4xl '></BsGithub></button>
+                                    {/* github */}
+
+                                    {/* social signup buttons */}
+                                </div>
+                                <p className='text-red-600'>{loginError}</p>
+                                <div className="mx-auto">
+                                    {/* <button className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase">REGISTER</button> */}
+                                    <input type="submit" className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase lg:ml-[177px] ml-[34px]" value="LOGIN" />
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>

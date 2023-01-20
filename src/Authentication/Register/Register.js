@@ -27,7 +27,7 @@ const Register = () => {
 
             })
             .catch(err => {
-                setSignUpError(err)
+                setSignUpError(err.message)
 
             })
 
@@ -134,7 +134,7 @@ const Register = () => {
 
                                     {/* social signup buttons */}
                                 </div>
-                                <p className='text-red-600 text-xl animate-ping'>{signUpError}</p>
+                                <p className='text-red-600'>{signUpError}</p>
                                 <div className="mx-auto">
                                     {/* <button className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase">REGISTER</button> */}
                                     <input type="submit" className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase lg:ml-[177px] ml-[50px]" value="REGISTER" />
