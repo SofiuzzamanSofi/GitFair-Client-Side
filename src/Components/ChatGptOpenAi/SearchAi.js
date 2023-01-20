@@ -24,7 +24,7 @@ const SearchAi = () => {
             answer: "How Can I Help You?",
         }
     ]);
-    console.log(chatLog);
+    // console.log(chatLog);
 
     // loadin function ---
     const loader = element => {
@@ -103,12 +103,12 @@ const SearchAi = () => {
             //     message: "m2",
             // }])
 
-            console.log(chatLog);
+            // console.log(chatLog);
 
             axios.post("http://localhost:5000/searchai", { prompt: searchInputText?.text })
                 .then(res => {
                     const data = res?.data?.bot?.trim()
-                    console.log("this is axios back:", data);
+                    // console.log("this is axios back:", data);
                     setSearchInputText({ text: "" });
 
 
@@ -125,7 +125,7 @@ const SearchAi = () => {
                     }])
 
                 }).catch(error => console.log(error))
-            console.log({ searchInputText });
+            // console.log({ searchInputText });
             // setSearchInputText("");
         }
     }
@@ -151,7 +151,7 @@ const SearchAi = () => {
                 </div> */}
             </div>
             <div
-                className=' p-2 w-full  flex gap-2 bg-[#40414F] rounded-sm max-w-[1280px] mx-auto'
+                className=' p-2 w-full  flex gap-2 bg-[#40414F] rounded-sm max-w-[1280px] mx-auto mt-4'
             >
                 <textarea
                     required
@@ -190,9 +190,9 @@ const ChatMessage = ({ chat }) => {
                     <p>{chat?.question}</p>
                 </div>
                 :
-                <div className='flex gap-2 items-center p-5 bg bg-[#40414F]' id={`${chat?.uniqueId ? chat?.uniqueId : ""}`} >
+                <div className='flex gap-2 items-center p-5 bg bg-[#40414F]' >
                     <img src={bot} alt="" className='bg-emerald-600 p-2' />
-                    <p>{chat?.answer}</p>
+                    <p id={`${chat?.uniqueId ? chat?.uniqueId : ""}`}>{chat?.answer}</p>
                 </div>
             }
 
