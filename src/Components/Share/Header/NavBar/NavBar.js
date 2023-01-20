@@ -9,37 +9,30 @@ const mainMenu = [
     },
     {
         id: 2,
-        menuName: "About",
-        menuLink: "/about",
+        menuName:"Code Editor",
+        menuLink: "/compiler"
     },
-    {
+    {    
         id: 3,
-        menuName: "Contact Us",
-        menuLink: "/contact",
+        menuName: "Search AI",
+        menuLink: "/searchai",
     },
     {
         id: 4,
         menuName: "Blog",
         menuLink: "/blog",
     },
-    {
-        id: 5,
-        menuName:"Code Editor",
-        menuLink: "/compiler"
-    }
 ]
 
 const NavBar = () => {
     return (
         <>
             {
-                mainMenu?.map(menu => {
-                    return (
-                        <>
-                            <li key={menu.id} className='text-white active:bg-black text-xl'><NavLink to={menu.menuLink}>{menu.menuName}</NavLink></li>
-                        </>
-                    )
-                })
+                mainMenu?.map(menu => <li key={menu.id} className='text-white active:bg-black text-xl'>
+                    <NavLink to={menu.menuLink}>
+                        {menu.menuName}
+                    </NavLink>
+                </li>)
             }
 
         </>

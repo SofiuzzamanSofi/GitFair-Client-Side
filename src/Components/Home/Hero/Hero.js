@@ -11,6 +11,7 @@ const Hero = () => {
                         <p className='text-white text-lg'>Monotonectally grow extensible quality vectors without error-free resources. Distinctively incubate maintainable scenarios without backward-compatible ROI. Uniquely implement viral convergence and equity invested ROI. Competently fashion standardized.</p>
                         <div className="navbar-end mt-11">
                             <Link className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg">Get Started for Free</Link>
+                            <Link to='/compiler' className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg mx-5">Code Editor</Link>
                         </div>
                     </div>
                     <div className='bg-[#fefefe47] p-9 rounded-xl mt-24 grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-1 mx-auto'>
