@@ -17,7 +17,7 @@ const SearchAi = () => {
     const [chatLog, setChatLog] = useState([
         {
             uniqueId: "",
-            question: "Hello Sir",
+            question: "Hello Sir,",
         },
         {
             uniqueId: "",
@@ -133,7 +133,7 @@ const SearchAi = () => {
 
     return (
         <div
-            className='flex flex-col items-center justify-between h-screen'
+            className='flex flex-col items-center justify-between min-h-screen'
         >
 
 
