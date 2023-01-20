@@ -14,7 +14,17 @@ const SearchAi = () => {
 
 
     const [searchInputText, setSearchInputText] = useState();
-
+    const [chatLog, setChatLog] = useState([
+        {
+            uniqueId: "",
+            question: "Hello Sir",
+        },
+        {
+            uniqueId: "",
+            answer: "How Can I Help You?",
+        }
+    ]);
+    console.log(chatLog);
 
     // loadin function ---
     const loader = element => {
@@ -55,9 +65,17 @@ const SearchAi = () => {
     function chatStripe(isAi, value, uniqueId) {
         return (
             `
-            <div className='flex gap-2 items-center p-5'>
-                    <img src={user} alt="" className='bg-blue-600 p-2' /> <p>This is ans text</p>
+            <div class="wrapper ${isAi && 'ai'}">
+                <div class="chat">
+                    <div class="profile">
+                        <img 
+                          src=${isAi ? bot : user} 
+                          alt="${isAi ? 'bot' : 'user'}" 
+                        />
+                    </div>
+                    <div class="message" id=${uniqueId}>${value}</div>
                 </div>
+            </div>
         `
         )
     }
@@ -72,15 +90,22 @@ const SearchAi = () => {
         if (searchInputText) {
 
             const chatContainer = document.getElementById("input-ask-ans");
-            chatContainer.innerHTML += chatStripe(false, searchInputText)
+            // chatContainer.innerHTML += chatStripe(false, searchInputText)
+            const uniqueId = generateUniqueId();
+            setChatLog([...chatLog, {
+                uniqueId: uniqueId,
+                user: `${searchInputText?.text}`,
+                message: "m2",
+            }])
 
-
+            console.log(chatLog);
             axios.post("http://localhost:5000/searchai", { prompt: searchInputText?.text })
                 .then(res => {
                     console.log("this is axios back:", res?.data?.bot?.trim());
-                    setSearchInputText("");
+                    setSearchInputText({ text: "" });
                 }).catch(error => console.log(error))
             console.log({ searchInputText });
+            // setSearchInputText("");
         }
     }
 
@@ -94,6 +119,9 @@ const SearchAi = () => {
             <div
                 id='input-ask-ans'
                 className='w-full max-w-[1280px] mx-auto'>
+
+                {chatLog && chatLog.map((chat, index) => <ChatMessage key={index} chat={chat} />)}
+
                 {/* <div className='flex gap-2 items-center p-5'>
                     <img src={user} alt="" className='bg-blue-600 p-2' /> <p>This is ans text</p>
                 </div>
@@ -110,7 +138,7 @@ const SearchAi = () => {
                     name="searchInputText"
                     cols="30" rows="1"
                     className='p-2 w-full bg-[#40414F] text-white h-10 border-0 outline-none'
-                    value={searchInputText}
+                    value={searchInputText?.text}
                     // set input text value on use state -------
                     onChange={(e) => setSearchInputText({ text: e?.target?.value })}
 
@@ -131,5 +159,26 @@ const SearchAi = () => {
 
     );
 };
+
+const ChatMessage = ({ chat }) => {
+    return (
+        <>
+            {chat?.question ?
+                <div className='flex gap-2 items-center p-5'>
+                    <img src={user} alt="" className='bg-blue-600 p-2' />
+                    <p>{chat?.question}</p>
+                </div>
+                :
+                <div className='flex gap-2 items-center p-5 bg bg-[#40414F]' id={`${chat?.uniqueId ? chat?.uniqueId : ""}`} >
+                    <img src={bot} alt="" className='bg-emerald-600 p-2' />
+                    <p>{chat?.answer}</p>
+                </div>
+            }
+
+        </>
+    );
+}
+
+
 
 export default SearchAi;
