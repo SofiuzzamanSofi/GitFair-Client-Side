@@ -22,6 +22,11 @@ const mainMenu = [
         menuName: "Blog",
         menuLink: "/blog",
     },
+    {
+        id: 5,
+        menuName: "CreateShare",
+        menuLink: "/createshare",
+    },
 ]
 
 const NavBar = () => {
