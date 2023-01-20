@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
+    
     return (
         <div className='bg-[url("/src/assets/bg-banner.png")] lg:bg-[url("/src/assets/bg-banner.png")] pb-[83px] bg-cover bg-center -mt-[107px]'>
             <div className='lg:w-[1240px] m-auto pt-[200px]'>
