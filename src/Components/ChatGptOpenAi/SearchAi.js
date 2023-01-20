@@ -88,21 +88,42 @@ const SearchAi = () => {
 
 
         if (searchInputText) {
+            // setChatLog([...chatLog, {
+            //     uniqueId: "",
+            //     question: searchInputText?.text,
+            // }])
 
             const chatContainer = document.getElementById("input-ask-ans");
             // chatContainer.innerHTML += chatStripe(false, searchInputText)
-            const uniqueId = generateUniqueId();
-            setChatLog([...chatLog, {
-                uniqueId: uniqueId,
-                user: `${searchInputText?.text}`,
-                message: "m2",
-            }])
+
+
+            // setChatLog([...chatLog, {
+            //     uniqueId: uniqueId,
+            //     user: `${searchInputText?.text}`,
+            //     message: "m2",
+            // }])
 
             console.log(chatLog);
+
             axios.post("http://localhost:5000/searchai", { prompt: searchInputText?.text })
                 .then(res => {
-                    console.log("this is axios back:", res?.data?.bot?.trim());
+                    const data = res?.data?.bot?.trim()
+                    console.log("this is axios back:", data);
                     setSearchInputText({ text: "" });
+
+
+                    // get uniqueId from uniqueId function ----
+                    const uniqueId = generateUniqueId();
+
+                    // insert ans to the useState ---
+                    setChatLog([...chatLog, {
+                        uniqueId: "",
+                        question: searchInputText?.text,
+                    }, {
+                        uniqueId: uniqueId,
+                        answer: data,
+                    }])
+
                 }).catch(error => console.log(error))
             console.log({ searchInputText });
             // setSearchInputText("");
