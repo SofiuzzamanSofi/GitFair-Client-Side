@@ -1,9 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logout } = useContext(AuthContext)
+    const Navigate = useNavigate()
+    const handleLogout = () => {
+        logout()
+            .then(() => {
+                Navigate('/login')
+            })
+            .catch(err => {
+                console.log(err)
+
+            })
+    }
     return (
         <div className='lg:w-[1240px] m-auto'>
             <div className="navbar bg-base-100 pt-5">
@@ -26,8 +39,23 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className="btn bg-[#66C555] uppercase text-sm] text-white rounded-lg">Login</Link>
-                    <Link className="btn lg:ml-4 md:ml-4 bg-[#66C555] uppercase text-sm text-white rounded-lg">SIGN UP</Link>
+                    {
+                        user?.email ?
+                            <Link onClick={handleLogout} to='' className="btn bg-[#66C555] uppercase text-sm] text-white rounded-lg">Logout</Link>
+                            :
+                            <Link to='/login' className="btn bg-[#66C555] uppercase text-sm] text-white rounded-lg">Login</Link>
+                    }
+
+                    {
+                        user?.email ?
+                            <div className="avatar">
+                                <div className="w-12 ml-2 rounded-full ring ring-white">
+                                    <img src={user?.photoURL} alt='userimage' />
+                                </div>
+                            </div>
+                            :
+                            <Link to='/register' className="btn lg:ml-4 md:ml-4 bg-[#66C555] uppercase text-sm text-white rounded-lg">SIGN UP</Link>
+                    }
                 </div>
             </div>
         </div>

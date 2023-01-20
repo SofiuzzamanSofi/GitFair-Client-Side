@@ -4,16 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Toaster } from 'react-hot-toast';
+import AuthProvider from './Context/AuthProvider/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
-   
-  // </React.StrictMode>
-  <>
-     <App />
-    <Toaster/>
-  </>
+  
+   <>
+     <AuthProvider>
+      <App />
+    </AuthProvider>
+    <Toaster />
+   </>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function

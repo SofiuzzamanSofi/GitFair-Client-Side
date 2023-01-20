@@ -1,4 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import Login from "../Authentication/Login/Login";
+
+import Register from "../Authentication/Register/Register";
 import About from "../Components/About/About";
 import Blog from "../Components/Blog/Blog";
 import Compiler from "../Components/Compiler";
@@ -35,7 +38,16 @@ const router = createBrowserRouter([
             {
                 path: '/searchai',
                 element: <SearchAi />
+            },
+            {
+                path: '/Register',
+                element: <Register></Register>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             }
+
         ]
     }
 ]);
