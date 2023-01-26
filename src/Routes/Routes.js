@@ -14,6 +14,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import FileShare from "../Dashboard/FileShare/FileShare";
 import Profile from "../Dashboard/Profile/Profile";
 import Main from "../Layout/Main";
+import LiveSharing from "../Dashboard/LiveSharing/LiveSharing";
+import LiveEditor from "../Dashboard/LiveSharing/LiveEditor";
 
 const router = createBrowserRouter([
     {
@@ -75,6 +77,15 @@ const router = createBrowserRouter([
                 path: 'dashboard/allfriends',
                 element: <AllFriends />
             },
+            {
+                path: 'dashboard/liveSharing',
+                element: <LiveSharing/>
+            },
+            {
+                path: 'dashboard/liveSharing/:roomId',
+                element: <LiveEditor/>
+            },
+            
         ]
     }
 

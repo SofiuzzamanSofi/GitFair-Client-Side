@@ -42,6 +42,7 @@ const DMain = () => {
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/profile'>My Profile</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/fileshare'>Files Share</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/allfriends'>All friends</Link></li>
+                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/liveSharing'>Live Code Sharing</Link></li>
                             </div>
                         </div>
                     </ul>

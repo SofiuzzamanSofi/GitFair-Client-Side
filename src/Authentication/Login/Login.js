@@ -13,7 +13,7 @@ const Login = () => {
 
     const location = useLocation()
     const Navigate = useNavigate()
-    const from = location.state?.from?.pathname || '/'
+    // const from = location.state?.from?.pathname || '/dashboard'
 
     const handleLogin = (data) => {
         console.log(data)
@@ -23,7 +23,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
-                Navigate(from, { replace: true })
+                Navigate('/dashboard')
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -36,7 +36,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
-                Navigate('/')
+                Navigate('/dashboard')
             })
             .catch(err => {
                 setLoginError(err.message)
