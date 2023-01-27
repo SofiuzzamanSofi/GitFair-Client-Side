@@ -8,7 +8,7 @@ import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
 import ACTIONS from './Actions';
 
-const EditorPart = ({ socketRef, roomId }) => {
+const EditorPart = ({ socketRef, roomId, onCodeChange }) => {
 
     const editorRef = useRef(null);
 
@@ -30,6 +30,8 @@ const EditorPart = ({ socketRef, roomId }) => {
                 const { origin } = changes;
                 // get code form code editor --- 
                 const code = instance.getValue();
+                // set code on codeRef because new user show on entry the room --- 
+                onCodeChange(code);
                 if (origin !== "setValue") {
                     // send code to the backend------ 
                     socketRef.current.emit(ACTIONS.CODE_CHANGE, {

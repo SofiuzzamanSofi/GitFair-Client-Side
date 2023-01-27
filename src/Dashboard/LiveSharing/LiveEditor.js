@@ -12,9 +12,10 @@ import './Style.css';
 const LiveEditor = () => {
 
     const socketRef = useRef(null);
+    const codeRef = useRef(null);
     const location = useLocation();
-    const reactNavitage = useNavigate();
     const { roomId } = useParams();
+    const reactNavitage = useNavigate();
     const [clients, setClients] = useState([
         // { socketId: 1, userName: "Ruhul Amin" },
         // { socketId: 2, userName: "Sofi Taimul" },
@@ -44,11 +45,13 @@ const LiveEditor = () => {
 
             // listenign for joiNED enent notifications -- 
             socketRef.current.on(ACTIONS.JOINED, ({ clients, userName, socketId }) => {
-                if (userName !== location.state.userName) {
+                if (userName !== location.state?.userName) {
                     toast.success(`${userName} joined the room`);
                     // console.log("userNNNN:", userName);
                 }
-                setClients(clients)
+                setClients(clients);
+                // SYNC other written code when any user joined --- 
+                socketRef.current.emit(ACTIONS.SYNC_CODE, codeRef.current)
             });
 
             // listning for DISCONNECTED ---
@@ -116,7 +119,13 @@ const LiveEditor = () => {
                 <div className='w-11/12 bg-[#282A36] editor'>
 
                     {/* this is code editor textarea -------------- */}
-                    <EditorPart socketRef={socketRef} roomId={roomId} />
+                    <EditorPart
+                        socketRef={socketRef}
+                        roomId={roomId}
+                        onCodeChange={(code) => {
+                            codeRef.current = code;
+                        }}
+                    />
                 </div>
                 <div className='text-black text-center'>
                     <div className=''>
