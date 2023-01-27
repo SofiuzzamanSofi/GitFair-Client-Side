@@ -29,8 +29,10 @@ const EditorPart = ({ socketRef, roomId }) => {
             editorRef.current.on("change", (instance, changes) => {
                 console.log(changes, ":ccccccccccchanges")
                 const { origin } = changes;
+                // get code form code editor --- 
                 const code = instance.getValue();
                 if (origin !== "setValue") {
+                    // send code to the backend------ 
                     socketRef.current.emit(ACTIONS.CODE_CHANGE, {
                         roomId,
                         code: code,
@@ -38,7 +40,14 @@ const EditorPart = ({ socketRef, roomId }) => {
                 }
                 console.log(code);
             });
-            // editorRef.current.setValue("console.log(125)")
+
+            // get code from backend ------ 
+            socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
+                if (code !== null) {
+                    editorRef.current.setValue(code);
+                }
+            })
+
         }
         init();
     }, []);
