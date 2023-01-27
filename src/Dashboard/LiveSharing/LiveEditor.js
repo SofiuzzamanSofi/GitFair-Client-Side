@@ -51,7 +51,10 @@ const LiveEditor = () => {
                 }
                 setClients(clients);
                 // SYNC other written code when any user joined --- 
-                socketRef.current.emit(ACTIONS.SYNC_CODE, codeRef.current)
+                socketRef.current.emit(ACTIONS.SYNC_CODE, {
+                    code: codeRef.current,
+                    socketId,
+                })
             });
 
             // listning for DISCONNECTED ---
