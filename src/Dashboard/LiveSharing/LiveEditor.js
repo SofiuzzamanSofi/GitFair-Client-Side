@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -77,18 +78,34 @@ const LiveEditor = () => {
     }, [])
 
 
+    async function copyRoomId() {
+        console.log(roomId)
+        try {
+            await navigator?.clipboard?.writeText(roomId);
+            toast.success("Room Id has been copied to your clipboard.")
+        }
+        catch (error) {
+            toast.error("Something went wrong, room id doesn't copping.")
+            console.log(error);
+        }
+    }
 
     if (!location?.state) {
         return <Navigate to="/dashboard/dashboard/liveSharing" />
     }
 
 
-
     return (
         <div>
             <div className="navbar  place-content-end bg-black">
-                <button className='btn btn-success uppercase rounded-xl mx-5'>Copy ID</button>
-                <button className='btn btn-error rounded-xl text-white uppercase'>Leave Room</button>
+                <button className='btn btn-success rounded-xl mx-5 text-white uppercase'
+                    onClick={copyRoomId}
+                >
+                    Copy ID
+                </button>
+                <button className='btn btn-error rounded-xl text-white uppercase'>
+                    Leave Room
+                </button>
             </div>
             <div className='flex'>
                 <div className='w-11/12 bg-[#282A36] editor'>
