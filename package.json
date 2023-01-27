@@ -12,6 +12,7 @@
     "daisyui": "^2.46.1",
     "firebase": "^9.15.0",
     "react": "^18.2.0",
+    "react-avatar": "^5.0.3",
     "react-codemirror2": "^7.2.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.42.1",

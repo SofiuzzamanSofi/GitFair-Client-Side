@@ -101,7 +101,7 @@ const SearchAi = () => {
 
             // console.log(chatLog);
 
-            axios.post("https://git-fair-server-sofiuzzamansofi.vercel.app/searchai", { prompt: searchInputText?.text })
+            axios.post(`${process.env.REACT_APP_URL}/searchai`, { prompt: searchInputText?.text })
                 .then(res => {
                     const data = res?.data?.bot?.trim()
                     // console.log("this is axios back:", data);

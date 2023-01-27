@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LiveSharing = () => {
 
-    const {user} =useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [roomId, setRoomId] = useState('');
@@ -29,6 +29,7 @@ const LiveSharing = () => {
         navigate(`/dashboard/dashboard/liveSharing/${roomId}`, {
             state: {
                 userName,
+                roomId,
             },
         });
     };
@@ -44,7 +45,7 @@ const LiveSharing = () => {
                     </div>
                     <input type="text" onChange={(e) => setuserName(e.target.value)} value={userName} placeholder="User" className="input w-1/3 bg-white text-black" />
                     <div className="card-actions justify-Start">
-                        <button onClick={joinRoom}  className="btn btn-primary bg-[#66C555] text-white rounded-xl uppercase">Join Room</button>
+                        <button onClick={joinRoom} className="btn btn-primary bg-[#66C555] text-white rounded-xl uppercase">Join Room</button>
                     </div>
                 </div>
             </div>
