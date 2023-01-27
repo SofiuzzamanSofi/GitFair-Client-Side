@@ -7,6 +7,7 @@ import Blog from "../Components/Blog/Blog";
 import Compiler from "../Components/Compiler";
 import SearchAi from "../Components/ChatGptOpenAi/SearchAi";
 import Contact from "../Components/Contact/Contact";
+import CreateShare from "../Components/CreateShare/CreateShare";
 import Home from "../Components/Home/Home";
 import AllFriends from "../Dashboard/AllFriends/AllFriends";
 import Categories from "../Dashboard/Categories/Categories";
@@ -37,24 +38,7 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog />
-            },
-            {
-                path: '/compiler',
-                element:<Compiler/>
-            },
-            {
-                path: '/searchai',
-                element: <SearchAi />
-            },
-            {
-                path: '/Register',
-                element: <Register></Register>
-            },
-            {
-                path: '/login',
-                element: <Login></Login>
             }
-
         ]
     },
     {

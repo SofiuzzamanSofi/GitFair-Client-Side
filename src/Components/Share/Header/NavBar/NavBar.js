@@ -49,7 +49,8 @@ const mainMenu2 = [
         id: 4,
         menuName: "Blog",
         menuLink: "/blog",
-    },
+    }
+    
 ]
 
 const NavBar = () => {

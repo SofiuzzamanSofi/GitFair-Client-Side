@@ -1,0 +1,11 @@
+.team-card{
+    width: 90px;
+    height: 90px;
+    /* object-fit: cover; */
+    /* padding-top: 10px; */
+    border-radius: 100%;
+}
+.team-card img{
+    padding-top: 30px;
+    object-fit: cover;
+}
