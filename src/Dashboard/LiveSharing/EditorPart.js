@@ -6,8 +6,9 @@ import 'codemirror/theme/dracula.css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
+import ACTIONS from './Actions';
 
-const EditorPart = () => {
+const EditorPart = ({ socketRef, roomId }) => {
 
     const editorRef = useRef(null);
 
@@ -27,7 +28,17 @@ const EditorPart = () => {
             // codemirror onchange listener --
             editorRef.current.on("change", (instance, changes) => {
                 console.log(changes, ":ccccccccccchanges")
-            })
+                const { origin } = changes;
+                const code = instance.getValue();
+                if (origin !== "setValue") {
+                    socketRef.current.emit(ACTIONS.CODE_CHANGE, {
+                        roomId,
+                        code: code,
+                    })
+                }
+                console.log(code);
+            });
+            // editorRef.current.setValue("console.log(125)")
         }
         init();
     }, []);

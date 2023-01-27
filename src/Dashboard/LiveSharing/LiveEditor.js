@@ -91,7 +91,11 @@ const LiveEditor = () => {
                 <button className='btn btn-error rounded-xl text-white uppercase'>Leave Room</button>
             </div>
             <div className='flex'>
-                <div className='w-11/12 bg-[#282A36] editor'><EditorPart /></div>
+                <div className='w-11/12 bg-[#282A36] editor'>
+
+                    {/* this is code editor textarea -------------- */}
+                    <EditorPart socketRef={socketRef} roomId={roomId} />
+                </div>
                 <div className='text-black text-center'>
                     <div className=''>
                         <h3 className='people font-bold'>Connected People</h3>
