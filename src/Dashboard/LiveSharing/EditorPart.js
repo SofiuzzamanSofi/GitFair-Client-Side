@@ -9,8 +9,10 @@ import 'codemirror/addon/edit/closebrackets';
 
 const EditorPart = () => {
 
-    useEffect(() =>{
-        async function init(){
+    // const 
+
+    useEffect(() => {
+        async function init() {
             codemirror.fromTextArea(
                 document.getElementById('realtimeEditor'),
                 {

@@ -66,6 +66,14 @@ const LiveEditor = () => {
 
         };
         init();
+
+        // unSubscribe function / when we left this will exicute/ this will not happen memory leack --- 
+        return () => {
+            socketRef.current.disconnect();
+            socketRef.current.off(ACTIONS.JOINED);
+            socketRef.current.off(ACTIONS.DISCONNECTED);
+
+        }
     }, [])
 
 
