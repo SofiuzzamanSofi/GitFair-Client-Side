@@ -47,14 +47,14 @@ const EditorPart = ({ socketRef, roomId }) => {
         // get code from backend ------ 
         if (socketRef?.current) {
             socketRef?.current?.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-                console.log("codeId:", code)
+                console.log("codeId from 50 lines:", code)
                 if (code !== null) {
                     // set backend code on my code editor -- 
                     editorRef?.current?.setValue(code);
                 }
             })
         }
-    }, [socketRef]);
+    }, [socketRef, socketRef?.current]);
 
 
 

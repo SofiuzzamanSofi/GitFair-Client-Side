@@ -45,7 +45,7 @@ const LiveEditor = () => {
             socketRef.current.on(ACTIONS.JOINED, ({ clients, userName, socketId }) => {
                 if (userName !== location.state.userName) {
                     toast.success(`${userName} joined the room`);
-                    console.log("userNNNN:", userName);
+                    // console.log("userNNNN:", userName);
                 }
                 setClients(clients)
             });
