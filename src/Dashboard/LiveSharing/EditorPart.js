@@ -47,13 +47,20 @@ const EditorPart = ({ socketRef, roomId }) => {
         // get code from backend ------ 
         if (socketRef?.current) {
             socketRef?.current?.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-                console.log("codeId from 50 lines:", code)
+                // console.log("codeId from 50 lines:", code)
                 if (code !== null) {
                     // set backend code on my code editor -- 
                     editorRef?.current?.setValue(code);
                 }
             })
         }
+
+        // unSubsCribe functions --- 
+        return () => {
+            socketRef?.current?.off(ACTIONS.CODE_CHANGE)
+        }
+
+
     }, [socketRef, socketRef?.current]);
 
 
