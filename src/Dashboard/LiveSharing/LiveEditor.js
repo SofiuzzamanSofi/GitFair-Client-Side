@@ -1,8 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import EditorPart from './EditorPart';
+// import ACTIONS from '../../Actions';
 import './Style.css';
+import { initSocket } from './../../socket';
+// import { useLocation, useNavigate, useParams } from 'react-router-dom';
+// import { toast } from 'react-hot-toast';
 
 const LiveEditor = () => {
+
+    const socketRef = useRef(null);
+    // const codeRef = useRef(null);
+    // const location = useLocation();
+    // const { roomId } = useParams();
+    // const reactNavigator = useNavigate();
+    // const [clients, setClients] = useState([]);
+
+    useEffect(() => {
+        const init = async () => {
+            socketRef.current = await initSocket();
+            // socketRef.current.on('connect_error', (err) => handleErrors(err));
+            // socketRef.current.on('connect_failed', (err) => handleErrors(err));
+
+            // function handleErrors(e) {
+            //     console.log('socket error', e);
+            //     toast.error('Socket connection failed, try again later.');
+            //     reactNavigator('/dashboard/dashboard/liveSharing');
+            // }
+
+            // socketRef.current.emit(ACTIONS.JOIN,{
+            //     roomId,
+            //     userName: location.state?.userName,
+            // });
+
+             // Listening for joined event
+        };
+        init();
+    }, [])
+
     return (
         <div>
             <div className="navbar  place-content-end bg-black">
