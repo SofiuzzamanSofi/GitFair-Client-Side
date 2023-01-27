@@ -27,7 +27,6 @@ const EditorPart = ({ socketRef, roomId }) => {
 
             // codemirror onchange listener --
             editorRef.current.on("change", (instance, changes) => {
-                console.log(changes, ":ccccccccccchanges")
                 const { origin } = changes;
                 // get code form code editor --- 
                 const code = instance.getValue();
@@ -35,27 +34,31 @@ const EditorPart = ({ socketRef, roomId }) => {
                     // send code to the backend------ 
                     socketRef.current.emit(ACTIONS.CODE_CHANGE, {
                         roomId,
-                        code: code,
+                        code,
                     })
                 }
-                console.log(code);
             });
-
-            // get code from backend ------ 
-            socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-                if (code !== null) {
-                    editorRef.current.setValue(code);
-                }
-            })
 
         }
         init();
     }, []);
-    return (
-        <div className=''>
-            <textarea id="realtimeEditor"></textarea>
-        </div>
-    );
+
+    useEffect(() => {
+        // get code from backend ------ 
+        if (socketRef?.current) {
+            socketRef?.current?.on(ACTIONS.CODE_CHANGE, ({ code }) => {
+                console.log("codeId:", code)
+                if (code !== null) {
+                    // set backend code on my code editor -- 
+                    editorRef?.current?.setValue(code);
+                }
+            })
+        }
+    }, [socketRef]);
+
+
+
+    return <textarea id="realtimeEditor"></textarea>;
 };
 
 export default EditorPart;
