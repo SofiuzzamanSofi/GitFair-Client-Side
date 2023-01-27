@@ -8,14 +8,14 @@ import AuthProvider from './Context/AuthProvider/AuthProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
-   <>
-     <AuthProvider>
+  // <React.StrictMode>
+  <>
+    <AuthProvider>
       <App />
     </AuthProvider>
     <Toaster />
-   </>
-  
+  </>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
