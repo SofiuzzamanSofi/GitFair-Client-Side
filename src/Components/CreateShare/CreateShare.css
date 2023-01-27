@@ -1,0 +1,51 @@
+.flex-css{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly!important;
+    border:2px solid white;
+    width:68%;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-radius: 15px;;
+    background-color: black;
+    color:black;
+   
+}
+.bar{
+    background-color: #66C555;
+    color: #66C555;
+    
+}
+.fig-img{
+    width: 30px;
+    height:30px;
+}
+.create-text
+{
+    font-weight: 600!important;
+    font-size: 18px!important;
+}
+.card-folder{
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    
+}
+.bg-color{
+    background-color:#F5E6E6;
+}
+.icons{
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
+    padding-top: 17px;
+}
+.btn-card{
+    margin-top: 10px;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+.input-fild{
+    margin-left: 28%;
+    padding-top: 10px;
+}
