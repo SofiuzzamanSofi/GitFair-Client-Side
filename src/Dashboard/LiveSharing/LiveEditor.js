@@ -78,17 +78,20 @@ const LiveEditor = () => {
     }, [])
 
 
-    async function copyRoomId() {
-        console.log(roomId)
+    const copyRoomId = async () => {
         try {
             await navigator?.clipboard?.writeText(roomId);
             toast.success("Room Id has been copied to your clipboard.")
         }
         catch (error) {
-            toast.error("Something went wrong, room id doesn't copping.")
+            toast.error("Something went wrong, Couldn't copy the room id.")
             console.log(error);
         }
     }
+    const leaveRoome = async () => {
+        reactNavitage("/dashboard/dashboard/liveSharing");
+    }
+
 
     if (!location?.state) {
         return <Navigate to="/dashboard/dashboard/liveSharing" />
@@ -103,7 +106,9 @@ const LiveEditor = () => {
                 >
                     Copy ID
                 </button>
-                <button className='btn btn-error rounded-xl text-white uppercase'>
+                <button className='btn btn-error rounded-xl text-white uppercase'
+                    onClick={leaveRoome}
+                >
                     Leave Room
                 </button>
             </div>
