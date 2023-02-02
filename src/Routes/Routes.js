@@ -16,6 +16,8 @@ import Profile from "../Dashboard/Profile/Profile";
 import Main from "../Layout/Main";
 import LiveSharing from "../Dashboard/LiveSharing/LiveSharing";
 import LiveEditor from "../Dashboard/LiveSharing/LiveEditor";
+import PremiumFeature from "../Dashboard/PremiumFeature/PremiumFeature";
+import PaymentForm from "../Dashboard/PremiumFeature/PaymentForm";
 
 const router = createBrowserRouter([
     {
@@ -40,7 +42,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/compiler',
-                element:<Compiler/>
+                element: <Compiler />
             },
             {
                 path: '/searchai',
@@ -79,13 +81,21 @@ const router = createBrowserRouter([
             },
             {
                 path: 'dashboard/liveSharing',
-                element: <LiveSharing/>
+                element: <LiveSharing />
             },
             {
                 path: 'dashboard/liveSharing/:roomId',
-                element: <LiveEditor/>
+                element: <LiveEditor />
             },
-            
+            {
+                path: 'dashboard/premiumfeature',
+                element: <PremiumFeature />
+            },
+            {
+                path: 'dashboard/premiumfeature/paymentForm',
+                element: <PaymentForm />
+            },
+
         ]
     }
 

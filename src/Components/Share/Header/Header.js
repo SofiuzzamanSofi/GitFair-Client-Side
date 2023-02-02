@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import logo from "../../../assets/logo.png"
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext)
@@ -30,7 +31,8 @@ const Header = () => {
                         </ul>
                     </div>
                     <Link to='/'>
-                        <img src='https://i.ibb.co/XFmb29G/logo.png' alt='logo' />
+                        {/* <img src='https://i.ibb.co/XFmb29G/logo.png' alt='logo' /> */}
+                        <img src={logo} alt='logo' />
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
