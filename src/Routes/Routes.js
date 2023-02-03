@@ -16,6 +16,9 @@ import Profile from "../Dashboard/Profile/Profile";
 import Main from "../Layout/Main";
 import LiveSharing from "../Dashboard/LiveSharing/LiveSharing";
 import LiveEditor from "../Dashboard/LiveSharing/LiveEditor";
+import Privacyandpolicy from "../Components/Privacyandpolicy/Privacyandpolicy";
+import TermsandCondition from "../Components/TermsandCondition/TermsandCondition";
+import AllServices from "../Components/AllServices/AllServices";
 
 const router = createBrowserRouter([
     {
@@ -39,8 +42,20 @@ const router = createBrowserRouter([
                 element: <Blog />
             },
             {
+                path: '/privacyandpolicy',
+                element: <Privacyandpolicy />
+            },
+            {
+                path: '/termsandvondition',
+                element: <TermsandCondition />,
+            },
+            {
                 path: '/compiler',
-                element:<Compiler/>
+                element: <Compiler />
+            },
+            {
+                path: '/allservices',
+                element: <AllServices />
             },
             {
                 path: '/searchai',
@@ -79,13 +94,13 @@ const router = createBrowserRouter([
             },
             {
                 path: 'dashboard/liveSharing',
-                element: <LiveSharing/>
+                element: <LiveSharing />
             },
             {
                 path: 'dashboard/liveSharing/:roomId',
-                element: <LiveEditor/>
+                element: <LiveEditor />
             },
-            
+
         ]
     }
 

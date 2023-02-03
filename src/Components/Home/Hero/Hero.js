@@ -11,7 +11,7 @@ const Hero = () => {
                         <h1 className='lg:text-8xl pb-10 md:text-[60px] sm:text-[35px] text-white font-bold'>Let’s build from here</h1>
                         <p className='text-white text-lg'>Monotonectally grow extensible quality vectors without error-free resources. Distinctively incubate maintainable scenarios without backward-compatible ROI. Uniquely implement viral convergence and equity invested ROI. Competently fashion standardized.</p>
                         <div className="navbar-end mt-11">
-                            <Link className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg">Get Started for Free</Link>
+                            <Link to='/allservices' className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg">Get Started for Free</Link>
                             <Link to='/compiler' className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg mx-5">Code Editor</Link>
                         </div>
                     </div>

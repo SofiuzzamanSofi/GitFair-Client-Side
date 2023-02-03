@@ -12,17 +12,17 @@ const MainFooter = () => {
             <div className='lg:ml-20'>
                 <h3 className='text-2xl font-semibold mb-5'>Our Pages</h3>
                 <ul>
-                    <li className='text-lg hover:text-[#66C555]'><Link to='/'>About us</Link></li>
-                    <li className='text-lg hover:text-[#66C555]'><Link to='/'>Contact Us</Link></li>
-                    <li className='text-lg hover:text-[#66C555]'><Link to='/'>Privacy and policy</Link></li>
-                    <li className='text-lg hover:text-[#66C555]'><Link to='/'>Terms and Condition</Link></li>
+                    <li className='text-lg hover:text-[#66C555]'><Link to='/about'>About us</Link></li>
+                    <li className='text-lg hover:text-[#66C555]'><Link to='/contact'>Contact Us</Link></li>
+                    <li className='text-lg hover:text-[#66C555]'><Link to='/privacyandpolicy'>Privacy and policy</Link></li>
+                    <li className='text-lg hover:text-[#66C555]'><Link to='/termsandvondition'>Terms and Condition</Link></li>
                 </ul>
             </div>
             <div className='lg:ml-14'>
                 <h3 className='text-2xl font-semibold mb-5'>Our Services</h3>
                 <ul>
-                    <li className='text-lg hover:text-[#66C555]'><Link to='/'>All Services</Link></li>
-                    <li className='text-lg hover:text-[#66C555]'><Link to='/'>Reach us</Link></li>
+                    <li className='text-lg hover:text-[#66C555]'><Link to='/allservices'>All Services</Link></li>
+                    <li className='text-lg hover:text-[#66C555]'><Link to='/dashboard'>Reach us</Link></li>
                 </ul>
                 <div className='mt-5 flex gap-6'>
                     <Link to='/'>

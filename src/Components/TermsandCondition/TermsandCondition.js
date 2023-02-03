@@ -1,9 +1,9 @@
 import React from 'react';
 
-const About = () => {
+const TermsandCondition = () => {
     return (
         <div className='lg:w-[1240px] m-auto p-5'>
-            <h2 className='text-2xl'>About Us</h2>
+            <h2 className='text-2xl'>Terms and Condition</h2>
             <p>
                 Conveniently cultivate premier opportunities rather than economically sound e-business. Dramatically leverage existing premier processes for backend human capital. Quickly implement bricks-and-clicks portals for worldwide value. Appropriately embrace visionary web-readiness with synergistic processes. Efficiently myocardinate worldwide deliverables with one-to-one e-commerce.<br />
 
@@ -31,4 +31,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default TermsandCondition;
