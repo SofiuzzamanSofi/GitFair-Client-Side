@@ -1,10 +1,54 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useContext, useState } from 'react'
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider'
 
 function PremiumFeature() {
+
+    const { user } = useContext(AuthContext)
+    const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
+    const [premiumState, setPremiumState] = useState(false);
+
+
+    useEffect(() => {
+        if (user?.email) {
+            console.log(user.email);
+            axios.post(url2, { email: user?.email })
+                .then(res => {
+                    if (res.data.success) {
+                        setPremiumState(true);
+                        console.log(res.data)
+                    }
+                }).catch(e => {
+                    console.log(e)
+                })
+
+            // fetch(url2, {
+            //     method: "GET",
+            //     headers: { "Content-Type": "application/json" },
+            //     body: JSON.stringify(user?.email)
+            // })
+            //     .then(res => res.json())
+            //     .then(data => console.log(data))
+        }
+    }, [user, url2]);
+
+
+    if (premiumState) {
+        return (
+            <div className='text-black flex flex-col justify-center items-center'>
+                <h1 className='text-4xl'>You are a premium user.</h1>
+                <p className='font-bold'>Your dashboard is updated soon.</p>
+            </div>
+        )
+    }
+
+
+
     return (
         <div>
-            <section className="py-20 ">
+            <section className="py-5">
                 <div className="container px-4 mx-auto">
                     <div className="max-w-2xl mx-auto mb-16 text-center">
                         <span className="font-bold tracking-wider uppercase text-black">Pricing</span>
@@ -39,7 +83,7 @@ function PremiumFeature() {
                                     </li>
                                 </ul>
                                 <Link
-                                    to="paymentForm"
+                                    to="paymentForm/24"
                                     className="border-black border hover:border-none block bg-[#66C555] hover:bg-white hover:text-black text-white w-full px-5 py-3 font-bold tracking-wider text-center rounded "
                                 >
                                     Get Started
@@ -74,7 +118,7 @@ function PremiumFeature() {
                                     </li>
                                 </ul>
                                 <Link
-                                    to="paymentForm"
+                                    to="paymentForm/74"
                                     className="border-black border hover:border-none block bg-[#66C555] hover:bg-white hover:text-black text-white w-full px-5 py-3 font-bold tracking-wider text-center rounded "
                                 >
                                     Get Started
@@ -115,7 +159,7 @@ function PremiumFeature() {
                                     </li>
                                 </ul>
                                 <Link
-                                    to="paymentForm"
+                                    to="paymentForm/499"
                                     className="border-black border hover:border-none block bg-[#66C555] hover:bg-white hover:text-black text-white w-full px-5 py-3 font-bold tracking-wider text-center rounded "
                                 >
                                     Get Started

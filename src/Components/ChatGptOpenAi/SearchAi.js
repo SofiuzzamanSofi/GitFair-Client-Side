@@ -100,8 +100,6 @@ const SearchAi = () => {
             // }])
 
             const url = `${process.env.REACT_APP_URL}/searchai`
-            console.log(url);
-
             axios.post(url, { prompt: searchInputText?.text })
                 .then(res => {
                     const data = res?.data?.bot?.trim()

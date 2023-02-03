@@ -37,7 +37,7 @@ const DMain = () => {
                                     <p className='bg-white rounded-lg text-black px-5 m-3'><span>User</span></p>
                                 </div>
                             </div>
-                            <div className='mt-5'>
+                            <div className='mt-5 mb-10'>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/dashboard'>Dashboard</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/profile'>My Profile</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/fileshare'>Files Share</Link></li>

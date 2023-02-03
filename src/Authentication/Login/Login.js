@@ -35,7 +35,7 @@ const Login = () => {
         google()
             .then(result => {
                 const user = result.user
-                console.log(user)
+                // console.log(user)
                 Navigate('/dashboard')
             })
             .catch(err => {

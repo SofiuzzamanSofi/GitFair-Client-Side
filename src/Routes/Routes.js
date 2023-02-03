@@ -92,7 +92,7 @@ const router = createBrowserRouter([
                 element: <PremiumFeature />
             },
             {
-                path: 'dashboard/premiumfeature/paymentForm',
+                path: 'dashboard/premiumfeature/paymentForm/:price',
                 element: <PaymentForm />
             },
 
