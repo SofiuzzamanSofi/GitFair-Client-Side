@@ -18,6 +18,9 @@ import LiveSharing from "../Dashboard/LiveSharing/LiveSharing";
 import LiveEditor from "../Dashboard/LiveSharing/LiveEditor";
 import PremiumFeature from "../Dashboard/PremiumFeature/PremiumFeature";
 import PaymentForm from "../Dashboard/PremiumFeature/PaymentForm";
+import Privacyandpolicy from "../Components/Privacyandpolicy/Privacyandpolicy";
+import TermsandCondition from "../Components/TermsandCondition/TermsandCondition";
+import AllServices from "../Components/AllServices/AllServices";
 
 const router = createBrowserRouter([
     {
@@ -41,8 +44,20 @@ const router = createBrowserRouter([
                 element: <Blog />
             },
             {
+                path: '/privacyandpolicy',
+                element: <Privacyandpolicy />
+            },
+            {
+                path: '/termsandvondition',
+                element: <TermsandCondition />,
+            },
+            {
                 path: '/compiler',
                 element: <Compiler />
+            },
+            {
+                path: '/allservices',
+                element: <AllServices />
             },
             {
                 path: '/searchai',

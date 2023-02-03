@@ -9,13 +9,13 @@ const Categories = () => {
         <>
             <div className='lg:flex flex-row lg:gap-14 items-center justify-center mt-10'>
                 <div className="card card-side bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/'>
+                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/searchai'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
                                 <AiOutlineQuestionCircle />
                             </div>
                             <div className='lg:pl-3'>
-                                <h2 className="card-title">Get The Q and A</h2>
+                                <h2 className="card-title">Search AI</h2>
                                 <p>1 Click a lot of answers</p>
 
                             </div>
@@ -39,13 +39,13 @@ const Categories = () => {
             </div>
             <div className='lg:flex flex-row lg:gap-14 items-center justify-center mt-10 '>
                 <div className="card card-side bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/'>
+                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/compiler'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
                                 <AiFillCode />
                             </div>
                             <div className='lg:pl-3'>
-                                <h2 className="card-title">File Create & Share</h2>
+                                <h2 className="card-title">Code Compiler</h2>
                                 <p>Very easy & Free</p>
 
                             </div>
