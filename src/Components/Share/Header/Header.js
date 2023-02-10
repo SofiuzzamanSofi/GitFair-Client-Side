@@ -4,6 +4,7 @@ import NavBar from './NavBar/NavBar';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import logo from "../../../assets/logo.png"
+import axios from 'axios';
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext)
@@ -11,6 +12,9 @@ const Header = () => {
     const handleLogout = () => {
         logout()
             .then(() => {
+                axios.defaults.withCredentials = true;
+                axios.get("http://localhost:5000/cookieClear", { withCredentials: true })
+                    .then(res => console.log(res.data))
                 Navigate('/login')
             })
             .catch(err => {

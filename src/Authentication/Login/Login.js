@@ -1,28 +1,33 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsFacebook, BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+// import Cookies from 'universal-cookie';
 import authImg from '../../assets/registerVector-removebg-preview.png'
+import useToken from '../../Components/hooks/useToken';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
+
 const Login = () => {
-    const { login, google, gitHub, facebook } = useContext(AuthContext)
+
+    const { login, google,gitHub, facebook } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const location = useLocation()
-    const navigate = useNavigate()
-    const from = location.state?.from?.pathname || '/';
+    const [createdUser, setCreatedUser] = useState("");
+    const [token] = useToken(createdUser)
+
+    // const location = useLocation()
+    const Navigate = useNavigate()
 
     const handleLogin = (data) => {
         console.log(data)
         setLoginError('')
         login(data.email, data.password)
             .then(result => {
-                const user = result.user
-                console.log(user)
-                navigate(from, { replace: true })
+                setCreatedUser(result.user)
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -36,18 +41,30 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
-                navigate('/')
+                Navigate('/')
+                setCreatedUser(result.user)
             })
             .catch(err => {
                 setLoginError(err.message)
             })
+    };
+
+
+    const cookieVerifyJwt = email => {
+        axios.defaults.withCredentials = true;
+        axios.get(`http://localhost:5000/cookieClear/verify`, { withCredentials: true }, { "Cookie": document.cookie })
+            .then(res => console.log(res.data))
+    };
+
+    if (token) {
+        Navigate('/dashboard')
     }
     const gitHandler = () => {
         gitHub()
             .then(result => {
                 const user = result.user
                 console.log(user)
-                navigate('/')
+                Navigate('/')
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -58,7 +75,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
-                navigate('/')
+                Navigate('/')
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -75,8 +92,6 @@ const Login = () => {
                     <div className="h-[566px] w-full lg:w-[566px] lg:py-[41px] lg:text-left">
                         <img src={authImg} alt="" className='' />
                     </div>
-
-
                     <div className="card  min-h-[528px] sm:w-full lg:w-[570px] rounded-[10px] bg-white shadow-2xl ">
 
                         <div className="card-body">
