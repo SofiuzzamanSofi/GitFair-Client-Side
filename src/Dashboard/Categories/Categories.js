@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiFillBug, AiFillCode, AiOutlineQuestionCircle } from 'react-icons/ai';
 import { FaFolderPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import FilePicker from './FilePicker';
 
 
 const Categories = () => {
+
+    const [showPicker, setShowPicker] = useState(false)
+
     return (
         <>
             <div className='lg:flex flex-row lg:gap-14 items-center justify-center mt-10'>
@@ -23,18 +27,20 @@ const Categories = () => {
                     </Link>
                 </div>
                 <div className="card card-side lg:mt-0 mt-5 bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/'>
+                    <div className='hover:bg-[#66c555] rounded-2xl'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
                                 <FaFolderPlus />
                             </div>
-                            <div className='lg:pl-3'>
-                                <h2 className="card-title">File Create & Share</h2>
+                            <button className='lg:pl-3'>
+                                <h1 className='card-title' onClick={() => setShowPicker(!showPicker)}> Upload Here !</h1>
+                                {
+                                    showPicker && <FilePicker setShowPicker={setShowPicker}/>
+                                }
                                 <p>Very easy and Fast</p>
-
-                            </div>
+                            </button>
                         </div>
-                    </Link>
+                    </div>
                 </div>
             </div>
             <div className='lg:flex flex-row lg:gap-14 items-center justify-center mt-10 '>

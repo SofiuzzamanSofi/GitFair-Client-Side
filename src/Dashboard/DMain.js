@@ -45,7 +45,7 @@ const DMain = () => {
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/allfriends'>All friends</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/liveSharing'>Live Code Sharing</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/premiumfeature'>Premium Feature</Link></li>
-                                <li htmlFor="my-modal-5" className='hover:bg-[#66c555] rounded-xl'><label htmlFor="my-modal-5" ><span className='text-left font-bold text-sm'>Add a Blog</span></label></li>
+                                <li htmlFor="my-modal-5" className='hover:bg-[#66c555] rounded-xl'><label htmlFor="my-modal-5" ><span>Add a Blog</span></label></li>
                             </div>
                         </div>
 
