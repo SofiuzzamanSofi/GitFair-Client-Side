@@ -14,15 +14,15 @@ const Login = () => {
     // const cookie = new Cookies();
     const cookieCreate = () => {
         // cookie.set("Name", "Sofiuzzaman Sofi", { sameSite: "strict", path: "/", expires: new Date(new Date().getTime() + 30 * 1000), httpOnly: true })
-        axios.defaults.withCredentials = true;
-        axios.get("http://localhost:5000/cookieCreate", { withCredentials: true })
-            .then(res => console.log(res.data))
+        // axios.defaults.withCredentials = true;
+        // axios.get("http://localhost:5000/cookieCreate", { withCredentials: true })
+        //     .then(res => console.log(res.data))
     };
 
     const cookieClear = () => {
-        axios.defaults.withCredentials = true;
-        axios.get("http://localhost:5000/cookieClear", { withCredentials: true })
-            .then(res => console.log(res.data))
+        // axios.defaults.withCredentials = true;
+        // axios.get("http://localhost:5000/cookieClear", { withCredentials: true })
+        //     .then(res => console.log(res.data))
     }
 
 
@@ -53,7 +53,10 @@ const Login = () => {
         google()
             .then(result => {
                 const user = result.user
-                // console.log(user)
+                const email = user?.email;
+                axios.defaults.withCredentials = true;
+                axios.get(`http://localhost:5000/cookieCreate/jwt?email=${email}`, { withCredentials: true })
+                    .then(res => console.log(res.data))
                 Navigate('/dashboard')
             })
             .catch(err => {
@@ -63,7 +66,15 @@ const Login = () => {
 
 
     const getUserToken = email => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        // fetch(`http://localhost:5000/jwt?email=${email}`);
+        // axios.defaults.withCredentials = true;
+        // axios.get(`http://localhost:5000/cookieCreate/jwt?email=${email}`, { withCredentials: true })
+        //     .then(res => console.log(res.data))
+    }
+    const cookieVerifyJwt = email => {
+        axios.defaults.withCredentials = true;
+        axios.get(`http://localhost:5000/cookieClear/verify`, { withCredentials: true }, { "Cookie": document.cookie })
+            .then(res => console.log(res.data))
     }
 
     return (
@@ -80,10 +91,19 @@ const Login = () => {
                         >
                             Cookie_ADD
                         </button>
+                        <div>
+                            <div>
+                                <button
+                                    onClick={cookieClear}
+                                >
+                                    Cookie_CLEAR
+                                </button>
+                            </div>
+                        </div>
                         <button
-                            onClick={cookieClear}
+                            onClick={cookieVerifyJwt}
                         >
-                            Cookie_CLEAR
+                            VERIFY_SEND_JWT
                         </button>
 
                     </div>
