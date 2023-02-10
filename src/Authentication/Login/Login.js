@@ -44,7 +44,7 @@ const Login = () => {
             })
     };
 
-
+    // this is cookie verify function for future -- 
     const cookieVerifyJwt = email => {
         axios.defaults.withCredentials = true;
         axios.get(`http://localhost:5000/cookieClear/verify`, { withCredentials: true }, { "Cookie": document.cookie })
