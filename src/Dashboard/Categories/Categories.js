@@ -1,6 +1,8 @@
 import React from 'react';
 import { AiFillBug, AiFillCode, AiOutlineQuestionCircle } from 'react-icons/ai';
 import { FaFolderPlus } from "react-icons/fa";
+import { BsLink } from "react-icons/bs";
+import { FcAudioFile } from "react-icons/fc";
 import { Link } from 'react-router-dom';
 
 
@@ -16,7 +18,7 @@ const Categories = () => {
                             </div>
                             <div className='lg:pl-3'>
                                 <h2 className="card-title">Search AI</h2>
-                                <p>1 Click a lot of answers</p>
+                                <p>1 Click a of answers</p>
 
                             </div>
                         </div>
@@ -29,7 +31,7 @@ const Categories = () => {
                                 <FaFolderPlus />
                             </div>
                             <div className='lg:pl-3'>
-                                <h2 className="card-title">File Create & Share</h2>
+                                <h2 className="card-title">File Share</h2>
                                 <p>Very easy and Fast</p>
 
                             </div>
@@ -53,14 +55,14 @@ const Categories = () => {
                     </Link>
                 </div>
                 <div className="card card-side lg:mt-0 mt-5 bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/'>
+                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/linkshortener'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
-                                <AiFillBug />
+                                <BsLink />
                             </div>
                             <div className='lg:pl-3'>
-                                <h2 className="card-title">Coming Soon</h2>
-                                <p>Development Ongoing</p>
+                                <h2 className="card-title">Link shortener</h2>
+                                <p>Very easy & Free</p>
 
                             </div>
                         </div>
@@ -72,11 +74,11 @@ const Categories = () => {
                     <Link className='hover:bg-[#66c555] rounded-2xl' to='/'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
-                                <AiFillBug />
+                                <FcAudioFile />
                             </div>
                             <div className='lg:pl-3'>
-                                <h2 className="card-title">Coming Soon</h2>
-                                <p>Development Ongoing</p>
+                                <h2 className="card-title">Video to Audio</h2>
+                                <p>Easy & Free Convert</p>
 
                             </div>
                         </div>
@@ -89,8 +91,8 @@ const Categories = () => {
                                 <AiFillBug />
                             </div>
                             <div className='lg:pl-3'>
-                                <h2 className="card-title">Coming Soon</h2>
-                                <p>Development Ongoing</p>
+                                <h2 className="card-title">Live Sharing</h2>
+                                <p>Live Code Sharing</p>
 
                             </div>
                         </div>

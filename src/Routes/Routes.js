@@ -19,6 +19,8 @@ import LiveEditor from "../Dashboard/LiveSharing/LiveEditor";
 import Privacyandpolicy from "../Components/Privacyandpolicy/Privacyandpolicy";
 import TermsandCondition from "../Components/TermsandCondition/TermsandCondition";
 import AllServices from "../Components/AllServices/AllServices";
+import Admin from "../Admin/Admin";
+import LinkShortener from "../Components/LinkShortener/LinkShortener";
 
 const router = createBrowserRouter([
     {
@@ -62,6 +64,10 @@ const router = createBrowserRouter([
                 element: <SearchAi />
             },
             {
+                path: '/linkshortener',
+                element: <LinkShortener />
+            },
+            {
                 path: '/Register',
                 element: <Register></Register>
             },
@@ -102,6 +108,14 @@ const router = createBrowserRouter([
             },
 
         ]
+    },
+    {
+        path: '/admin',
+        element: <Admin />,
+        children: [
+
+        ]
+
     }
 
 ]);
