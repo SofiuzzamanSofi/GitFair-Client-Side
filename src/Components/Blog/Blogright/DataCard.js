@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import userimg from '../../../assets/resources-image/avatar2.png'
+import userimg from '../../../assets/resources/avatar2.png'
 
 
 

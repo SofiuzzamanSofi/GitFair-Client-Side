@@ -1,17 +1,16 @@
 import React from 'react';
-import Categories from './Categories/Categories';
-import Details from './FeatureDetails/Details';
-import Hero from './Hero/Hero';
-import Resources from './Resources';
-import Teammembers from './Teammembers/Teammembers';
+import Banner from './Banner/Banner';
+import Services from './Services/Services';
+import Resources from './Resources/Resources';
+import TeamMembers from './TeamMembers/TeamMembers';
 
 const Home = () => {
     return (
         <div>
-            <Hero />
-            <Categories />
+            <Banner />
+            <Services />
             <Resources />
-            <Teammembers />
+            <TeamMembers />
         </div>
     );
 };

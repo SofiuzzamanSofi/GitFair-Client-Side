@@ -19,7 +19,6 @@ import PremiumFeature from "../Dashboard/PremiumFeature/PremiumFeature";
 import PaymentForm from "../Dashboard/PremiumFeature/PaymentForm";
 import Privacyandpolicy from "../Components/Privacyandpolicy/Privacyandpolicy";
 import TermsandCondition from "../Components/TermsandCondition/TermsandCondition";
-import AllServices from "../Components/AllServices/AllServices";
 import BlogLayout from "../Layout/BlogLayout";
 import DetailBlog from "../Components/Blog/detailBlog/DetailBlog";
 import ResetPass from "../Authentication/resetPass/ResetPass";
@@ -52,10 +51,6 @@ const router = createBrowserRouter([
             {
                 path: '/compiler',
                 element: <Compiler />
-            },
-            {
-                path: '/allservices',
-                element: <AllServices />
             },
             {
                 path: '/searchai',
