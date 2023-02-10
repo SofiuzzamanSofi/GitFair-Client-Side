@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../Authentication/Login/Login";
-
 import Register from "../Authentication/Register/Register";
 import About from "../Components/About/About";
 import Blog from "../Components/Blog/Blog";
@@ -21,6 +20,9 @@ import PaymentForm from "../Dashboard/PremiumFeature/PaymentForm";
 import Privacyandpolicy from "../Components/Privacyandpolicy/Privacyandpolicy";
 import TermsandCondition from "../Components/TermsandCondition/TermsandCondition";
 import AllServices from "../Components/AllServices/AllServices";
+import BlogLayout from "../Layout/BlogLayout";
+import DetailBlog from "../Components/Blog/detailBlog/DetailBlog";
+import ResetPass from "../Authentication/resetPass/ResetPass";
 
 const router = createBrowserRouter([
     {
@@ -38,10 +40,6 @@ const router = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />
-            },
-            {
-                path: '/blog',
-                element: <Blog />
             },
             {
                 path: '/privacyandpolicy',
@@ -70,6 +68,10 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/resetpass',
+                element: <ResetPass></ResetPass>
             }
 
         ]
@@ -110,6 +112,21 @@ const router = createBrowserRouter([
                 path: 'dashboard/premiumfeature/paymentForm/:price',
                 element: <PaymentForm />
             },
+        ]
+    },
+    {
+        path: '/bloglayout',
+        element: <BlogLayout />,
+        children: [
+            {
+                path: '/bloglayout/blog',
+                element: <Blog></Blog>
+            },
+            {
+                path: '/bloglayout/detailblog/:id',
+                element: <DetailBlog></DetailBlog>,
+                loader: async ({ params }) => fetch(`https://gitfair-server-hopefyjamshed.vercel.app/uploaded/${params.id}`)
+            }
 
         ]
     }

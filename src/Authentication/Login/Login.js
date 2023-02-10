@@ -7,48 +7,72 @@ import authImg from '../../assets/registerVector-removebg-preview.png'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { user, login, google } = useContext(AuthContext)
+    const { login, google, gitHub, facebook } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const location = useLocation()
-    const Navigate = useNavigate()
-    // const from = location.state?.from?.pathname || '/dashboard'
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = (data) => {
         console.log(data)
         setLoginError('')
-
         login(data.email, data.password)
             .then(result => {
                 const user = result.user
                 console.log(user)
-                Navigate('/dashboard')
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 setLoginError(err.message)
                 console.error(err)
-
             })
+
     }
+
     const googleHandler = () => {
         google()
             .then(result => {
                 const user = result.user
-                // console.log(user)
-                Navigate('/dashboard')
+                console.log(user)
+                navigate('/')
             })
             .catch(err => {
                 setLoginError(err.message)
             })
     }
+    const gitHandler = () => {
+        gitHub()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                navigate('/')
+            })
+            .catch(err => {
+                setLoginError(err.message)
+            })
+    }
+    const facebookHandler = () => {
+        facebook()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                navigate('/')
+            })
+            .catch(err => {
+                setLoginError(err.message)
+            })
+    }
+
+
 
     return (
 
         <div>
             <div className="hero lg:w-[1240px] mx-auto mt-[115px] mb-[238px] bg-transparent">
-                <div className="hero-content lg:h-[649px] flex-col  lg:flex-row">
-                    <div className="lg:h-[566px] sm:w-full lg:w-[566px] lg:py-[41px] lg:text-left">
+                <div className="hero-content h-full lg:h-[649px] flex-col  lg:flex-row">
+                    <div className="h-[566px] w-full lg:w-[566px] lg:py-[41px] lg:text-left">
                         <img src={authImg} alt="" className='' />
                     </div>
 
@@ -86,26 +110,35 @@ const Login = () => {
                                     {/* input field  */}
                                     <input type="password" className="input cursor-text input-bordered  bg-[#817878] h-[45px] rounded-lg" {...register("password", {
                                         required: 'please provide a password Sir!'
-
-
                                     })} name='password' />
                                     {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
-                                    {/* input field  */}
 
+                                    {/* input field  */}
+                                    <Link to='/resetpass'>
+                                        <button className=' resetBtn text-[#66C555] my-2 text-xl'>Forgot Password?</button>
+                                    </Link>
                                 </div>
                                 {/* password field */}
 
 
                                 <label className="label">
-                                    <p className='text-black'>New Here?,<Link to='/register' className='text-[#66C555]'>PLEASE REGISTER</Link></p>
+
                                 </label>
 
 
                                 <p className='text-red-600'>{loginError}</p>
                                 <div className="mx-auto">
-                                    {/* <button className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase">REGISTER</button> */}
-                                    <input type="submit" className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase lg:ml-[177px] ml-[34px]" value="LOGIN" />
+
+                                    <input type="submit" className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase lg:ml-[177px] ml-[64px]" value="LOGIN" />
                                 </div>
+                                <div className="divider text-black">OR</div>
+                                <button className="btn mb-3 text-xl  h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase mx-auto lg:ml-[117px] "><Link to='/register' className=''>create a new account</Link></button>
+                                <div className="flex flex-col w-full border-opacity-50">
+
+                                </div>
+
+
+
 
                             </form>
                             <div className='flex justify-center gap-4 py-4'>
@@ -116,11 +149,11 @@ const Login = () => {
                                 {/* google  */}
 
                                 {/* facebook */}
-                                <button className=' rounded-full'><BsFacebook className='text-[#3b5998]  text-4xl'></BsFacebook></button>
+                                <button className=' rounded-full'><BsFacebook onClick={facebookHandler} className='text-[#3b5998]  text-4xl'></BsFacebook></button>
                                 {/* facebook */}
 
                                 {/* github */}
-                                <button className='rounded-full'><BsGithub className='text-black text-4xl '></BsGithub></button>
+                                <button className='rounded-full'><BsGithub onClick={gitHandler} className='text-black text-4xl '></BsGithub></button>
                                 {/* github */}
 
                                 {/* social signup buttons */}

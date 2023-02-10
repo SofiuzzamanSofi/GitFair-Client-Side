@@ -7,6 +7,15 @@ import { Toaster } from 'react-hot-toast';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,10 +23,14 @@ root.render(
   // <React.StrictMode>
   <>
     <Elements stripe={stripePromise}>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-      <Toaster />
+
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+        <Toaster />
+      </QueryClientProvider>
+
     </Elements>
   </>
   // </React.StrictMode>

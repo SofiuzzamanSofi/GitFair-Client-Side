@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 
 const Register = () => {
     const Navigate = useNavigate()
-    const { user, signUp, updateUser, google } = useContext(AuthContext)
+    const { signUp, updateUser, google, gitHub, facebook } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const handleSignUp = data => {
@@ -36,6 +36,28 @@ const Register = () => {
     }
     const googleHandler = () => {
         google()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                Navigate('/')
+            })
+            .catch(err => {
+                setSignUpError(err.message)
+            })
+    }
+    const gitHandler = () => {
+        gitHub()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                Navigate('/')
+            })
+            .catch(err => {
+                setSignUpError(err.message)
+            })
+    }
+    const facebookHandler = () => {
+        facebook()
             .then(result => {
                 const user = result.user
                 console.log(user)
@@ -133,7 +155,7 @@ const Register = () => {
 
                                 <p className='text-red-600'>{signUpError}</p>
                                 <div className="mx-auto">
-                                    {/* <button className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase">REGISTER</button> */}
+
                                     <input type="submit" className="btn mb-3 text-xl w-[153px] h-[39px] bg-[#66C555] border-none rounded-[10px] uppercase lg:ml-[177px] ml-[50px]" value="REGISTER" />
                                 </div>
 
@@ -146,11 +168,11 @@ const Register = () => {
                                 {/* google  */}
 
                                 {/* facebook */}
-                                <button className=' rounded-full'><BsFacebook className='text-[#3b5998]  text-4xl'></BsFacebook></button>
+                                <button className=' rounded-full'><BsFacebook onClick={facebookHandler} className='text-[#3b5998]  text-4xl'></BsFacebook></button>
                                 {/* facebook */}
 
                                 {/* github */}
-                                <button className='rounded-full'><BsGithub className='text-black text-4xl '></BsGithub></button>
+                                <button className='rounded-full'><BsGithub onClick={gitHandler} className='text-black text-4xl '></BsGithub></button>
                                 {/* github */}
 
                                 {/* social signup buttons */}

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import ViewBlogs from '../Components/Blog/Blogright/ViewBlogs/ViewBlogs';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const DMain = () => {
@@ -44,11 +45,14 @@ const DMain = () => {
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/allfriends'>All friends</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/liveSharing'>Live Code Sharing</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/premiumfeature'>Premium Feature</Link></li>
+                                <li htmlFor="my-modal-5" className='hover:bg-[#66c555] rounded-xl'><label htmlFor="my-modal-5" ><span className='text-left font-bold text-sm'>Add a Blog</span></label></li>
                             </div>
                         </div>
+
                     </ul>
                 </div>
             </div>
+            <ViewBlogs></ViewBlogs>
         </div>
     );
 };

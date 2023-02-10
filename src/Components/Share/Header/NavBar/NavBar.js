@@ -10,10 +10,10 @@ const mainMenu = [
     },
     {
         id: 2,
-        menuName:"Code Editor",
+        menuName: "Code Editor",
         menuLink: "/compiler"
     },
-    {    
+    {
         id: 3,
         menuName: "Search AI",
         menuLink: "/searchai",
@@ -21,12 +21,12 @@ const mainMenu = [
     {
         id: 4,
         menuName: "Blog",
-        menuLink: "/blog",
+        menuLink: "/bloglayout/blog",
     },
     {
         id: 5,
-        menuName:"Dashboard",
-        menuLink:"/dashboard"
+        menuName: "Dashboard",
+        menuLink: "/dashboard"
     }
 ]
 const mainMenu2 = [
@@ -37,10 +37,10 @@ const mainMenu2 = [
     },
     {
         id: 2,
-        menuName:"Code Editor",
+        menuName: "Code Editor",
         menuLink: "/compiler"
     },
-    {    
+    {
         id: 3,
         menuName: "Search AI",
         menuLink: "/searchai",
@@ -48,9 +48,9 @@ const mainMenu2 = [
     {
         id: 4,
         menuName: "Blog",
-        menuLink: "/blog",
+        menuLink: "/bloglayout/blog",
     }
-    
+
 ]
 
 const NavBar = () => {
@@ -59,7 +59,7 @@ const NavBar = () => {
     return (
 
         <>
-        {user?.email? <>{
+            {user?.email ? <>{
                 mainMenu?.map(menu => <li key={menu.id} className='text-white active:bg-black text-xl'>
                     <NavLink to={menu.menuLink}>
                         {menu.menuName}
@@ -72,7 +72,7 @@ const NavBar = () => {
                     </NavLink>
                 </li>)
             }</>}
-            
+
 
         </>
     );
