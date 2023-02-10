@@ -3,36 +3,23 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsFacebook, BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import Cookies from 'universal-cookie';
 import authImg from '../../assets/registerVector-removebg-preview.png'
+import useToken from '../../Components/hooks/useToken';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Login = () => {
 
-    // const cookie = new Cookies();
-    const cookieCreate = () => {
-        // cookie.set("Name", "Sofiuzzaman Sofi", { sameSite: "strict", path: "/", expires: new Date(new Date().getTime() + 30 * 1000), httpOnly: true })
-        // axios.defaults.withCredentials = true;
-        // axios.get("http://localhost:5000/cookieCreate", { withCredentials: true })
-        //     .then(res => console.log(res.data))
-    };
-
-    const cookieClear = () => {
-        // axios.defaults.withCredentials = true;
-        // axios.get("http://localhost:5000/cookieClear", { withCredentials: true })
-        //     .then(res => console.log(res.data))
-    }
-
-
-    const { user, login, google } = useContext(AuthContext)
+    const { login, google } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const location = useLocation()
+    const [createdUser, setCreatedUser] = useState("");
+    const [token] = useToken(createdUser)
+
     const Navigate = useNavigate()
-    // const from = location.state?.from?.pathname || '/dashboard'
 
     const handleLogin = (data) => {
         console.log(data)
@@ -40,9 +27,7 @@ const Login = () => {
 
         login(data.email, data.password)
             .then(result => {
-                const user = result.user
-                console.log(user)
-                Navigate('/dashboard')
+                setCreatedUser(result.user)
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -52,12 +37,7 @@ const Login = () => {
     const googleHandler = () => {
         google()
             .then(result => {
-                const user = result.user
-                const email = user?.email;
-                axios.defaults.withCredentials = true;
-                axios.get(`http://localhost:5000/cookieCreate/jwt?email=${email}`, { withCredentials: true })
-                    .then(res => console.log(res.data))
-                Navigate('/dashboard')
+                setCreatedUser(result.user)
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -65,16 +45,14 @@ const Login = () => {
     };
 
 
-    const getUserToken = email => {
-        // fetch(`http://localhost:5000/jwt?email=${email}`);
-        // axios.defaults.withCredentials = true;
-        // axios.get(`http://localhost:5000/cookieCreate/jwt?email=${email}`, { withCredentials: true })
-        //     .then(res => console.log(res.data))
-    }
     const cookieVerifyJwt = email => {
         axios.defaults.withCredentials = true;
         axios.get(`http://localhost:5000/cookieClear/verify`, { withCredentials: true }, { "Cookie": document.cookie })
             .then(res => console.log(res.data))
+    };
+
+    if (token) {
+        Navigate('/dashboard')
     }
 
     return (
@@ -85,29 +63,6 @@ const Login = () => {
                     <div className="lg:h-[566px] sm:w-full lg:w-[566px] lg:py-[41px] lg:text-left">
                         <img src={authImg} alt="" className='' />
                     </div>
-                    <div>
-                        <button
-                            onClick={cookieCreate}
-                        >
-                            Cookie_ADD
-                        </button>
-                        <div>
-                            <div>
-                                <button
-                                    onClick={cookieClear}
-                                >
-                                    Cookie_CLEAR
-                                </button>
-                            </div>
-                        </div>
-                        <button
-                            onClick={cookieVerifyJwt}
-                        >
-                            VERIFY_SEND_JWT
-                        </button>
-
-                    </div>
-
                     <div className="card  min-h-[528px] sm:w-full lg:w-[570px] rounded-[10px] bg-white shadow-2xl ">
 
                         <div className="card-body">
