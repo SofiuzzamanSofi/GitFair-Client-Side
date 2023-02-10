@@ -39,9 +39,6 @@ const Login = () => {
     const googleHandler = () => {
         google()
             .then(result => {
-                const user = result.user
-                console.log(user)
-                Navigate('/')
                 setCreatedUser(result.user)
             })
             .catch(err => {
@@ -49,7 +46,7 @@ const Login = () => {
             })
     };
 
-
+// this is cookie verify function for future --
     const cookieVerifyJwt = email => {
         axios.defaults.withCredentials = true;
         axios.get(`http://localhost:5000/cookieClear/verify`, { withCredentials: true }, { "Cookie": document.cookie })

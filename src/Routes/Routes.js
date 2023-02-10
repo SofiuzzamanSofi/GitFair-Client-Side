@@ -80,6 +80,11 @@ const router = createBrowserRouter([
                 element: <Categories />
             },
             {
+                path: 'dashboard/dashboard',
+                element: <Categories />,
+                loader: () => fetch('https://fileupload-server.vercel.app/files')
+            },
+            {
                 path: 'dashboard/profile',
                 element: <Profile />
             },

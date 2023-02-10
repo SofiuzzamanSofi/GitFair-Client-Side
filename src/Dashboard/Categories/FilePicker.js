@@ -9,20 +9,20 @@ const FilePicker = ({setShowPicker}) => {
             <PickerOverlay
                 apikey='A4GovH9aYQxekmQn2uFOLz' onUploadDone={(res) =>{
                     setShowPicker(false);
-                    // let myFiles = [res.filesUploaded[0]]
-                    // fetch('http://localhost:5000/', {
-                    //     method : 'POST',
-                    //     header: {
-                    //         'content-type': 'application/json'
-                    //     },
-                    //     body: JSON.stringify(myFiles)
-                    // })
-                    // .then(res => res.json())
-                    // .then(data =>{
-                    //     if(data.acknowledge){
-                    //         toast.success('New media added Successfully')
-                    //     }
-                    // })
+                    let myFiles = [res.filesUploaded[0]]
+                    fetch('https://fileupload-server.vercel.app', {
+                        method : 'POST',
+                        header: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(myFiles)
+                    })
+                    .then(res => res.json())
+                    .then(data =>{
+                        if(data.acknowledge){
+                            toast.success('New media added Successfully')
+                        }
+                    })
                 }}
             ></PickerOverlay>
         </div>
