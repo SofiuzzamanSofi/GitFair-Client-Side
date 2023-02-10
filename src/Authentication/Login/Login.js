@@ -1,12 +1,31 @@
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsFacebook, BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+// import Cookies from 'universal-cookie';
 import authImg from '../../assets/registerVector-removebg-preview.png'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
+
 const Login = () => {
+
+    // const cookie = new Cookies();
+    const cookieCreate = () => {
+        // cookie.set("Name", "Sofiuzzaman Sofi", { sameSite: "strict", path: "/", expires: new Date(new Date().getTime() + 30 * 1000), httpOnly: true })
+        axios.defaults.withCredentials = true;
+        axios.get("http://localhost:5000/cookieCreate", { withCredentials: true })
+            .then(res => console.log(res.data))
+    };
+
+    const cookieClear = () => {
+        axios.defaults.withCredentials = true;
+        axios.get("http://localhost:5000/cookieClear", { withCredentials: true })
+            .then(res => console.log(res.data))
+    }
+
+
     const { user, login, google } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -28,7 +47,6 @@ const Login = () => {
             .catch(err => {
                 setLoginError(err.message)
                 console.error(err)
-
             })
     }
     const googleHandler = () => {
@@ -41,6 +59,11 @@ const Login = () => {
             .catch(err => {
                 setLoginError(err.message)
             })
+    };
+
+
+    const getUserToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
     }
 
     return (
@@ -51,7 +74,19 @@ const Login = () => {
                     <div className="lg:h-[566px] sm:w-full lg:w-[566px] lg:py-[41px] lg:text-left">
                         <img src={authImg} alt="" className='' />
                     </div>
+                    <div>
+                        <button
+                            onClick={cookieCreate}
+                        >
+                            Cookie_ADD
+                        </button>
+                        <button
+                            onClick={cookieClear}
+                        >
+                            Cookie_CLEAR
+                        </button>
 
+                    </div>
 
                     <div className="card  min-h-[528px] sm:w-full lg:w-[570px] rounded-[10px] bg-white shadow-2xl ">
 
