@@ -13,7 +13,7 @@ const Members = [
         id: 1,
         image: img1,
         name: "Selim Alahi",
-        designation: "Team Leader",
+        designation: "Developer",
         github: "https://github.com/selimalahi",
         linkedin: "https://www.linkedin.com/in/selim-alahi",
         portfolio: "https://www.facebook.com/alahi.selim"
