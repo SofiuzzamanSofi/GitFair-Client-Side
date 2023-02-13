@@ -22,7 +22,17 @@ const Blogright = () => {
 
 
     return (
-        <div>
+        // <div>
+
+        //     {
+        //         users.map(data => <DataCard
+        //             key={data._id}
+        //             data={data}
+        //             refetch={refetch}
+        //         ></DataCard>)
+        //     }
+        // </div>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-3 group' data-aos="fade-left" >
 
             {
                 users.map(data => <DataCard

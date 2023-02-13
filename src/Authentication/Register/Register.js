@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 
 const Register = () => {
     const Navigate = useNavigate()
-    const { signUp, updateUser, google, gitHub, facebook } = useContext(AuthContext)
+    const { user, signUp, updateUser, google, gitHub, facebook } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const handleSignUp = data => {
@@ -25,21 +25,63 @@ const Register = () => {
                     displayName: data.fullName
                 }
                 updateUser(userInfo)
+
+                const users = {
+                    name: data.fullName || user?.displayName,
+                    email: user?.email,
+                    premiumUser: false,
+                    photo: user?.photoURL
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(users)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        toast.success('user data added successfully')
+                    })
+
                 Navigate('/')
+
 
             })
             .catch(err => {
                 setSignUpError(err.message)
-
             })
 
     }
+
+
     const googleHandler = () => {
         google()
             .then(result => {
                 const user = result.user
                 console.log(user)
                 Navigate('/')
+                const users = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    premiumUser: false,
+                    photo: user?.photoURL
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(users)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        toast.success('user data added successfully')
+                    })
             })
             .catch(err => {
                 setSignUpError(err.message)
@@ -51,22 +93,31 @@ const Register = () => {
                 const user = result.user
                 console.log(user)
                 Navigate('/')
+                const users = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    premiumUser: false,
+                    photo: user?.photoURL
+                }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(users)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        toast.success('user data added successfully')
+                    })
             })
             .catch(err => {
                 setSignUpError(err.message)
             })
     }
-    const facebookHandler = () => {
-        facebook()
-            .then(result => {
-                const user = result.user
-                console.log(user)
-                Navigate('/')
-            })
-            .catch(err => {
-                setSignUpError(err.message)
-            })
-    }
+
 
     return (
         <div>
@@ -99,17 +150,7 @@ const Register = () => {
                                 {/* full name field  */}
 
                                 {/* select use role field  */}
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text text-xl text-black">Select User Role:</span>
-                                    </label>
-                                    <select type='text' {...register("userRole", { required: 'Please Select An Option Sir!' })} name='userRole' className="input input-bordered  bg-[#817878] h-[45px] rounded-lg">
-                                        <option selected>Normal</option>
-                                        <option>Special</option>
 
-                                    </select>
-                                    {errors.userRole && <p className='text-red-600'>{errors.userRole.message}</p>}
-                                </div>
                                 {/* select use role field  */}
 
                                 {/* email field  */}
@@ -168,7 +209,7 @@ const Register = () => {
                                 {/* google  */}
 
                                 {/* facebook */}
-                                <button className=' rounded-full'><BsFacebook onClick={facebookHandler} className='text-[#3b5998]  text-4xl'></BsFacebook></button>
+
                                 {/* facebook */}
 
                                 {/* github */}

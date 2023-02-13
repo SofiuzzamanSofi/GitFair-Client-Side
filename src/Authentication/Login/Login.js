@@ -12,7 +12,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const { login, google,gitHub, facebook } = useContext(AuthContext)
+    const { login, google, gitHub, facebook } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -46,7 +46,7 @@ const Login = () => {
             })
     };
 
-// this is cookie verify function for future --
+    // this is cookie verify function for future --
     const cookieVerifyJwt = email => {
         axios.defaults.withCredentials = true;
         axios.get(`http://localhost:5000/cookieClear/verify`, { withCredentials: true }, { "Cookie": document.cookie })
@@ -67,17 +67,7 @@ const Login = () => {
                 setLoginError(err.message)
             })
     }
-    const facebookHandler = () => {
-        facebook()
-            .then(result => {
-                const user = result.user
-                console.log(user)
-                Navigate('/')
-            })
-            .catch(err => {
-                setLoginError(err.message)
-            })
-    }
+
 
 
 
@@ -161,7 +151,7 @@ const Login = () => {
                                 {/* google  */}
 
                                 {/* facebook */}
-                                <button className=' rounded-full'><BsFacebook onClick={facebookHandler} className='text-[#3b5998]  text-4xl'></BsFacebook></button>
+
                                 {/* facebook */}
 
                                 {/* github */}
