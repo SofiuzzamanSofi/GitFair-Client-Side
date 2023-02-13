@@ -14,7 +14,7 @@ const DataCard = ({ data, refetch }) => {
 
             <div className="card lg:h-[600px] bg-white shadow-xl">
 
-                <figure><img src={image} className=' h-full w-full' alt="Album" /></figure>
+                <figure><img src={image} className=' h-full w-full object-contain' alt="Album" /></figure>
                 <div className="card-body ">
                     <div className='flex items-center mb-4'>
                         <div className="avatar">

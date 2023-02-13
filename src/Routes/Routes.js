@@ -22,6 +22,9 @@ import TermsandCondition from "../Components/TermsandCondition/TermsandCondition
 import BlogLayout from "../Layout/BlogLayout";
 import DetailBlog from "../Components/Blog/detailBlog/DetailBlog";
 import ResetPass from "../Authentication/resetPass/ResetPass";
+// import AllServices from "../Components/AllServices/AllServices";
+import Admin from "../Admin/Admin";
+import LinkShortener from "../Components/LinkShortener/LinkShortener";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +60,10 @@ const router = createBrowserRouter([
                 element: <SearchAi />
             },
             {
+                path: '/linkshortener',
+                element: <LinkShortener />
+            },
+            {
                 path: '/Register',
                 element: <Register></Register>
             },
@@ -82,7 +89,7 @@ const router = createBrowserRouter([
             {
                 path: 'dashboard/dashboard',
                 element: <Categories />,
-                loader: () => fetch('https://fileupload-server.vercel.app/files')
+                loader: () => fetch('https://fileupload-server-taimul.vercel.app/all-files')
             },
             {
                 path: 'dashboard/profile',
@@ -129,6 +136,14 @@ const router = createBrowserRouter([
             }
 
         ]
+    },
+    {
+        path: '/admin',
+        element: <Admin />,
+        children: [
+
+        ]
+
     }
 
 ]);

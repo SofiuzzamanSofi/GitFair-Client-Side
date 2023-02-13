@@ -3,26 +3,27 @@ import React from 'react';
 import { toast } from 'react-hot-toast';
 import './FilePicker.css'
 
-const FilePicker = ({setShowPicker}) => {
+const FilePicker = ({ setShowPicker }) => {
     return (
         <div className='mr-5'>
             <PickerOverlay
-                apikey='A4GovH9aYQxekmQn2uFOLz' onUploadDone={(res) =>{
+                apikey="A4GovH9aYQxekmQn2uFOLz" onUploadDone={(res) => {
                     setShowPicker(false);
                     let myFiles = [res.filesUploaded[0]]
-                    fetch('https://fileupload-server.vercel.app', {
-                        method : 'POST',
-                        header: {
+                    // console.log(myFiles);
+                    fetch('https://file-upload-server-gitfair.glitch.me/files', {
+                        method: 'POST',
+                        headers: {
                             'content-type': 'application/json'
                         },
                         body: JSON.stringify(myFiles)
                     })
-                    .then(res => res.json())
-                    .then(data =>{
-                        if(data.acknowledge){
-                            toast.success('New media added Successfully')
-                        }
-                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.acknowledged) {
+                                toast.success('New media has been added Successfully');
+                            }
+                        })
                 }}
             ></PickerOverlay>
         </div>
