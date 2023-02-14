@@ -11,6 +11,8 @@ import img8 from "../../../assets/resources/code-snippet1.png";
 import { BsArrowRight } from "react-icons/bs";
 
 const Resources = () => {
+
+  // DataSet
   const resources = [
     {
       id: 1,

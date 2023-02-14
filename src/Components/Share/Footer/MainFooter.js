@@ -7,7 +7,7 @@ const MainFooter = () => {
         <div className='grid mx-auto sm:grid-cols-2 lg:grid-cols-3 lg:w-[1240px] py-16 lg:px-0 md:px-11 sm:px-11 small-display small-d-p-top'>
             <div>
                 <img src='https://i.ibb.co/XFmb29G/logo.png' alt='logo' />
-                <p>Interactively productize resource maximizing potentialities rather than functional potentialities. Collaboratively facilitate clicks-and-mortar interfaces via process-centric markets. Quickly promote world-class imperatives.</p>
+                <p>GitFair is a powerful platform for developers, providing a range of features that make it easier for them to manage their projects and collaborate with others.</p>
             </div>
             <div className='lg:ml-20'>
                 <h3 className='text-2xl font-semibold mb-5'>Our Pages</h3>

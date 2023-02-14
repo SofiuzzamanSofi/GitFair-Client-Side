@@ -5,7 +5,7 @@ import { GrServices } from "react-icons/gr";
 const ServicesCard = ({ Service }) => {
     const { title, details } = Service
     return (
-        <div className=''>
+        <div data-aos="fade-left">
             <div className='card-div border-black mx-auto group hover:bg-[#66C555] duration-700 bg-white px-11 py-6'>
                 <div className='border mb-2 group-hover:border-white border-black rounded-xl inline-block borded'>
                     <GrServices className='text-3xl group-hover:text-white text-black mx-auto pt-2'></GrServices>

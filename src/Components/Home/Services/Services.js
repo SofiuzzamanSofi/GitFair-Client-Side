@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Services.css'
 import ServicesCard from './ServicesCard';
+import stars from '../../../assets/features/bg-stars.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const Services = () => {
+    useEffect(() => {
+        AOS.init({ duration: 3000 });
+    })
 
 
     const Services = [
@@ -40,13 +47,18 @@ const Services = () => {
 
 
     return (
-        <div className='lg:w-[1240px] m-auto pt-56 small-display md:px-10 sm:px-10  '>
+        <div className='lg:w-[1240px] m-auto pt-56 small-display md:px-10 sm:px-10'
+            style={{
+                background: `url(${stars})`,
+                backgroundSize: 'cover'
+            }}
+        >
             <div className='card category-head-div mb-16'>
                 <div className='border-l-8 border-[#66C555]'>
                     <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4 text-white'>GitFair Services</h2>
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] lg:px-12  pb-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[136px] lg:px-12 pb-5' >
                 {
                     Services.map(Service => <ServicesCard
                         key={Service.id}
