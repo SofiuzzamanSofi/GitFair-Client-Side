@@ -94,7 +94,7 @@ const TeamMembers = () => {
                     {Members.map(
                         ({ id, image, name, designation, github, linkedin, portfolio }) => (
                             <>
-                                <div key={id} className='lg:pt-14 lg:pb-14 small-d-p-top md:py-6' data-aos="fade-left" data-aos-easing="ease-in-cubic" >
+                                <div key={id} className='py-6 lg:py-14 md:py-10' data-aos="fade-left" data-aos-easing="ease-in-cubic" >
                                     <div className='flex gap-5'>
                                         <img src={image} alt='t-img' className='team-card' />
                                         <div>
@@ -120,8 +120,8 @@ const TeamMembers = () => {
 
                 </div>
                 {/* Globe Image */}
-                <div className='mb-12 lg:mb-96 lg:ml-34 md:my-20'>
-                    <img src={globe} alt="Globe" className='absolute w-5/6 rounded-2xl'/>
+                <div className='my-16 lg:mb-96 lg:ml-34 md:my-20'>
+                    <img src={globe} alt="Globe" className='absolute w-5/6 rounded-2xl' />
                     <img src={astrocat} alt="Astrocat" className='relative w-1/3 top-16 left-28 lg:top-80 lg:left-96 md:top-32 md:left-52 py-12' />
                 </div>
             </div>
