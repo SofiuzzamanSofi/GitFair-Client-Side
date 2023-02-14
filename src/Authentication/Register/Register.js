@@ -33,7 +33,7 @@ const Register = () => {
                     photo: user?.photoURL
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://file-upload-server-gitfair.glitch.me/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -64,13 +64,14 @@ const Register = () => {
                 console.log(user)
                 Navigate('/')
                 const users = {
+                    uid:user?.uid,
                     name: user?.displayName,
                     email: user?.email,
                     premiumUser: false,
                     photo: user?.photoURL
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://file-upload-server-gitfair.glitch.me/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -100,7 +101,7 @@ const Register = () => {
                     photo: user?.photoURL
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://file-upload-server-gitfair.glitch.me/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

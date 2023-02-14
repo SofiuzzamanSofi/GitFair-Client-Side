@@ -26,7 +26,7 @@ const mainMenu = [
     {
         id: 5,
         menuName: "Dashboard",
-        menuLink: "/dashboard"
+        menuLink: "/dashboard/dashboard/dashboard"
     }
 ]
 const mainMenu2 = [
@@ -54,7 +54,7 @@ const mainMenu2 = [
 ]
 
 const NavBar = () => {
-    const { user, logout } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     return (
 
