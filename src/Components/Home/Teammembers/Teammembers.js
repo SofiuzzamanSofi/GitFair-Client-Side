@@ -73,6 +73,7 @@ const Members = [
 ]
 
 const TeamMembers = () => {
+    // AOS library for animation
     useEffect(() => {
         AOS.init({ duration: 3000 });
     })
@@ -85,9 +86,9 @@ const TeamMembers = () => {
                 backgroundSize: 'cover'
             }}
         >
-            <div className='lg:w-[1240px] m-auto pt-56 small-display md:px-10 sm:px-10'>
+            <div className='lg:w-[1240px] m-auto mt-36 lg:mt-56 md:mt-46 small-display md:px-10 sm:px-10'>
                 <div className='border-l-8 border-[#66C555] '>
-                    <h2 className='lg:text-5xl md:text-2xl sm:text-xl font-bold px-4'>Our Team Members</h2>
+                    <h2 className='text-3xl lg:text-5xl md:text-3xl font-bold px-4'>Our Team Members</h2>
                 </div>
                 <div className='grid mx-auto lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:max-w-screen lg:px-10 md:pt-8' >
                     {Members.map(
@@ -119,9 +120,9 @@ const TeamMembers = () => {
 
                 </div>
                 {/* Globe Image */}
-                <div className='mb-96 ml-34'>
-                    <img src={globe} alt="Globe" className='absolute w-5/6' />
-                    <img src={astrocat} alt="Astrocat" className='relative w-1/3 top-80 left-96 py-12' />
+                <div className='mb-12 lg:mb-96 lg:ml-34 md:my-20'>
+                    <img src={globe} alt="Globe" className='absolute w-5/6 rounded-2xl'/>
+                    <img src={astrocat} alt="Astrocat" className='relative w-1/3 top-16 left-28 lg:top-80 lg:left-96 md:top-32 md:left-52 py-12' />
                 </div>
             </div>
         </div>
