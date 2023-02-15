@@ -14,7 +14,7 @@ const FilePicker = ({ setShowPicker }) => {
                 apikey="A4GovH9aYQxekmQn2uFOLz"
                 
                 pickerOptions={{
-                    accept: [".js",".json",".html"]
+                    accept: [".js",".jsx",".json",".css"]
                 }}
                 
                 onUploadDone={(res) => {

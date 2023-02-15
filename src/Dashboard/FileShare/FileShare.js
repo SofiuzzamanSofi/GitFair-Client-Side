@@ -17,6 +17,10 @@ const FileShare = () => {
 
     return (
         <div>
+            <div className='text-black flex flex-col justify-center items-center'>
+                <h1 className='text-4xl mb-7'>Your File Details</h1>
+                
+            </div>
            <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
@@ -25,10 +29,11 @@ const FileShare = () => {
                             <th>Name</th>
                             <th>Type</th>
                             <th>Size</th>
+                            <th>Share</th>
                             <th>Enable Download</th>
+                            <th>Delete</th>
                         </tr>
-                    </thead>
-                    
+                    </thead>            
             {
                 file.map(files => <Preview
                 key={files._id}
@@ -36,8 +41,6 @@ const FileShare = () => {
                 ></Preview>)
             }
           
-
-
                 </table>
             </div>
            
