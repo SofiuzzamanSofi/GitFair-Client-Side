@@ -1,33 +1,45 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Privacyandpolicy = () => {
     return (
         <div className='lg:w-[1240px] m-auto p-5'>
-        <h2 className='text-2xl mb-2'>Privacy and Policy</h2>
-        <p>
-            Conveniently cultivate premier opportunities rather than economically sound e-business. Dramatically leverage existing premier processes for backend human capital. Quickly implement bricks-and-clicks portals for worldwide value. Appropriately embrace visionary web-readiness with synergistic processes. Efficiently myocardinate worldwide deliverables with one-to-one e-commerce.<br />
-
-            Intrinsicly integrate low-risk high-yield paradigms before 2.0 collaboration and idea-sharing. Seamlessly create multidisciplinary infomediaries and interoperable e-services. Energistically aggregate highly efficient paradigms whereas virtual models. Objectively impact stand-alone information after market-driven e-services. Holisticly facilitate bricks-and-clicks manufactured products after standards compliant alignments.
-            <br />
-            Proactively fabricate premier services for clicks-and-mortar supply chains. Conveniently engage customized metrics for synergistic alignments. Energistically utilize vertical value vis-a-vis high-payoff alignments. Quickly exploit corporate "outside the box" thinking through wireless internal or "organic" sources. Conveniently create enterprise-wide services vis-a-vis 24/7 partnerships.
-
-            Monotonectally provide access to customer directed interfaces after synergistic leadership skills. Distinctively engage intermandated e-commerce rather than maintainable bandwidth. Interactively repurpose compelling opportunities vis-a-vis interdependent supply chains. Appropriately evisculate mission-critical deliverables with functionalized leadership skills. Objectively communicate strategic e-services before cost effective initiatives.
-            <br/>
-            Intrinsicly provide access to real-time testing procedures after high-payoff web-readiness. Monotonectally iterate just in time.
-        </p>
-        <br />
-        <p>
-            Conveniently cultivate premier opportunities rather than economically sound e-business. Dramatically leverage existing premier processes for backend human capital. Quickly implement bricks-and-clicks portals for worldwide value. Appropriately embrace visionary web-readiness with synergistic processes. Efficiently myocardinate worldwide deliverables with one-to-one e-commerce.
-            <br/>
-            Intrinsicly integrate low-risk high-yield paradigms before 2.0 collaboration and idea-sharing. Seamlessly create multidisciplinary infomediaries and interoperable e-services. Energistically aggregate highly efficient paradigms whereas virtual models. Objectively impact stand-alone information after market-driven e-services. Holisticly facilitate bricks-and-clicks manufactured products after standards compliant alignments.
-            <br/>
-            Proactively fabricate premier services for clicks-and-mortar supply chains. Conveniently engage customized metrics for synergistic alignments. Energistically utilize vertical value vis-a-vis high-payoff alignments. Quickly exploit corporate "outside the box" thinking through wireless internal or "organic" sources. Conveniently create enterprise-wide services vis-a-vis 24/7 partnerships.
-            <br/>
-            Monotonectally provide access to customer directed interfaces after synergistic leadership skills. Distinctively engage intermandated e-commerce rather than maintainable bandwidth. Interactively repurpose compelling opportunities vis-a-vis interdependent supply chains. Appropriately evisculate mission-critical deliverables with functionalized leadership skills. Objectively communicate strategic e-services before cost effective initiatives.
-
-            Intrinsicly provide access to real-time testing procedures after high-payoff web-readiness. Monotonectally iterate just in time.
-        </p>
-    </div>
+            <h2 className='text-4xl font-bold text-slate-100 mb-10 mt-4'>Privacy Policy</h2>
+            <p>
+                At GitFair, we take the privacy and security of our users very seriously. We have developed a comprehensive privacy policy that explains how we collect, use, and protect your personal data when you use our code saving and sharing platform.
+                <br />
+                <br />
+                - Information We Collect:<br />
+                When you sign up for an account with GitFair, we collect basic information such as your name and email address. Additionally, when you upload or share code, we may collect information about the type of code you are sharing, the date and time of the upload, and any comments you provide about the code.
+                <br />
+                <br />
+                - How We Use Your Information:<br />
+                We use the information we collect from you to provide you with a better experience on our platform. This includes customizing your user experience, providing customer support, and communicating with you about our platform.
+                <br />
+                <br />
+                - Sharing Your Information:<br />
+                We do not sell or rent your personal data to third parties. However, we may share your information with our trusted service providers who help us provide and improve our platform. We may also disclose your information to comply with legal requirements or to protect our rights and the rights of our users.
+                <br />
+                <br />
+                - Data Security:<br />
+                We take measures to protect your personal data from unauthorized access, alteration, or destruction. We use industry-standard security protocols and procedures to safeguard your information, including encryption and firewalls.
+                <br />
+                <br />
+                - Cookies:<br />
+                We use cookies to enhance your user experience on our platform. Cookies are small text files that are stored on your device and allow us to remember your preferences and activity on our platform.
+                <br />
+                <br />
+                - Children's Privacy:<br />
+                Our platform is not intended for children under the age of 13. We do not knowingly collect personal information from children under the age of 13.
+                <br />
+                <br />
+                - Changes to our Privacy Policy:<br />
+                We may update our privacy policy from time to time. If we make any material changes, we will notify you by email or by posting a notice on our platform.
+                <br />
+                <br />
+                By using GitFair, you agree to the terms of our privacy policy. If you have any questions or concerns about our privacy policy, please <Link to="/contact" className='text-slate-200 hover:text-green-500 font-bold underline'>Contact Us.</Link>
+            </p>
+        </div>
     );
 };
 
