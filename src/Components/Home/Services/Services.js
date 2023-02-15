@@ -15,12 +15,12 @@ const Services = () => {
     const Services = [
         {
             "id": 1,
-            "title": "File Upload & Share",
+            "title": "Upload Here",
             "details": "Developers can upload their code related files to save and share with others."
         },
         {
             "id": 2,
-            "title": "Code Editor",
+            "title": "Code Compiler",
             "details": "HTML, CSS & JavaScript code snippets can run and see the output."
         },
         {
@@ -30,7 +30,7 @@ const Services = () => {
         },
         {
             "id": 4,
-            "title": "Live Code Sharing",
+            "title": "Live Sharing",
             "details": "This is the place to code that can see other users by the shared link."
         },
         {

@@ -19,32 +19,31 @@ const DMain = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-black text-white">
                         <div>
-                            <div className='flex flex-col items-center border-b-2'>
+                            <div className='flex flex-col items-center border-b-2 pb-6'>
                                 {user?.email ?
-                                    <img className='w-1/2 rounded-full' src={user?.photoURL} alt='imgae' /> :
-                                    <img className='w-1/2' src='https://i.ibb.co/hCcNyVm/3135715.png' alt='imgae' />
+                                    <img className='w-1/2 rounded-full' src={user?.photoURL} alt='img' />
+                                    :
+                                    <img className='w-1/2' src='https://i.ibb.co/hCcNyVm/3135715.png' alt='img' />
                                 }
                                 <div className='mt-5 flex flex-col items-center'>
                                     {user?.email ?
-                                        <p>{user?.displayName}</p> :
+                                        <p>{user?.displayName}</p>
+                                        :
                                         <p>NaN</p>
                                     }
                                     {user?.email ?
-                                        <p><span>Email: </span>{user?.email}</p> :
+                                        <p>
+                                            <span>Email: </span>
+                                            {user?.email}
+                                        </p>
+                                        :
                                         <p>NaN</p>
                                     }
-
-
-                                    <p className='bg-white rounded-lg text-black px-5 m-3'><span>User</span></p>
                                 </div>
                             </div>
                             <div className='mt-5 mb-10'>
-                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/dashboard'>Dashboard</Link></li>
-                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/profile'>My Profile</Link></li>
-                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/fileshare'>Files Share</Link></li>
-                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/allfriends'>All friends</Link></li>
-                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/liveSharing'>Live Code Sharing</Link></li>
-                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='dashboard/premiumfeature'>Premium Feature</Link></li>
+                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='/dashboard'>Services</Link></li>
+                                <li className='hover:bg-[#66c555] rounded-xl'><Link to='/dashboard/profile'>My Profile</Link></li>
                                 <li htmlFor="my-modal-5" className='hover:bg-[#66c555] rounded-xl'><label htmlFor="my-modal-5" ><span>Add a Blog</span></label></li>
                             </div>
                         </div>

@@ -3,14 +3,12 @@ import Login from "../Authentication/Login/Login";
 import Register from "../Authentication/Register/Register";
 import About from "../Components/About/About";
 import Blog from "../Components/Blog/Blog";
-import Compiler from "../Components/Compiler";
+import Compiler from "../Components/Compiler/Compiler";
 import SearchAi from "../Components/ChatGptOpenAi/SearchAi";
 import Contact from "../Components/Contact/Contact";
 import Home from "../Components/Home/Home";
-import AllFriends from "../Dashboard/AllFriends/AllFriends";
 import Categories from "../Dashboard/Categories/Categories";
 import Dashboard from "../Dashboard/Dashboard";
-import FileShare from "../Dashboard/FileShare/FileShare";
 import Profile from "../Dashboard/Profile/Profile";
 import Main from "../Layout/Main";
 import LiveSharing from "../Dashboard/LiveSharing/LiveSharing";
@@ -64,6 +62,22 @@ const router = createBrowserRouter([
                 element: <LinkShortener />
             },
             {
+                path: '/liveSharing',
+                element: <LiveSharing />
+            },
+            {
+                path: '/liveSharing/liveEditor/:roomId',
+                element: <LiveEditor />
+            },
+            {
+                path: '/premiumfeature',
+                element: <PremiumFeature />
+            },
+            {
+                path: '/premiumfeature/paymentForm/:price',
+                element: <PaymentForm />
+            },
+            {
                 path: '/register',
                 element: <Register></Register>
             },
@@ -87,38 +101,14 @@ const router = createBrowserRouter([
                 element: <Categories />
             },
             {
-                path: 'dashboard/dashboard',
+                path: '/dashboard',
                 element: <Categories />,
                 loader: () => fetch('https://fileupload-server-taimul.vercel.app/all-files')
             },
             {
-                path: 'dashboard/profile',
+                path: '/dashboard/profile',
                 element: <Profile />
-            },
-            {
-                path: 'dashboard/fileshare',
-                element: <FileShare />
-            },
-            {
-                path: 'dashboard/allfriends',
-                element: <AllFriends />
-            },
-            {
-                path: 'dashboard/liveSharing',
-                element: <LiveSharing />
-            },
-            {
-                path: 'dashboard/liveSharing/:roomId',
-                element: <LiveEditor />
-            },
-            {
-                path: 'dashboard/premiumfeature',
-                element: <PremiumFeature />
-            },
-            {
-                path: 'dashboard/premiumfeature/paymentForm/:price',
-                element: <PaymentForm />
-            },
+            }
         ]
     },
     {

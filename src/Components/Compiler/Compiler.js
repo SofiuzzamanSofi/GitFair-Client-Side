@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useLocalStorage from './../Hooks/useLocalStorage';
+import useLocalStorage from '../../Hooks/useLocalStorage';
 import Editor from './Editor';
 import './Compiler.css';
 const Compiler = () => {
@@ -12,7 +12,7 @@ const Compiler = () => {
         const timeout = setTimeout(() => {
             setSrcDoc(`
       <html>
-        <body>${html}</body>  
+        <body>${html}</body>
         <style>${css}</style>
         <script>${js}</script>
       </html>
@@ -51,17 +51,17 @@ const Compiler = () => {
 
                 </div>
                 <h1 className='editor-title mt-5'>OUTPUT</h1>
-                
-                    <div className="pane border-x-2">
-                        <iframe className=''
-                            srcDoc={srcDoc}
-                            title="output"
-                            sandbox="allow-scripts"
-                            frameBorder="0"
-                            width="100%" 
-                        />
-                    </div>
-                
+
+                <div className="pane border-x-2">
+                    <iframe className=''
+                        srcDoc={srcDoc}
+                        title="output"
+                        sandbox="allow-scripts"
+                        frameBorder="0"
+                        width="100%"
+                    />
+                </div>
+
             </>
         </div>
     );
