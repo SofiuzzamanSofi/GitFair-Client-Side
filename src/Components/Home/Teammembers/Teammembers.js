@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './TeamMembers.css';
-import { BsGithub, BsLinkedin, BsGlobe2 } from "react-icons/bs";
+import { BsGithub, BsLinkedin, BsGlobe2, BsArrowRight } from "react-icons/bs";
 import img1 from '../../../assets/team/selim.png';
 import img3 from '../../../assets/team/nayeem.png';
 import img2 from '../../../assets/team/sofi.png';
@@ -12,7 +12,7 @@ import globe from '../../../assets/features/globe.gif';
 import astrocat from '../../../assets/features/astrocat.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import { Link } from 'react-router-dom';
 
 // Data Set
 const Members = [
@@ -117,15 +117,34 @@ const TeamMembers = () => {
                             </>
                         )
                     )}
-
                 </div>
                 {/* Globe Image */}
-                <div className='my-16 lg:mb-96 lg:ml-34 md:my-20'>
-                    <img src={globe} alt="Globe" className='absolute w-5/6 rounded-2xl' />
-                    <img src={astrocat} alt="Astrocat" className='relative w-1/3 top-16 left-28 lg:top-80 lg:left-96 md:top-32 md:left-52 py-12' />
+                <div className='my-16 lg:mb-96 lg:pb-12 md:my-24 md:pb-16'>
+                    {/* Glowing Button */}
+                    <div className="px-8 pb-6">
+                        <div className="grid gap-8 items-start justify-center">
+                            <div className="relative group">
+                                <div className="absolute -inset-0.5 bg-gradient-to-r from-green-300 to-purple-400 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                                <button className="relative px-7 py-4 bg-blue-500 rounded-lg leading-none flex items-center divide-x divide-slate-800">
+                                    <span className="flex items-center space-x-5">
+                                        <span className="pr-6 text-slate-100 font-semibold">GitFair Like As Globe For Developers</span>
+                                    </span>
+                                    <span className="pl-6 text-slate-100 font-semibold group-hover:text-green-400 transition duration-200">
+                                        <Link to="/register" className='flex'>
+                                            Sign up For GitFair
+                                            <BsArrowRight className='ml-2 text-3xl lg:text-md md:text-lg mt-3 lg:mt-0 md:mt-0'/>
+                                        </Link>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Globe */}
+                    <img src={globe} alt="Globe" className='absolute w-full rounded-2xl right-2' />
+                    <img src={astrocat} alt="Astrocat" className='relative w-1/3 left-28 top-6 lg:top-96 lg:left-96 md:top-36 md:left-56 pt-28' />
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

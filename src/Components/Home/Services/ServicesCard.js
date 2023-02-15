@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsArrowRight } from "react-icons/bs";
 import { GrServices } from "react-icons/gr";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const ServicesCard = ({ Service }) => {
-    const { title, details } = Service
+    // Context
+    const { user } = useContext(AuthContext);
+
+    const { title, details } = Service;
+
     return (
         <div data-aos="fade-left">
             <div className='card-div border-black mx-auto group hover:bg-[#66C555] duration-700 bg-white px-11 py-6'>
@@ -15,16 +20,25 @@ const ServicesCard = ({ Service }) => {
                 <p className='mt-3 mb-6 text-black group-hover:text-white'>{details}</p>
 
                 <button className="btn text-white group-hover:bg-white group-hover:text-[#66C555] bg-[#66C555] rounded-lg border-none uppercase">
-                    <Link to="/dashboard">
-                        <div className='flex'>
-                            Explore More
-                            <BsArrowRight className='ml-2 text-md' />
-                        </div>
-                    </Link>
+                    {
+                        user?.uid ?
+                            <Link to="/dashboard">
+                                <div className='flex'>
+                                    Explore More
+                                    <BsArrowRight className='ml-2 text-md' />
+                                </div>
+                            </Link>
+                            :
+                            <Link to="/login">
+                                <div className='flex'>
+                                    Explore More
+                                    <BsArrowRight className='ml-2 text-md' />
+                                </div>
+                            </Link>
+                    }
                 </button>
             </div>
         </div>
     );
 };
-{/* <Link to='/compiler' className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg mx-5">Code Editor</Link> */ }
 export default ServicesCard;

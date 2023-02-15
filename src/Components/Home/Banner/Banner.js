@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Banner = () => {
+    // Context
+    const { user } = useContext(AuthContext);
 
     return (
         <div className='bg-[url("/src/assets/bg-banner.png")] lg:bg-[url("/src/assets/bg-banner.png")] pb-[83px] bg-cover bg-center -mt-[107px]'>
@@ -14,8 +17,18 @@ const Banner = () => {
                             <br />
                             GitFair offers an all-in-one solution for developers to manage their projects.</p>
                         <div className="navbar-end mt-11">
-                            <Link className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg">Get Started for Free</Link>
-                            <Link to='/compiler' className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg mx-5 mt-2 lg:mt-0 md:mt-0">Code Editor</Link>
+                            {
+                                user?.uid ?
+                                    <Link to="/dashboard" className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg">Get Started for Free</Link>
+                                    :
+                                    <Link to="/register" className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg">Get Started for Free</Link>
+                            }
+                            {
+                                user?.uid ?
+                                    <Link to='/compiler' className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg mx-5 mt-2 lg:mt-0 md:mt-0">Code Editor</Link>
+                                    :
+                                    <Link to="/login" className="btn bg-[#66C555] uppercase lg:text-sm text-xs text-white font-bold rounded-lg mx-5 mt-2 lg:mt-0 md:mt-0">Code Editor</Link>
+                            }
                         </div>
                     </div>
                     <div className='bg-[#fefefe47] p-9 rounded-xl mt-24 grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-1 mx-auto'>

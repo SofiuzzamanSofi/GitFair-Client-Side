@@ -64,7 +64,7 @@ const router = createBrowserRouter([
                 element: <LinkShortener />
             },
             {
-                path: '/Register',
+                path: '/register',
                 element: <Register></Register>
             },
             {
@@ -79,11 +79,11 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: 'dashboard',
+        path: '/dashboard',
         element: <Dashboard />,
         children: [
             {
-                path: 'dashboard/dashboard',
+                path: '/dashboard',
                 element: <Categories />
             },
             {
