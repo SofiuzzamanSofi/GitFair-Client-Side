@@ -20,27 +20,20 @@ const Blogright = () => {
     refetch()
 
 
-
     return (
-        // <div>
 
-        //     {
-        //         users.map(data => <DataCard
-        //             key={data._id}
-        //             data={data}
-        //             refetch={refetch}
-        //         ></DataCard>)
-        //     }
-        // </div>
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-3 group' data-aos="fade-left" >
+        <div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9 my-[100px] group' >
 
-            {
-                users.map(data => <DataCard
-                    key={data._id}
-                    data={data}
-                    refetch={refetch}
-                ></DataCard>)
-            }
+                {
+                    users.map(data => <DataCard
+                        key={data._id}
+                        data={data}
+                        refetch={refetch}
+                    ></DataCard>)
+                }
+            </div>
+
         </div>
     );
 };

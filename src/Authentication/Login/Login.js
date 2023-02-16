@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { BsFacebook, BsGithub } from 'react-icons/bs';
+import { toast } from 'react-hot-toast';
+import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 // import Cookies from 'universal-cookie';
@@ -12,7 +13,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const { login, google, gitHub, facebook } = useContext(AuthContext)
+    const { user, login, google, gitHub } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -40,6 +41,26 @@ const Login = () => {
         google()
             .then(result => {
                 setCreatedUser(result.user)
+                const users = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    premiumUser: false,
+                    photo: user?.photoURL
+                }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(users)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        toast.success('user data added successfully')
+                    })
+                Navigate('/')
+
             })
             .catch(err => {
                 setLoginError(err.message)
@@ -61,6 +82,24 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                const users = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    premiumUser: false,
+                    photo: user?.photoURL
+                }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(users)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        toast.success('user data added successfully')
+                    })
                 Navigate('/')
             })
             .catch(err => {
@@ -149,10 +188,6 @@ const Login = () => {
                                 {/* google  */}
                                 <button className=' rounded-full '><FcGoogle onClick={googleHandler} className='text-4xl hover:text-[#66C555]'></FcGoogle></button>
                                 {/* google  */}
-
-                                {/* facebook */}
-
-                                {/* facebook */}
 
                                 {/* github */}
                                 <button className='rounded-full'><BsGithub onClick={gitHandler} className='text-black text-4xl '></BsGithub></button>

@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import logo from "../../../assets/logo.png"
 import axios from 'axios';
+import userimg from '../../../assets/resources/avatar2.png'
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext)
@@ -54,10 +55,22 @@ const Header = () => {
 
                     {
                         user?.email ?
-                            <div className="avatar">
-                                <div className="w-12 ml-2 rounded-full ring ring-white">
-                                    <img src={user?.photoURL} alt='userimage' />
-                                </div>
+                            <div>
+                                {
+                                    user?.photoURL
+                                        ?
+                                        <div className="avatar">
+                                            <div className="w-12 ml-2 rounded-full ring ring-white">
+                                                <img src={user?.photoURL} alt='userimage' />
+                                            </div>
+                                        </div>
+                                        :
+                                        <div className="avatar">
+                                            <div className="w-12 ml-2 rounded-full ring ring-white">
+                                                <img src={userimg} alt='userimage' />
+                                            </div>
+                                        </div>
+                                }
                             </div>
                             :
                             <Link to='/register' className="btn lg:ml-4 md:ml-4 bg-[#66C555] uppercase text-sm text-white rounded-lg">SIGN UP</Link>

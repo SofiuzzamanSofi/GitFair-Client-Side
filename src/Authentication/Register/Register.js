@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authImg from '../../assets/registerVector-removebg-preview.png'
 import { FcGoogle } from "react-icons/fc";
-import { BsFacebook, BsGithub } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const Register = () => {
     const Navigate = useNavigate()
-    const { user, signUp, updateUser, google, gitHub, facebook } = useContext(AuthContext)
+    const { user, signUp, updateUser, google, gitHub } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
     const handleSignUp = data => {
@@ -149,10 +149,6 @@ const Register = () => {
                                 </div>
                                 {/* full name field  */}
 
-                                {/* select use role field  */}
-
-                                {/* select use role field  */}
-
                                 {/* email field  */}
                                 <div className="form-control">
                                     <label className="label">
@@ -207,10 +203,6 @@ const Register = () => {
                                 {/* google  */}
                                 <button onClick={googleHandler} className=' rounded-full '><FcGoogle className='text-4xl hover:text-[#66C555]'></FcGoogle></button>
                                 {/* google  */}
-
-                                {/* facebook */}
-
-                                {/* facebook */}
 
                                 {/* github */}
                                 <button className='rounded-full'><BsGithub onClick={gitHandler} className='text-black text-4xl '></BsGithub></button>

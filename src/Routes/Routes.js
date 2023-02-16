@@ -22,9 +22,9 @@ import TermsandCondition from "../Components/TermsandCondition/TermsandCondition
 import BlogLayout from "../Layout/BlogLayout";
 import DetailBlog from "../Components/Blog/detailBlog/DetailBlog";
 import ResetPass from "../Authentication/resetPass/ResetPass";
-// import AllServices from "../Components/AllServices/AllServices";
 import Admin from "../Admin/Admin";
 import LinkShortener from "../Components/LinkShortener/LinkShortener";
+
 
 const router = createBrowserRouter([
     {

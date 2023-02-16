@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
+import userimg from '../../../../assets/resources/avatar2.png'
 
 
 const ViewBlogs = () => {
@@ -115,18 +116,30 @@ const ViewBlogs = () => {
 
 
                 {/* Put this part before </body> tag */}
-                <input type="checkbox" id="my-modal-5" className="modal-toggle" />
-                <div className="modal bg-slate-500">
-                    <div className="modal-box bg-slate-600 w-11/12 max-w-5xl">
+                <input type="checkbox" id="my-modal-5" className="modal-toggle bg-blur" />
+                <div className="modal">
+                    <div className="modal-box bg-white rounded-2xl w-11/12 max-w-5xl">
 
                         {/* form  */}
                         <div className='flex'>
-                            <div className="avatar">
-                                <div className="w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={user?.photoURL} alt='' />
-                                </div>
-                            </div>
-                            <h3 className='font-bold ml-3 text-xl lg:text-2xl'>{user?.displayName}</h3>
+                            {
+                                user?.photoURL
+                                    ?
+                                    <div className="avatar">
+                                        <div className="w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                            <img src={user?.photoURL} alt='' />
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className="avatar">
+                                        <div className="w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                            <img src={userimg} alt='' />
+                                        </div>
+                                    </div>
+                            }
+
+
+                            <h3 className='font-bold ml-3 text-xl lg:text-2xl text-[#66C555]'>{user?.displayName}</h3>
                         </div>
                         <div className='mx-[50px] mt-5 bg-transparent p-5'>
                             <form onSubmit={handleSubmit(handleUpload)} className='mx-6'>
@@ -135,9 +148,9 @@ const ViewBlogs = () => {
 
 
                                     <div>
-                                        <textarea name='title' {...register('title')} className="textarea outline mb-3  w-full text-xl lg:text-2xl bg-transparent rounded-none textarea-white " placeholder={`Title`}></textarea>
+                                        <textarea name='title' {...register('title')} className="textarea outline mb-3 text-black w-full text-xl lg:text-2xl bg-transparent rounded-none textarea-white " placeholder={`Title`}></textarea>
                                     </div>
-                                    <textarea name='text' {...register('text')} className="textarea outline mb-3  w-full text-xl lg:text-2xl bg-transparent rounded-none textarea-white " placeholder={`Blog`}></textarea>
+                                    <textarea name='text' {...register('text')} className="textarea outline mb-3  w-full text-black text-xl lg:text-2xl bg-transparent rounded-none textarea-white " placeholder={`Description`}></textarea>
                                 </div>
                                 <hr />
                                 {/* photo field  */}
