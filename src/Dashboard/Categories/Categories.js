@@ -38,7 +38,7 @@ const Categories = () => {
                             <button className='lg:pl-3'>
                                 <h1 className='card-title' onClick={() => setShowPicker(!showPicker)}>Upload Here</h1>
                                 {
-                                    showPicker && <FilePicker setShowPicker={setShowPicker}/>
+                                    showPicker && <FilePicker setShowPicker={setShowPicker} />
                                 }
                                 <p>Upload files and share</p>
                             </button>
@@ -93,7 +93,7 @@ const Categories = () => {
                 </div>
                 {/* Live Sharing */}
                 <div className="card card-side lg:mt-0 mt-5 bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/'>
+                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/liveSharing'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
                                 <TbScreenShare />

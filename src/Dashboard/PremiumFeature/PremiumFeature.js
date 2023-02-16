@@ -46,7 +46,7 @@ function PremiumFeature() {
 
 
     return (
-        <div className="container px-8 py-14 mt-8 mx-auto bg-slate-100 rounded-2xl">
+        <div className="lg:w-[1240px] m-auto p-10 min-h-screen bg-slate-100 rounded-2xl">
             <div className="max-w-2xl mx-auto mb-14 text-center">
                 <span className="text-4xl font-bold tracking-wider uppercase text-black">Pricing</span>
                 <h2 className="text-2xl lg:text-2xl text-black">Choose your plan to get best services</h2>
@@ -119,7 +119,7 @@ function PremiumFeature() {
                             </li>
                         </ul>
                         <Link
-                            to="paymentForm/74"
+                            to="paymentForm/30"
                             className="border-black border hover:border-none block bg-[#66C555] hover:bg-white hover:text-black text-white w-full px-5 py-3 text-lg font-bold tracking-wider text-center rounded-lg"
                         >
                             Get Started
@@ -156,7 +156,7 @@ function PremiumFeature() {
                             </li>
                         </ul>
                         <Link
-                            to="paymentForm/499"
+                            to="paymentForm/99"
                             className="border-black border hover:border-none block bg-[#66C555] hover:bg-white hover:text-black text-white w-full px-5 py-3 text-lg font-bold tracking-wider text-center rounded-lg"
                         >
                             Get Started

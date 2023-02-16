@@ -24,7 +24,7 @@ const Compiler = () => {
 
     return (
 
-        <div className='bg-white min-h-screen lg:w-[1240px] m-auto p-10 rounded-3xl'>
+        <div className='bg-white min-h-screen lg:w-[1240px] m-auto p-10 rounded-2xl'>
             <h1 className='text-black text-2xl mb-5 font-bold'>Test Your Code Here:</h1>
             <>
                 <div className="pane top-pane">

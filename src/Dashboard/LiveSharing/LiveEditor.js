@@ -16,7 +16,7 @@ const LiveEditor = () => {
     const codeRef = useRef(null);
     const location = useLocation();
     const { roomId } = useParams();
-    const reactNavitage = useNavigate();
+    const reactNavigate = useNavigate();
     const [clients, setClients] = useState([
         // { socketId: 1, userName: "Ruhul Amin" },
         // { socketId: 2, userName: "Sofi Taimul" },
@@ -34,35 +34,35 @@ const LiveEditor = () => {
             function handleErrors(e) {
                 console.log("socket error", e);
                 toast.error("Socket connection failed, try again later")
-                reactNavitage("/dashboard/dashboard/liveSharing");
+                reactNavigate("/liveSharing");
             }
 
 
-            // new joined client send to backend --- 
+            // new joined client send to backend ---
             socketRef.current.emit(ACTIONS.JOIN, {
                 roomId,
                 userName: location?.state?.userName
             });
 
-            // listenign for joiNED enent notifications -- 
+            // listening for joined event notifications --
             socketRef.current.on(ACTIONS.JOINED, ({ clients, userName, socketId }) => {
                 if (userName !== location.state?.userName) {
                     toast.success(`${userName} joined the room`);
                     // console.log("userNNNN:", userName);
                 }
                 setClients(clients);
-                // SYNC other written code when any user joined --- 
+                // SYNC other written code when any user joined ---
                 socketRef.current.emit(ACTIONS.SYNC_CODE, {
                     code: codeRef.current,
                     socketId,
                 })
             });
 
-            // listning for DISCONNECTED ---
+            // listening for DISCONNECTED ---
             socketRef.current.on(ACTIONS.DISCONNECTED, ({ userName, socketId }) => {
                 toast.error(`${userName} left the room`);
 
-                // set user/cliens withour(minus) disconnected users ---
+                // set user/clients without(minus) disconnected users ---
                 // disconnect user  কে বাদ দিয়ে বাকি গুলারে নিলাম ---
                 setClients((previous) => {
                     return previous.filter(
@@ -70,12 +70,10 @@ const LiveEditor = () => {
                     )
                 })
             })
-
-
         };
         init();
 
-        // unSubscribe function / when we left this will exicute/ this will not happen memory leack --- 
+        // unSubscribe function / when we left this will execute/ this will not happen memory leak ---
         return () => {
             socketRef?.current?.off(ACTIONS.JOINED);
             socketRef?.current?.disconnect();
@@ -95,18 +93,18 @@ const LiveEditor = () => {
         }
     }
     const leaveRoome = async () => {
-        reactNavitage("/dashboard/dashboard/liveSharing");
+        reactNavigate("/liveSharing");
     }
 
 
     if (!location?.state) {
-        return <Navigate to="/dashboard/dashboard/liveSharing" />
+        return <Navigate to="/liveSharing" />
     }
 
 
     return (
         <div>
-            <div className="navbar  place-content-end bg-black">
+            <div className="navbar place-content-end bg-black">
                 <button className='btn btn-success rounded-xl mx-5 text-white uppercase'
                     onClick={copyRoomId}
                 >

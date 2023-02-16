@@ -26,19 +26,21 @@ const LiveSharing = () => {
         }
 
         // Redirect
-        navigate(`/dashboard/dashboard/liveSharing/${roomId}`, {
+        navigate(`/liveSharing/${roomId}`, {
             state: {
                 userName,
                 roomId,
             },
         });
     };
+
+
     return (
-        <div className='grid place-items-center h-screen'>
-            <div className="card card-compact sm:w-2/3 bg-base-100 shadow-xl rounded-xl">
+        <div className='lg:w-[1240px] m-auto p-10 min-h-screen rounded-2xl grid place-items-center h-screen bg-slate-100'>
+            <div className="card card-compact sm:w-2/3 bg-base-100 shadow-xl rounded-2xl py-20">
                 <figure><img src="https://i.ibb.co/XFmb29G/logo.png" alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">Share your Code With Others {user?.displayName}</h2>
+                    <h2 className="card-title">Share your Code With Others - {user?.displayName}</h2>
                     <div className='sm:flex'>
                         <input type="text" onChange={(e) => setRoomId(e.target.value)} value={roomId} placeholder="Room ID" className="input w-full bg-white text-black" />
                         <button onClick={createNewRoom} className="btn btn-outline btn-warning uppercase">Generate New ID</button>

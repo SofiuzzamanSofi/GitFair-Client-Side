@@ -10,13 +10,13 @@ const mainMenu = [
     },
     {
         id: 2,
-        menuName: "Code Editor",
-        menuLink: "/compiler"
+        menuName: "About Us",
+        menuLink: "/about"
     },
     {
         id: 3,
-        menuName: "Search AI",
-        menuLink: "/searchai",
+        menuName: "Contact Us",
+        menuLink: "/contact",
     },
     {
         id: 4,
@@ -37,13 +37,13 @@ const mainMenu2 = [
     },
     {
         id: 2,
-        menuName: "Code Editor",
-        menuLink: "/compiler"
+        menuName: "About Us",
+        menuLink: "/about"
     },
     {
         id: 3,
-        menuName: "Search AI",
-        menuLink: "/searchai",
+        menuName: "Contact Us",
+        menuLink: "/contact",
     },
     {
         id: 4,
@@ -59,19 +59,24 @@ const NavBar = () => {
     return (
 
         <>
-            {user?.email ? <>{
-                mainMenu?.map(menu => <li key={menu.id} className='text-white active:bg-black text-xl'>
-                    <NavLink to={menu.menuLink}>
-                        {menu.menuName}
-                    </NavLink>
-                </li>)
-            }</> : <>{
-                mainMenu2?.map(menu => <li key={menu.id} className='text-white active:bg-black text-xl'>
-                    <NavLink to={menu.menuLink}>
-                        {menu.menuName}
-                    </NavLink>
-                </li>)
-            }</>}
+            {user?.email ?
+                <>{
+                    mainMenu?.map(menu => <li key={menu.id} className='text-white active:bg-black text-xl'>
+                        <NavLink to={menu.menuLink}>
+                            {menu.menuName}
+                        </NavLink>
+                    </li>)
+                }
+                </>
+                :
+                <>{
+                    mainMenu2?.map(menu => <li key={menu.id} className='text-white active:bg-black text-xl'>
+                        <NavLink to={menu.menuLink}>
+                            {menu.menuName}
+                        </NavLink>
+                    </li>)
+                }
+                </>}
 
 
         </>

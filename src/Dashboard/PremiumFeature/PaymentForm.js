@@ -107,26 +107,19 @@ function PaymentForm() {
                     console.log(error)
                     toast.error("Something wrong to user information on mongoDb.")
                 })
-
-
-
-
-
         }
 
     };
 
 
-
-
     return (
         <div
-            className='md:p-20 flex-col flex justify-center items-center border'
+            className='container rounded-2xl mx-auto py-14 mt-8 md:p-20 flex-col flex justify-center items-center border bg-slate-100'
         >
-            <img className='w-[350px]' src={cardLogo} alt="" />
-            <p className='text-black'>Your net Payable amount is <span className='font-bold'>$ {price}.00</span></p>
+            <img className='w-[350px] rounded-md' src={cardLogo} alt="" />
+            <p className='text-black py-5'>Your net Payable amount is <span className='font-bold'>$ {price}.00</span></p>
             <form
-                className='text-black border px-1 pt-1 rounded-lg min-w-[300px] max-w-[450px] w-full mx-auto'
+                className='text-black border px-1 pt-6 rounded-lg min-w-[300px] max-w-[450px] w-full mx-auto'
                 onSubmit={handleSubmit}>
                 <CardElement
                     options={{
@@ -150,9 +143,9 @@ function PaymentForm() {
                     </p>
                 </div>
                 <button
-                    className='border-none btn btn-sm my-2 bg-[#58b149] hover:bg-[#66C555] rounded-lg text-white'
+                    className='border-none btn btn-md px-8 my-2 bg-[#58b149] hover:bg-[#66C555] rounded-lg text-white'
                     type="submit" disabled={!stripe || !clientSecret || !user}>
-                    {processingButton ? "precessing..." : "Pay"}
+                    {processingButton ? "processing..." : "Pay"}
                 </button>
             </form>
         </div>

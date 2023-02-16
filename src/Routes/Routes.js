@@ -23,6 +23,7 @@ import ResetPass from "../Authentication/resetPass/ResetPass";
 // import AllServices from "../Components/AllServices/AllServices";
 import Admin from "../Admin/Admin";
 import LinkShortener from "../Components/LinkShortener/LinkShortener";
+import NotFound from "../Components/NotFound/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -134,6 +135,10 @@ const router = createBrowserRouter([
 
         ]
 
+    },
+    {
+        path: '*',
+        element: <NotFound></NotFound>
     }
 
 ]);
