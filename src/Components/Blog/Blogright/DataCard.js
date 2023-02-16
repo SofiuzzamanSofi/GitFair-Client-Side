@@ -9,8 +9,9 @@ const DataCard = ({ data, refetch }) => {
     refetch()
     const { image, post, userName, _id, profilepic, time, title } = data
     return (
-        <div className='mb-5 mt-1' data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom">
+        // <div className='mb-5 mt-1' data-aos="fade-up"
+        //     data-aos-anchor-placement="top-bottom">
+        <div className="card lg:min-h-[600px] relative max-w-md mx-auto bg-white shadow-xl group-hover:scale-90 rounded-lg hover:shadow-2xl hover:!scale-100 duration-500" data-aos="fade-left">
 
             <div className="card lg:h-[600px] bg-white shadow-xl">
 

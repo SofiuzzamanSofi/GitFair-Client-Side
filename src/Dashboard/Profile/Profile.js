@@ -7,8 +7,7 @@ const Profile = () => {
     return (
         <div>
             {name}
-            {email}
-            
+            {email}   
         </div>
     );
 };

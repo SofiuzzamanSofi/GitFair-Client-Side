@@ -1,3 +1,7 @@
+.fsp-picker__brand-container{
+    margin-left: 250px !important;
+}
+
 @media screen and (min-width:670px) {
     .fsp-modal{
         margin-left: 250px !important;
