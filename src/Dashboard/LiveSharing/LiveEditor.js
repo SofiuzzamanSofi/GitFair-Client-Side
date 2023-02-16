@@ -34,7 +34,7 @@ const LiveEditor = () => {
             function handleErrors(e) {
                 console.log("socket error", e);
                 toast.error("Socket connection failed, try again later")
-                reactNavigate("/liveSharing");
+                reactNavigate("/dashboard/liveSharing");
             }
 
 
@@ -93,12 +93,12 @@ const LiveEditor = () => {
         }
     }
     const leaveRoome = async () => {
-        reactNavigate("/liveSharing");
+        reactNavigate("/dashboard/liveSharing");
     }
 
 
     if (!location?.state) {
-        return <Navigate to="/liveSharing" />
+        return <Navigate to="/dashboard/liveSharing" />
     }
 
 

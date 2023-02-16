@@ -26,7 +26,7 @@ const LiveSharing = () => {
         }
 
         // Redirect
-        navigate(`/liveSharing/${roomId}`, {
+        navigate(`/dashboard/liveSharing/${roomId}`, {
             state: {
                 userName,
                 roomId,
@@ -36,8 +36,8 @@ const LiveSharing = () => {
 
 
     return (
-        <div className='lg:w-[1240px] m-auto p-10 min-h-screen rounded-2xl grid place-items-center h-screen bg-slate-100'>
-            <div className="card card-compact sm:w-2/3 bg-base-100 shadow-xl rounded-2xl py-20">
+        <div className='grid place-items-center h-screen'>
+            <div className="card card-compact sm:w-2/3 bg-base-100 shadow-xl rounded-xl py-12">
                 <figure><img src="https://i.ibb.co/XFmb29G/logo.png" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Share your Code With Others - {user?.displayName}</h2>

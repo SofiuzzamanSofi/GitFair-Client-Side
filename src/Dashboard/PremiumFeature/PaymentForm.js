@@ -100,7 +100,7 @@ function PaymentForm() {
                 .then(res => {
                     setProcessingButton(false);
                     if (res.data?.success) {
-                        navigate("/dashboard/dashboard/premiumfeature")
+                        navigate("/dashboard/premiumfeature")
                     }
                 }).catch(e => {
                     setProcessingButton(false);

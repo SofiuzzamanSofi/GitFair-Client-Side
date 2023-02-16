@@ -63,22 +63,6 @@ const router = createBrowserRouter([
                 element: <LinkShortener />
             },
             {
-                path: '/liveSharing',
-                element: <LiveSharing />
-            },
-            {
-                path: '/liveSharing/liveEditor/:roomId',
-                element: <LiveEditor />
-            },
-            {
-                path: '/premiumfeature',
-                element: <PremiumFeature />
-            },
-            {
-                path: '/premiumfeature/paymentForm/:price',
-                element: <PaymentForm />
-            },
-            {
                 path: '/register',
                 element: <Register></Register>
             },
@@ -105,6 +89,22 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Categories />,
                 loader: () => fetch('https://fileupload-server-taimul.vercel.app/all-files')
+            },
+            {
+                path: '/dashboard/premiumfeature',
+                element: <PremiumFeature />
+            },
+            {
+                path: '/dashboard/premiumfeature/paymentForm/:price',
+                element: <PaymentForm />
+            },
+            {
+                path: '/dashboard/liveSharing',
+                element: <LiveSharing />
+            },
+            {
+                path: '/dashboard/liveSharing/:roomId',
+                element: <LiveEditor />
             },
             {
                 path: '/dashboard/profile',

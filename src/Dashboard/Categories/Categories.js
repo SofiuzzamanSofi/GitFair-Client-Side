@@ -79,7 +79,7 @@ const Categories = () => {
             <div className='lg:flex flex-row lg:gap-14 items-center justify-center mt-10'>
                 {/* Premium Services */}
                 <div className="card card-side bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/premiumfeature'>
+                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/dashboard/premiumfeature'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
                                 <FaCcMastercard />
@@ -93,7 +93,7 @@ const Categories = () => {
                 </div>
                 {/* Live Sharing */}
                 <div className="card card-side lg:mt-0 mt-5 bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/liveSharing'>
+                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/dashboard/liveSharing'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
                                 <TbScreenShare />
