@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './TeamMembers.css';
+import './Teammembers.css';
 import { BsGithub, BsLinkedin, BsGlobe2, BsArrowRight } from "react-icons/bs";
 import img1 from '../../../assets/team/selim.png';
 import img3 from '../../../assets/team/nayeem.png';

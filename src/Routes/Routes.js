@@ -107,8 +107,9 @@ const router = createBrowserRouter([
                 element: <LiveEditor />
             },
             {
-                path: '/dashboard/profile',
-                element: <Profile />
+                path: '/dashboard/profile/:email',
+                element: <Profile />,
+                loader: async ({params}) =>fetch(`http://localhost:5000/profile/${params.email}`)
             }
         ]
     },
