@@ -94,7 +94,7 @@ const TeamMembers = () => {
                     {Members.map(
                         ({ id, image, name, designation, github, linkedin, portfolio }) => (
                             <>
-                                <div key={id} className='py-6 lg:py-14 md:py-10' data-aos="fade-left" data-aos-easing="ease-in-cubic" >
+                                <div key={Members.id} className='py-6 lg:py-14 md:py-10' data-aos="fade-left" data-aos-easing="ease-in-cubic" >
                                     <div className='flex gap-5'>
                                         <img src={image} alt='t-img' className='team-card' />
                                         <div>

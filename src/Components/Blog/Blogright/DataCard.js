@@ -35,7 +35,7 @@ const DataCard = ({ data, refetch }) => {
 
     return (
 
-        <div className="card lg:min-h-[600px] relative max-w-md lg:w-[400px] mx-auto bg-white shadow-xl rounded-2xl hover:rounded-2xl hover:shadow-black duration-500" data-aos="fade-left">
+        <div className="card lg:min-h-[600px] relative max-w-md lg:w-[400px] mx-auto bg-white shadow-xl rounded-2xl hover:rounded-2xl hover:shadow-black duration-500">
 
             <Link to={`/bloglayout/detailblog/${_id}`}>
                 <div className="card rounded-2xl lg:h-[600px] bg-white shadow-xl">
