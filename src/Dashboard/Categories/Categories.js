@@ -63,7 +63,7 @@ const Categories = () => {
                 </div>
                 {/* URL Shortener */}
                 <div className="card card-side lg:mt-0 mt-5 bg-black text-white rounded-2xl">
-                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/linkshortener'>
+                    <Link className='hover:bg-[#66c555] rounded-2xl' to='/dashboard/linkshortener'>
                         <div className="card-body flex flex-row px-5 py-4 ">
                             <div className='text-5xl'>
                                 <BsLink />

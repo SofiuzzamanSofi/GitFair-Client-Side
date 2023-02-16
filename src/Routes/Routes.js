@@ -59,10 +59,6 @@ const router = createBrowserRouter([
                 element: <SearchAi />
             },
             {
-                path: '/linkshortener',
-                element: <LinkShortener />
-            },
-            {
                 path: '/register',
                 element: <Register></Register>
             },
@@ -89,6 +85,10 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Categories />,
                 loader: () => fetch('https://fileupload-server-taimul.vercel.app/all-files')
+            },
+            {
+                path: '/dashboard/linkshortener',
+                element: <LinkShortener />
             },
             {
                 path: '/dashboard/premiumfeature',

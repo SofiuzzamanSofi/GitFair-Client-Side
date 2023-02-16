@@ -39,10 +39,9 @@ const LinkResult = ({ inputValue }) => {
                     <CopyToClipboard
                         text={shortenLink}
                         onCopy={() => setCopied(true)}
-
                     >
-                        <div className='border border-[#66C555] rounded-md p-2 hover:bg-[#66C555] hover:text-white'>
-                            <button className={copied ? "copied" : ""}>Copy to Clipboard</button>
+                        <div className='border border-[#66C555] rounded-md h-10 w-20 pt-1 mr-5 hover:bg-[#66C555] hover:text-white font-semibold'>
+                            <button className={copied ? "copied" : ""}>Copy</button>
                         </div>
                     </CopyToClipboard>
                 </div>
