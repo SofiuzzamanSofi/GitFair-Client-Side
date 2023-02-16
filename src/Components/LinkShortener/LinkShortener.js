@@ -6,25 +6,25 @@ import LinkResult from './LinkResult';
 const LinkShortener = () => {
     const [inputValue, setInputValue] = useState("");
     return (
-        <div className='lg:w-[1240px] m-auto'>
-            <div className='lg:mt-10 lg:mb-28 text-center'>
-                <h1 className='lg:text-8xl font-black text-white'>Free Link <span className='text-[#66C555]'>Shortener</span></h1>
-                <div className=" bg-gray-200 rounded-lg mt-5">
-                    <div className="container lg:p-60 flex justify-center items-center">
-                        <div className="relative">
-                            <div className="absolute top-4 left-3">
-                                <i className="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
-                            </div>
-                            <InputShortner setInputValue={setInputValue} />
-                            <div className='mt-5'>
-                                <LinkResult inputValue={inputValue} />
-                            </div>
+        // <div className='lg:w-[1240px] m-auto '>
+        <div className='lg:w-[1240px] m-auto rounded-2xl bg-slate-100 py-24 mt-6'>
+            <div className="lg:mt-10 text-center">
+                <h1 className='text-4xl lg:text-5xl font-black text-slate-800'>Shorten Your URL</h1>
+                <div className="container py-16 md:py-20 lg:py-24 flex justify-center items-center">
+                    <div className="relative">
+                        <div className="absolute top-4 left-3">
+                            <i className="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+                        </div>
+                        <InputShortner setInputValue={setInputValue} />
+                        <div className='mt-5'>
+                            <LinkResult inputValue={inputValue} />
                         </div>
                     </div>
                 </div>
             </div>
             <BgAnimation />
         </div>
+        // </div>
     );
 };
 
