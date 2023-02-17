@@ -154,7 +154,7 @@ const DetailBlog = () => {
             <h1 className='text-xl mt-6 mb-12 text-slate-600'>{post}</h1>
             {/* like button  */}
             {
-                likes?.length > 1 || likes[0]?.email === user?.email
+                likes[0]?.email === user?.email
                     ?
                     <p className='text-black md:text-xl font-semibold'>You and {likes?.length - 1} other people likes it</p>
                     :
