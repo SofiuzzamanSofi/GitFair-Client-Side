@@ -8,7 +8,6 @@ import axios from 'axios';
 
 const SearchAi = () => {
 
-
     const [searchInputText, setSearchInputText] = useState();
     const [chatLog, setChatLog] = useState([
         {
@@ -22,7 +21,7 @@ const SearchAi = () => {
     ]);
     // console.log(chatLog);
 
-    // loadin function ---
+    // loading function ---
     const loader = element => {
         element.textContent = "";
         // loading show ... after 2 milliseconds ---
@@ -34,7 +33,6 @@ const SearchAi = () => {
             }
         }, 200)
     };
-
 
     // text typed every 20 millisecond---
     const typeText = (element, text) => {
@@ -49,8 +47,7 @@ const SearchAi = () => {
         }, 20)
     };
 
-
-    // generate unique Id for each async.. --- 
+    // generate unique Id for each async.. ---
     const generateUniqueId = () => {
         const timeStamp = Date.now();
         const randomNumber = Math.random();
@@ -64,9 +61,9 @@ const SearchAi = () => {
             <div class="wrapper ${isAi && 'ai'}">
                 <div class="chat">
                     <div class="profile">
-                        <img 
-                          src=${isAi ? bot : user} 
-                          alt="${isAi ? 'bot' : 'user'}" 
+                        <img
+                          src=${isAi ? bot : user}
+                          alt="${isAi ? 'bot' : 'user'}"
                         />
                     </div>
                     <div class="message" id=${uniqueId}>${value}</div>
@@ -76,12 +73,8 @@ const SearchAi = () => {
         )
     }
 
-
-
-
-    // after clicking the arrow sign this function is exicuted----
+    // after clicking the arrow sign this function is executed----
     const handleOpenAiChatGptFunction = () => {
-
 
         if (searchInputText) {
             // setChatLog([...chatLog, {
@@ -91,7 +84,6 @@ const SearchAi = () => {
 
             const chatContainer = document.getElementById("input-ask-ans");
             // chatContainer.innerHTML += chatStripe(false, searchInputText)
-
 
             // setChatLog([...chatLog, {
             //     uniqueId: uniqueId,
@@ -106,7 +98,6 @@ const SearchAi = () => {
                     // console.log("this is axios back:", data);
                     setSearchInputText({ text: "" });
 
-
                     // get uniqueId from uniqueId function ----
                     const uniqueId = generateUniqueId();
 
@@ -118,7 +109,6 @@ const SearchAi = () => {
                         uniqueId: uniqueId,
                         answer: data,
                     }])
-
                 }).catch(error => console.log(error))
             // console.log({ searchInputText });
             // setSearchInputText("");
@@ -128,10 +118,8 @@ const SearchAi = () => {
 
     return (
         <div
-            className='flex flex-col items-center justify-between min-h-screen'
+            className='flex flex-col items-center justify-between min-h-screen bg-slate-800 rounded-2xl'
         >
-
-
             <div
                 id='input-ask-ans'
                 className='w-full max-w-[1280px] mx-auto'>
@@ -157,7 +145,6 @@ const SearchAi = () => {
                     value={searchInputText?.text}
                     // set input text value on use state -------
                     onChange={(e) => setSearchInputText({ text: e?.target?.value })}
-
                 >
                 </textarea>
                 <button className=''>
@@ -169,10 +156,7 @@ const SearchAi = () => {
                     />
                 </button>
             </div>
-
-
         </div>
-
     );
 };
 

@@ -55,10 +55,6 @@ const router = createBrowserRouter([
                 element: <Compiler />
             },
             {
-                path: '/searchai',
-                element: <SearchAi />
-            },
-            {
                 path: '/register',
                 element: <Register></Register>
             },
@@ -87,6 +83,10 @@ const router = createBrowserRouter([
                 loader: () => fetch('https://fileupload-server-taimul.vercel.app/all-files')
             },
             {
+                path: '/dashboard/searchai',
+                element: <SearchAi />
+            },
+            {
                 path: '/dashboard/linkshortener',
                 element: <LinkShortener />
             },
@@ -107,8 +107,9 @@ const router = createBrowserRouter([
                 element: <LiveEditor />
             },
             {
-                path: '/dashboard/profile',
-                element: <Profile />
+                path: '/dashboard/profile/:email',
+                element: <Profile />,
+                loader: ({ params }) => fetch(`http://localhost:5000/profile/${params.email}`)
             }
         ]
     },
