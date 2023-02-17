@@ -61,15 +61,15 @@ const SearchAi = () => {
     function chatStripe(isAi, value, uniqueId) {
         return (
             `
-            <div class="wrapper ${isAi && 'ai'}">
-                <div class="chat">
-                    <div class="profile">
+            <div className="wrapper ${isAi && 'ai'}">
+                <div className="chat">
+                    <div className="profile">
                         <img 
                           src=${isAi ? bot : user} 
                           alt="${isAi ? 'bot' : 'user'}" 
                         />
                     </div>
-                    <div class="message" id=${uniqueId}>${value}</div>
+                    <div className="message" id=${uniqueId}>${value}</div>
                 </div>
             </div>
         `
