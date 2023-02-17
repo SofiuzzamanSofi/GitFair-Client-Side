@@ -6,36 +6,10 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider'
 
 function PremiumFeature() {
 
-    const { user } = useContext(AuthContext)
-    const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
-    const [premiumState, setPremiumState] = useState(false);
+    const { user, premiumUser } = useContext(AuthContext)
+  
 
-
-    useEffect(() => {
-        if (user?.email) {
-            console.log(user.email);
-            axios.post(url2, { email: user?.email })
-                .then(res => {
-                    if (res.data.success) {
-                        setPremiumState(true);
-                        console.log(res.data)
-                    }
-                }).catch(e => {
-                    console.log(e)
-                })
-
-            // fetch(url2, {
-            //     method: "GET",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify(user?.email)
-            // })
-            //     .then(res => res.json())
-            //     .then(data => console.log(data))
-        }
-    }, [user, url2]);
-
-
-    if (premiumState) {
+    if (premiumUser) {
         return (
             <div className='text-black flex flex-col justify-center items-center'>
                 <h1 className='text-4xl'>You are a premium user.</h1>

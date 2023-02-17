@@ -14,7 +14,7 @@ const Allusers = () => {
   const {data: users = [], refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async() =>{
-        const res = await fetch('http://localhost:5000/users');
+        const res = await fetch('https://file-upload-server-gitfair.glitch.me/users');
         const data = await res.json();
         return data;
     }
@@ -23,7 +23,7 @@ const Allusers = () => {
 
 const handleDeleteUser = user =>{
   console.log(user);
-  fetch(`http://localhost:5000/user/${user?._id}`, {
+  fetch(`https://file-upload-server-gitfair.glitch.me/user/${user?._id}`, {
           method: 'DELETE', 
           headers: {
               authorization: `bearer ${localStorage.getItem('accessToken')}`

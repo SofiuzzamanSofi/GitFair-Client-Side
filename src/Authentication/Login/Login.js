@@ -7,7 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 // import Cookies from 'universal-cookie';
 import authImg from '../../assets/registerVector-removebg-preview.png'
-import useToken from '../../Components/hooks/useToken';
+
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
@@ -18,7 +18,7 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const [createdUser, setCreatedUser] = useState("");
-    const [token] = useToken(createdUser)
+ 
 
     // const location = useLocation()
     const Navigate = useNavigate()
@@ -34,14 +34,16 @@ const Login = () => {
                 setLoginError(err.message)
                 console.error(err)
             })
-            fetch(`http://localhost:5000/users/${data?.email}`)
+            fetch(`https://file-upload-server-gitfair.glitch.me/users/${data?.email}`)
             .then(res => res.json())
             .then(adminData =>{
                 console.log(adminData);
                 if(adminData?.role === 'adminLogin'){
                     Navigate('/adminDashboard')
+                    return
                 }
             });
+            Navigate('/');
 
     }
 
@@ -52,14 +54,16 @@ const Login = () => {
                 console.log(result.user);
                 if(result?.user?.email){
                     
-                 fetch(`http://localhost:5000/users/${result?.user?.email}`)
+                 fetch(`https://file-upload-server-gitfair.glitch.me/users/${result?.user?.email}`)
                 .then(res => res.json())
                 .then(adminData =>{
                     console.log(adminData);
                     if(adminData?.role === 'adminLogin'){
                         Navigate('/adminDashboard')
+                        return
                     }
                 });
+                Navigate('/')
                 }
                
             })
@@ -68,16 +72,7 @@ const Login = () => {
             })
     };
 
-    // this is cookie verify function for future --
-    const cookieVerifyJwt = email => {
-        axios.defaults.withCredentials = true;
-        axios.get(`http://localhost:5000/cookieClear/verify`, { withCredentials: true }, { "Cookie": document.cookie })
-            .then(res => console.log(res.data))
-    };
-
-    if (token) {
-        Navigate('/dashboard')
-    }
+   
     const gitHandler = () => {
         gitHub()
             .then(result => {
@@ -89,7 +84,7 @@ const Login = () => {
                     premiumUser: false,
                     photo: user?.photoURL
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://file-upload-server-gitfair.glitch.me/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

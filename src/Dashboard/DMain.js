@@ -42,7 +42,7 @@ const DMain = () => {
                                 </div>
                             </div>
                             <div className='mt-5 mb-10'>
-                            <li className='hover:bg-[#66c555] rounded-xl'><Link to={`/dashboard/profile/${user?.email}`}>My Profile</Link></li>
+                                <li className='hover:bg-[#66c555] rounded-xl'><Link to={`/dashboard/profile/${user?.email}`}>My Profile</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='/dashboard'>Services</Link></li>
                                 <li className='hover:bg-[#66c555] rounded-xl'><Link to='/dashboard/fileshare'>My Files</Link></li>
                                 <li htmlFor="my-modal-5" className='hover:bg-[#66c555] rounded-xl'><label htmlFor="my-modal-5" ><span>Add a Blog</span></label></li>

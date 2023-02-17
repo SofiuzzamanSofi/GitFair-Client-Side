@@ -10,7 +10,7 @@ const FileShare = () => {
     // console.log(user?.uid)
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/all-files/${user?.email}`)
+        fetch(`https://file-upload-server-gitfair.glitch.me/all-files/${user?.email}`)
         .then(res => res.json())
         .then(data => setFile(data))
     },[])

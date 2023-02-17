@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import bot from "../../assets/searchAI/bot.svg"
 import user from "../../assets/searchAI/user.svg"
 import send from "../../assets/searchAI/send.svg"
-import './SearchAi.module.css';
 import axios from 'axios';
 
 
@@ -74,6 +73,11 @@ const SearchAi = () => {
     }
 
     // after clicking the arrow sign this function is executed----
+
+
+
+
+    // after clicking the arrow sign this function is exicuted----
     const handleOpenAiChatGptFunction = () => {
 
         if (searchInputText) {
@@ -115,10 +119,16 @@ const SearchAi = () => {
         }
     }
 
+    const handleKeyDown = (e) => {
+        if (e.keyCode === 13) {
+            console.log("object");
+            handleOpenAiChatGptFunction();
+        }
+    }
 
     return (
         <div
-            className='flex flex-col items-center justify-between min-h-screen bg-slate-800 rounded-2xl'
+            className='flex flex-col items-center bg-black justify-between chatgpt'
         >
             <div
                 id='input-ask-ans'
@@ -145,6 +155,7 @@ const SearchAi = () => {
                     value={searchInputText?.text}
                     // set input text value on use state -------
                     onChange={(e) => setSearchInputText({ text: e?.target?.value })}
+                    onKeyDown={handleKeyDown}
                 >
                 </textarea>
                 <button className=''>

@@ -93,28 +93,26 @@ const TeamMembers = () => {
                 <div className='grid mx-auto lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:max-w-screen lg:px-10 md:pt-8' >
                     {Members.map(
                         ({ id, image, name, designation, github, linkedin, portfolio }) => (
-                            <>
-                                <div key={Members.id} className='py-6 lg:py-14 md:py-10' data-aos="fade-left" data-aos-easing="ease-in-cubic" >
-                                    <div className='flex gap-5'>
-                                        <img src={image} alt='t-img' className='team-card' />
-                                        <div>
-                                            <h3 className='text-2xl font-medium'>{name}</h3>
-                                            <h5 className='text-base font-normal'>{designation}</h5>
-                                            <div className='mt-1 flex gap-3'>
-                                                <a href={github} target="_blank" rel="noreferrer">
-                                                    <BsGithub />
-                                                </a>
-                                                <a href={linkedin} target="_blank" rel="noreferrer">
-                                                    <BsLinkedin />
-                                                </a>
-                                                <a href={portfolio} target="_blank" rel="noreferrer">
-                                                    <BsGlobe2 />
-                                                </a>
-                                            </div>
+                            <div key={id} className='py-6 lg:py-14 md:py-10' data-aos="fade-left" data-aos-easing="ease-in-cubic" >
+                                <div className='flex gap-5'>
+                                    <img src={image} alt='t-img' className='team-card' />
+                                    <div>
+                                        <h3 className='text-2xl font-medium'>{name}</h3>
+                                        <h5 className='text-base font-normal'>{designation}</h5>
+                                        <div className='mt-1 flex gap-3'>
+                                            <a href={github} target="_blank" rel="noreferrer">
+                                                <BsGithub />
+                                            </a>
+                                            <a href={linkedin} target="_blank" rel="noreferrer">
+                                                <BsLinkedin />
+                                            </a>
+                                            <a href={portfolio} target="_blank" rel="noreferrer">
+                                                <BsGlobe2 />
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         )
                     )}
                 </div>
@@ -132,7 +130,7 @@ const TeamMembers = () => {
                                     <span className="pl-6 text-slate-100 font-semibold group-hover:text-green-400 transition duration-200">
                                         <Link to="/register" className='flex'>
                                             Sign up For GitFair
-                                            <BsArrowRight className='ml-2 text-3xl lg:text-md md:text-lg mt-3 lg:mt-0 md:mt-0'/>
+                                            <BsArrowRight className='ml-2 text-3xl lg:text-md md:text-lg mt-3 lg:mt-0 md:mt-0' />
                                         </Link>
                                     </span>
                                 </button>

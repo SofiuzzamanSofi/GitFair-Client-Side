@@ -40,7 +40,7 @@ const DetailBlog = () => {
             id: _id
         }
 
-        fetch('http://localhost:5000/comment', {
+        fetch('https://file-upload-server-gitfair.glitch.me/comment', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -68,7 +68,7 @@ const DetailBlog = () => {
             id: _id
         }
 
-        fetch('http://localhost:5000/likes', {
+        fetch('https://file-upload-server-gitfair.glitch.me/likes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -77,15 +77,13 @@ const DetailBlog = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result)
-
                 toast.success('like added!')
             })
     }
 
     const handleDeleteLike = () => {
         setLike(!like)
-        fetch(`http://localhost:5000/likes/${_id}`, {
+        fetch(`https://file-upload-server-gitfair.glitch.me/likes/${_id}`, {
             method: 'DELETE',
 
         })
@@ -96,7 +94,7 @@ const DetailBlog = () => {
             })
     }
 
-    const url = `http://localhost:5000/comment/${_id}`
+    const url = `https://file-upload-server-gitfair.glitch.me/comment/${_id}`
     const { data: comments = [] } = useQuery({
         queryKey: ["comments"],
         queryFn: async () => {
@@ -105,7 +103,7 @@ const DetailBlog = () => {
             return data
         }
     })
-    const link = `http://localhost:5000/likes/${_id}`
+    const link = `https://file-upload-server-gitfair.glitch.me/likes/${_id}`
     const { data: likes = [], refetch } = useQuery({
         queryKey: ["likes"],
         queryFn: async () => {
@@ -154,7 +152,7 @@ const DetailBlog = () => {
             <h1 className='text-xl mt-6 mb-12 text-slate-600'>{post}</h1>
             {/* like button  */}
             {
-                likes?.length > 1 || likes[0]?.email === user?.email
+                likes[0]?.email === user?.email
                     ?
                     <p className='text-black md:text-xl font-semibold'>You and {likes?.length - 1} other people likes it</p>
                     :

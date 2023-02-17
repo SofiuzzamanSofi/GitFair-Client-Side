@@ -46,7 +46,7 @@ const DashBoardCard = () => {
         {/* <AdminNavber /> */}
       <div className=" grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-[50px] gap-3">
         {dashBoardCards?.map((dashBoardC) => (
-          <div className="text-black mx-auto card shadow-2xl w-full mb-6 ">
+          <div className="text-black mx-auto admin-card shadow-2xl w-full mb-6 ">
             <div className="flex flex-row justify-between cards-deatails  ">
               <div className="iconbx">
                 <div className="icons">{dashBoardC?.image}</div>

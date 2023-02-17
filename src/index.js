@@ -14,6 +14,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import ChatOnline from './Components/ChatOnline/ChatOnline';
 
 const queryClient = new QueryClient()
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
@@ -27,6 +28,7 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <App />
+          <ChatOnline />
         </AuthProvider>
         <Toaster />
       </QueryClientProvider>

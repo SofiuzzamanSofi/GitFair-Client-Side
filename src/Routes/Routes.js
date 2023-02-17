@@ -31,6 +31,7 @@ import AdminDashboardLayout from "../Layout/AdminDashboardLayout";
 import Allusers from "../AdminDashBoard/AllUser/Allusers";
 import DashBoardCard from "../AdminDashBoard/DashBoardCard/DashBoardCard";
 import PaidUsers from './../AdminDashBoard/PaidUser/PaidUsers';
+import PrivateRoute from "./PrivateRoutes/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -44,23 +45,27 @@ const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <About />
+                element: <PrivateRoute><About /></PrivateRoute>
             },
             {
                 path: '/contact',
-                element: <Contact />
+                element: <PrivateRoute><Contact /></PrivateRoute>
             },
             {
                 path: '/privacyandpolicy',
-                element: <Privacyandpolicy />
+                element: <PrivateRoute><Privacyandpolicy /></PrivateRoute>
             },
             {
                 path: '/termsandvondition',
-                element: <TermsandCondition />,
+                element: <PrivateRoute><TermsandCondition /></PrivateRoute>,
             },
             {
                 path: '/compiler',
-                element: <Compiler />
+                element: <PrivateRoute><Compiler /></PrivateRoute>
+            },
+            {
+                path: '/searchai',
+                element: <PrivateRoute><SearchAi /></PrivateRoute>
             },
             {
                 path: '/register',
@@ -79,7 +84,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute> <Dashboard /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
@@ -121,13 +126,13 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/profile/:email',
                 element: <Profile />,
-                loader: async ({params}) =>fetch(`http://localhost:5000/profile/${params.email}`)
+                loader: async ({ params }) => fetch(`https://file-upload-server-gitfair.glitch.me/profile/${params.email}`)
             }
         ]
     },
     {
         path: '/bloglayout',
-        element: <BlogLayout />,
+        element: <PrivateRoute><BlogLayout /></PrivateRoute>,
         children: [
             {
                 path: '/bloglayout/blog',
@@ -144,6 +149,7 @@ const router = createBrowserRouter([
     {
         path: '/adminDashboard',
         element: <AdminDashboardLayout /> ,
+       
         children: [
           {
              path:'/adminDashboard',

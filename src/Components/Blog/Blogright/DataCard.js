@@ -14,7 +14,7 @@ const DataCard = ({ data, refetch }) => {
 
     refetch()
     // get comment amount 
-    const url = `http://localhost:5000/comment/${_id}`
+    const url = `https://file-upload-server-gitfair.glitch.me/comment/${_id}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -22,7 +22,7 @@ const DataCard = ({ data, refetch }) => {
     }, [])
 
     // get likes amount 
-    const link = `http://localhost:5000/likes/${_id}`
+    const link = `https://file-upload-server-gitfair.glitch.me/likes/${_id}`
     useEffect(() => {
         fetch(link)
             .then(res => res.json())
@@ -71,7 +71,7 @@ const DataCard = ({ data, refetch }) => {
                             }
                             {post?.length > 100
                                 ?
-                                <p className='text-black'>{post.slice(0, 100) + '...'} <Link to={`/bloglayout/detailblog/${_id}`} className='font-bold'>See more</Link></p>
+                                <p className='text-black'>{post.slice(0, 100) + '...'} <span className='font-bold'>See more</span></p>
                                 :
                                 <p className='text-black'>{post}</p>
 

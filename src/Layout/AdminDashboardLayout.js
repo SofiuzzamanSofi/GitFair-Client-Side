@@ -17,7 +17,7 @@ const AdminDashboardLayout = () => {
   //   queryKey: ["adminLoginData"],
   //   queryFn: async () => {
   //     const res = await fetch(
-  //       "http://localhost:5000/users/gitfair06@gmail.com"
+  //       "https://file-upload-server-gitfair.glitch.me/users/gitfair06@gmail.com"
   //     );
   //     const data = res.json();
   //     return data;

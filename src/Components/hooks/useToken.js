@@ -6,7 +6,7 @@ const useToken = user => {
     axios.defaults.withCredentials = true;
     useEffect(() => {
         if (user) {
-            axios.get(`http://localhost:5000/cookieCreate/jwt?email=${user?.email}`, { withCredentials: true })
+            axios.get(`https://file-upload-server-gitfair.glitch.me/cookieCreate/jwt?email=${user?.email}`, { withCredentials: true })
                 .then(res => {
                     console.log(res.data);
                     setToken(true);
