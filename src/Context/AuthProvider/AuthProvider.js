@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
                 .then(res => {
                     if (res.data.success) {
                         setPremiumUser(true);
-                        document.querySelector("body").setAttribute()
+                        // const $zoho = window.
                     }
                 }).catch(e => {
                     console.log(e)
