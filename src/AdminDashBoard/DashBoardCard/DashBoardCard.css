@@ -1,0 +1,132 @@
+.card{
+    position: relative;   
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    
+    
+    
+}
+.iconbx {
+    position: relative;
+    left: 20%;
+    top: -30%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: #66C555;
+    border-radius: 20px;
+}
+/* .iconbx img{
+    position: relative;
+    left: 22%;
+    top: 23%;
+    width: 40px;
+    height: 40px;
+    object-fit:cover;
+    border-radius: 15px;
+    background-color: aliceblue;
+    
+} */
+
+.cards-deatails h1{
+    margin-right: 15px;
+    margin-top: 15px;
+    font-weight: 400;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-size: 20px;
+    color: black;
+
+}
+.cards-deatails p{
+    font-weight: 600;
+    position: absolute;
+    right: 10%;
+    margin-top: 10px;
+    font-size: 20px;
+    color: black;
+}
+
+.card-text p{
+    font-size: 20px;
+    /* font-family: 'Courier New', Courier, monospace; */
+    margin-top: 40px;   
+    color: black;
+}
+
+
+
+/* .iconbx1{
+    position: relative;
+    left: 20%;
+    top: -30%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: #2C93EB;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15); 
+} */
+
+/* .iconbx1 img{
+    position: relative;
+    left: 25%;
+    top: 25%;
+    width: 35px;
+    height: 35px;
+    object-fit:cover;
+    border-radius: 15px;
+    background-color: aliceblue;
+}
+
+.iconbx2{
+    position: relative;
+    left: 20%;
+    top: -30%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: #5CB360;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15); 
+}
+
+.iconbx2 img{
+    position: relative;
+    left: 25%;
+    top: 25%;
+    width: 35px;
+    height: 35px;
+    object-fit:cover;
+    border-radius: 15px;
+    background-color: aliceblue;
+}
+
+.iconbx5{
+    position: relative;
+    left: 20%;
+    top: -30%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    background: #FEA11D;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15); 
+}
+
+.iconbx5 img{
+    position: relative;
+    left: 25%;
+    top: 25%;
+    width: 35px;
+    height: 35px;
+    object-fit:cover;
+    border-radius: 15px;
+    background-color: aliceblue;
+}  */
+.icons {
+    color: #fff;
+    font-size: 41px;
+    margin-left: 16px;
+    margin-top: 14px;
+}

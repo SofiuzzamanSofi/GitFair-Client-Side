@@ -13,7 +13,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const { user, login, google, gitHub } = useContext(AuthContext)
+    const { login, google,gitHub, facebook, user } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -34,6 +34,14 @@ const Login = () => {
                 setLoginError(err.message)
                 console.error(err)
             })
+            fetch(`http://localhost:5000/users/${data?.email}`)
+            .then(res => res.json())
+            .then(adminData =>{
+                console.log(adminData);
+                if(adminData?.role === 'adminLogin'){
+                    Navigate('/adminDashboard')
+                }
+            });
 
     }
 
@@ -41,26 +49,19 @@ const Login = () => {
         google()
             .then(result => {
                 setCreatedUser(result.user)
-                const users = {
-                    name: user?.displayName,
-                    email: user?.email,
-                    premiumUser: false,
-                    photo: user?.photoURL
+                console.log(result.user);
+                if(result?.user?.email){
+                    
+                 fetch(`http://localhost:5000/users/${result?.user?.email}`)
+                .then(res => res.json())
+                .then(adminData =>{
+                    console.log(adminData);
+                    if(adminData?.role === 'adminLogin'){
+                        Navigate('/adminDashboard')
+                    }
+                });
                 }
-                fetch('http://localhost:5000/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(users)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                        toast.success('user data added successfully')
-                    })
-                Navigate('/')
-
+               
             })
             .catch(err => {
                 setLoginError(err.message)
