@@ -9,7 +9,7 @@ function PremiumFeature() {
     const { user } = useContext(AuthContext)
     const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
     const [premiumState, setPremiumState] = useState(false);
-
+    const example = 5;
 
     useEffect(() => {
         if (user?.email) {
