@@ -23,6 +23,7 @@ import ResetPass from "../Authentication/resetPass/ResetPass";
 import Admin from "../Admin/Admin";
 import LinkShortener from "../Components/LinkShortener/LinkShortener";
 import NotFound from "../Components/NotFound/NotFound";
+import FileShare from "../Dashboard/FileShare/FileShare";
 
 
 const router = createBrowserRouter([
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <Categories />,
                 loader: () => fetch('https://fileupload-server-taimul.vercel.app/all-files')
+            },
+            {
+                path: '/dashboard/fileshare',
+                element: <FileShare />
             },
             {
                 path: '/dashboard/linkshortener',

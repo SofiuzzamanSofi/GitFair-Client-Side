@@ -71,7 +71,7 @@ const Preview = ({ files }) => {
 
                 </th>
                 {/* <td htmlFor="my-modal" className="btn"><BsTrash/></td> */}
-                <td><button><BsTrash/></button></td>
+                {/* <td><button><BsTrash/></button></td> */}
                 {/* <td><FilePicker
                     apikey="A4GovH9aYQxekmQn2uFOLz"
                     

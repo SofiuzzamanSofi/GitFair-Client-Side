@@ -31,7 +31,7 @@ const FileShare = () => {
                             <th>Size</th>
                             <th>Share</th>
                             <th>Enable Download</th>
-                            <th>Delete</th>
+                            {/* <th>Delete</th> */}
                         </tr>
                     </thead>            
             {
