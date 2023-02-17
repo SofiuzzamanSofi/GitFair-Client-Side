@@ -56,10 +56,6 @@ const router = createBrowserRouter([
                 element: <Compiler />
             },
             {
-                path: '/searchai',
-                element: <SearchAi />
-            },
-            {
                 path: '/register',
                 element: <Register></Register>
             },
@@ -90,6 +86,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/fileshare',
                 element: <FileShare />
+            },
+            {
+                path: '/dashboard/searchai',
+                element: <SearchAi />
             },
             {
                 path: '/dashboard/linkshortener',
