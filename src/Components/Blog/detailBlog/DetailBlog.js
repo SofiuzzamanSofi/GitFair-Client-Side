@@ -77,8 +77,6 @@ const DetailBlog = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result)
-
                 toast.success('like added!')
             })
     }
