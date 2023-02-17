@@ -1,11 +1,13 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../../FireBase/firebase.config';
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import axios from 'axios';
 
 export const AuthContext = createContext()
 const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const [premiumUser, setPremiumUser] = useState(false);
     const [loading, setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider()
     const gitProvider = new GithubAuthProvider()
@@ -46,10 +48,28 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
         })
         return () => unsubscribe()
-    }, [])
+    }, []);
+
+
+    const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
+    useEffect(() => {
+        if (user?.email) {
+            axios.post(url2, { email: user?.email })
+                .then(res => {
+                    if (res.data.success) {
+                        setPremiumUser(true);
+                        document.querySelector("body").setAttribute()
+                    }
+                }).catch(e => {
+                    console.log(e)
+                })
+        }
+    }, [user, url2]);
+
 
     const authInfo = {
         user,
+        premiumUser,
         google,
         gitHub,
         signUp,
