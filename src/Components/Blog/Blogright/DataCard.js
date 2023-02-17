@@ -71,7 +71,7 @@ const DataCard = ({ data, refetch }) => {
                             }
                             {post?.length > 100
                                 ?
-                                <p className='text-black'>{post.slice(0, 100) + '...'} <Link to={`/bloglayout/detailblog/${_id}`} className='font-bold'>See more</Link></p>
+                                <p className='text-black'>{post.slice(0, 100) + '...'} <span className='font-bold'>See more</span></p>
                                 :
                                 <p className='text-black'>{post}</p>
 
