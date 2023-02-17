@@ -33,8 +33,6 @@ const DMain = () => {
                                         <p><span>Email: </span>{user?.email}</p> :
                                         <p>NaN</p>
                                     }
-
-
                                     <p className='bg-white rounded-lg text-black px-5 m-3'><span>User</span></p>
                                 </div>
                             </div>

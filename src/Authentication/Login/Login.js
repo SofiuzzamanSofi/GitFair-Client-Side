@@ -12,7 +12,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const { login, google,gitHub, facebook } = useContext(AuthContext)
+    const { login, google,gitHub, facebook, user } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -33,6 +33,14 @@ const Login = () => {
                 setLoginError(err.message)
                 console.error(err)
             })
+            fetch(`http://localhost:5000/users/${data?.email}`)
+            .then(res => res.json())
+            .then(adminData =>{
+                console.log(adminData);
+                if(adminData?.role === 'adminLogin'){
+                    Navigate('/adminDashboard')
+                }
+            });
 
     }
 
@@ -40,6 +48,19 @@ const Login = () => {
         google()
             .then(result => {
                 setCreatedUser(result.user)
+                console.log(result.user);
+                if(result?.user?.email){
+                    
+                 fetch(`http://localhost:5000/users/${result?.user?.email}`)
+                .then(res => res.json())
+                .then(adminData =>{
+                    console.log(adminData);
+                    if(adminData?.role === 'adminLogin'){
+                        Navigate('/adminDashboard')
+                    }
+                });
+                }
+               
             })
             .catch(err => {
                 setLoginError(err.message)

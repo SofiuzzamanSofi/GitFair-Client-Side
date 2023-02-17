@@ -23,8 +23,13 @@ import BlogLayout from "../Layout/BlogLayout";
 import DetailBlog from "../Components/Blog/detailBlog/DetailBlog";
 import ResetPass from "../Authentication/resetPass/ResetPass";
 // import AllServices from "../Components/AllServices/AllServices";
-import Admin from "../Admin/Admin";
+// import Admin from "../Admin/Admin";
 import LinkShortener from "../Components/LinkShortener/LinkShortener";
+import AdminDashboardLayout from "../Layout/AdminDashboardLayout";
+import Allusers from "../AdminDashBoard/AllUser/Allusers";
+import DashBoardCard from "../AdminDashBoard/DashBoardCard/DashBoardCard";
+import PaidUsers from './../AdminDashBoard/PaidUser/PaidUsers';
+import PrivateRoute from './PrivateRoutes/PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -138,10 +143,22 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/admin',
-        element: <Admin />,
+        path: '/adminDashboard',
+        element: <AdminDashboardLayout /> ,
         children: [
-
+          {
+             path:'/adminDashboard',
+             element: <DashBoardCard />
+          },
+            {
+            path:'/adminDashboard/allusers',
+            element: <Allusers />
+          },
+        
+            {
+            path:'/adminDashboard/paidusers',
+            element: <PaidUsers />
+          },
         ]
 
     }
