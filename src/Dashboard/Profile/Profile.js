@@ -5,7 +5,8 @@ import { useLoaderData } from 'react-router-dom';
 
 const Profile = () => {
     const userInfo = useLoaderData();
-    const { name, email, premiumUser } = userInfo;
+    const { name, email, premiumUser,
+        userPremiumDuration, paymentDate, price } = userInfo;
 
     // loader
     const { loading } = useContext(AuthContext);
@@ -19,19 +20,28 @@ const Profile = () => {
                 <div className="card-body text-slate-800">
                     <h1 className='card-title text-3xl font-bold '>My Profile</h1>
                     <div className='text-slate-600 py-6'>
-                        <p>Name:
+                        <p className='py-1'>Name:
                             <span className='pl-14 md:pl-20'>{name}</span>
                         </p>
-                        <p className='py-1'>Email:
+                        <p >Email:
                             <span className='pl-14 md:pl-20'> {email}</span>
                         </p>
-                        <p>Membership:
+                        <p className='py-1'>Membership:
                             <span className='pl-2 md:pl-8'>
                                 {
                                     premiumUser ?
                                         "Premium" : "Free"
                                 }
                             </span>
+                        </p>
+                        <p>Price:
+                            <span className='pl-14 md:pl-20'> ${price}</span>
+                        </p>
+                        <p className='py-1'>Validity:
+                            <span className='pl-10 md:pl-16'> {userPremiumDuration}</span>
+                        </p>
+                        <p>Date:
+                            <span className='pl-16 md:pl-20 md:ml-2'>{paymentDate}</span>
                         </p>
                     </div>
                 </div>
