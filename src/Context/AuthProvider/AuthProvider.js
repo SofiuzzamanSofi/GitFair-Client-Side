@@ -51,20 +51,20 @@ const AuthProvider = ({ children }) => {
     }, []);
 
 
-    const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
-    useEffect(() => {
-        if (user?.email) {
-            axios.post(url2, { email: user?.email })
-                .then(res => {
-                    if (res.data.success) {
-                        setPremiumUser(true);
-                        // const $zoho = window.
-                    }
-                }).catch(e => {
-                    console.log(e)
-                })
-        }
-    }, [user, url2]);
+    // const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
+    // useEffect(() => {
+    //     if (user?.email) {
+    //         axios.post(url2, { email: user?.email })
+    //             .then(res => {
+    //                 if (res.data.success) {
+    //                     setPremiumUser(true);
+    //                     // const $zoho = window.
+    //                 }
+    //             }).catch(e => {
+    //                 console.log(e)
+    //             })
+    //     }
+    // }, [user, url2]);
 
 
     const authInfo = {

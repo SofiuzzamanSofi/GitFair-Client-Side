@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
-function ChatOnline() {
-    return (
-        <div>ChatOnline</div>
-    )
-}
+const ChatOnline = () => {
+    useEffect(() => {
+        window.onload = () => {
+            window.$zoho = window.$zoho || {};
+            window.$zoho.salesiq = window.$zoho.salesiq || {
+                widgetcode: "700a8570cb17a06ac3035b6a3729d395cc5af768207a20a324e90e82b91c97ee1a2010ab7b6727677d37b27582c0e9c4",
+                values: {},
+                ready: function () { }
+            };
 
-export default ChatOnline
+            let d = document;
+            let s = d.createElement("script");
+            s.type = "text/javascript";
+            s.id = "zsiqscript";
+            s.defer = true;
+            s.src = "https://salesiq.zoho.com/widget";
+            let t = d.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(s, t);
+        };
+    }, []);
+
+    return <div id="zsiqchat" />;
+};
+
+export default ChatOnline;
