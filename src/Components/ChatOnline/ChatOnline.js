@@ -1,7 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const ChatOnline = () => {
+
+    const { user, premiumUser, loading } = useContext(AuthContext)
+
+
     useEffect(() => {
+        // if (user && premiumUser) {
         window.onload = () => {
             window.$zoho = window.$zoho || {};
             window.$zoho.salesiq = window.$zoho.salesiq || {
@@ -18,8 +24,9 @@ const ChatOnline = () => {
             s.src = "https://salesiq.zoho.com/widget";
             let t = d.getElementsByTagName("script")[0];
             t.parentNode.insertBefore(s, t);
-        };
-    }, []);
+        }
+        // }
+    }, [user, premiumUser, loading]);
 
     return <div id="zsiqchat" />;
 };
