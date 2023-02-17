@@ -20,19 +20,12 @@ function PaymentForm() {
     const stripe = useStripe();
     const elements = useElements();
 
-    // let price = 10;
+
     const url = `${process.env.REACT_APP_URL}/create-payment-intent`
-    // console.log(url);
-    // console.log(user?.displayName, user?.email)
+
 
     useEffect(() => {
         axios.post(url, { price, })
-            // fetch(url, {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify({ price, })
-            // })
-            //     .then(res => res.json())
             .then(data => setClientSecret(data.data.clientSecret))
             .catch(err => console.log(err))
     }, [price, url])

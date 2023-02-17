@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import bot from "../../assets/searchAI/bot.svg"
 import user from "../../assets/searchAI/user.svg"
 import send from "../../assets/searchAI/send.svg"
-import './SearchAi.module.css';
 import axios from 'axios';
 
 
@@ -61,20 +60,21 @@ const SearchAi = () => {
     function chatStripe(isAi, value, uniqueId) {
         return (
             `
-            <div className="wrapper ${isAi && 'ai'}">
-                <div className="chat">
-                    <div className="profile">
+            <div class="wrapper ${isAi && 'ai'}">
+                <div class="chat">
+                    <div class="profile">
                         <img 
                           src=${isAi ? bot : user} 
                           alt="${isAi ? 'bot' : 'user'}" 
                         />
                     </div>
-                    <div className="message" id=${uniqueId}>${value}</div>
+                    <div class="message" id=${uniqueId}>${value}</div>
                 </div>
             </div>
         `
         )
     }
+
 
 
 
@@ -125,10 +125,16 @@ const SearchAi = () => {
         }
     }
 
+    const handleKeyDown = (e) => {
+        if (e.keyCode === 13) {
+            console.log("object");
+            handleOpenAiChatGptFunction();
+        }
+    }
 
     return (
         <div
-            className='flex flex-col items-center justify-between min-h-screen'
+            className='flex flex-col items-center justify-between chatgpt'
         >
 
 
@@ -157,7 +163,7 @@ const SearchAi = () => {
                     value={searchInputText?.text}
                     // set input text value on use state -------
                     onChange={(e) => setSearchInputText({ text: e?.target?.value })}
-
+                    onKeyDown={handleKeyDown}
                 >
                 </textarea>
                 <button className=''>
