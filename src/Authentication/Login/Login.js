@@ -39,8 +39,14 @@ const Login = () => {
                 console.log(adminData);
                 if(adminData?.role === 'adminLogin'){
                     Navigate('/adminDashboard')
+                    return 
                 }
+                        
+                    
+                   
             });
+            Navigate('/');
+                   
 
     }
 
@@ -57,13 +63,21 @@ const Login = () => {
                     console.log(adminData);
                     if(adminData?.role === 'adminLogin'){
                         Navigate('/adminDashboard')
-                    }
+                        return
+                        
+                    } 
+                        
+                 
+                    
+                    
                 });
+                Navigate('/');
                 }
                
             })
             .catch(err => {
                 setLoginError(err.message)
+                
             })
     };
 

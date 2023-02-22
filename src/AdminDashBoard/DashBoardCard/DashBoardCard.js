@@ -1,72 +1,60 @@
 import React from "react";
-import "./DashBoardCard.css";
-import TransactionChart from "./TransactionChart";
-import { BiUserPlus } from "react-icons/bi";
-import { useQuery } from "@tanstack/react-query";
+import "../DashBoardCard/DashBoardCard.css";
+import SingleCard from "../DashBoardCard/SingleCard";
+
+import MileChart from "../DashBoardCard/Charts/MileChart";
+import CarStatsChart from "../DashBoardCard/Charts/CarStatsChart";
 
 
-const dashBoardCards = [
 
-    
 
-  {
-    image: <BiUserPlus />,
-    title: "Total Blance",
-    incom: "$150k",
-    increment:<span><span className="text-[#5DAF50]">+25%</span> than last week</span> 
-  },
-  {
-    image: <BiUserPlus />,
-    title: "Total User",
-    incom: 1500,
-    increment:<span> <span className="text-[#5DAF50]">+35%</span> than last week</span> 
-  },
-  {
-    image: <BiUserPlus />,
-    title: "paid User",
-    incom: 500,
-    increment:<span> <span className="text-[#5DAF50]">+5%</span> than last week</span> 
-  },
-  {
-    image: <BiUserPlus />,
-    title: "Total Upload",
-    incom: 1000,
-    increment:<span> <span className="text-[#5DAF50]">+25%</span> than last week</span> ,
-  },
-  
-  
-];
+const carObj = {
+  title: "Total Cars",
+  totalNumber: 750,
+  icon: "ri-police-car-line",
+};
+
+const tripObj = {
+  title: "Daily Trips",
+  totalNumber: 1697,
+  icon: "ri-steering-2-line",
+};
+
+const clientObj = {
+  title: "Clients Annually",
+  totalNumber: "85k",
+  icon: "ri-user-line",
+};
+
+const distanceObj = {
+  title: "Kilometers Daily",
+  totalNumber: 2167,
+  icon: "ri-timer-flash-line",
+};
 
 const DashBoardCard = () => {
-
-   
-
   return (
-    <div className=" ">
-        {/* <AdminNavber /> */}
-      <div className=" grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-[50px] gap-3">
-        {dashBoardCards?.map((dashBoardC) => (
-          <div className="text-black mx-auto card shadow-2xl w-full mb-6 ">
-            <div className="flex flex-row justify-between cards-deatails  ">
-              <div className="iconbx">
-                <div className="icons">{dashBoardC?.image}</div>
-              </div>
-              <div>
-                <h1 className="">{dashBoardC?.title}</h1>
-                <p>{dashBoardC?.incom}</p>
-              </div>
-            </div>
-            <div className="text-center card-text">
-              <p>
-              {dashBoardC?.increment}
-                {/* <span className="text-[#5DAF50]">+55%</span> than last week */}
-              </p>
-            </div>
+    <div className="dashboard ">
+      <div className="dashboard__wrapper w-full ">
+        <div className="dashboard__cards  ">
+          <SingleCard item={carObj} />
+          <SingleCard item={tripObj} />
+          <SingleCard item={clientObj} />
+          <SingleCard item={distanceObj} />
+        </div>
+
+        <div className="statics">
+          <div className="stats">
+            <h3 className="stats__title">Miles Statistics</h3>
+            <MileChart />
           </div>
-        ))}      
-      </div>
-      <div className="mt-10">
-        <TransactionChart />
+
+          <div className="stats">
+            <h3 className="stats__title">Car Statistics</h3>
+            <CarStatsChart />
+          </div>
+        </div>
+     
       </div>
     </div>
   );
