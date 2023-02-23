@@ -2,16 +2,21 @@ import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
-import ACTIONS, { DISCONNECTED } from './Actions';
+import ACTIONS from './Actions';
 import Client from './Client';
 import EditorPart from './EditorPart';
 import './Style.css';
 import { initSocket } from './../../socket';
+import { BiSend } from "react-icons/bi";
+import Avatar from 'react-avatar';
 // import { useLocation, useNavigate, useParams } from 'react-router-dom';
 // import { toast } from 'react-hot-toast';
 
 const LiveEditor = () => {
 
+
+    const [messages, setMessages] = useState([]);
+    const [messageInput, setMessageInput] = useState('');
     const socketRef = useRef(null);
     const codeRef = useRef(null);
     const location = useLocation();
@@ -44,6 +49,11 @@ const LiveEditor = () => {
                 userName: location?.state?.userName
             });
 
+            socketRef.current.on('message', (data) => {
+                setMessages((messages) => [
+                    ...messages,
+                    { user: data.user, message: data.message }]);
+            });
             // listening for joined event notifications --
             socketRef.current.on(ACTIONS.JOINED, ({ clients, userName, socketId }) => {
                 if (userName !== location.state?.userName) {
@@ -79,7 +89,14 @@ const LiveEditor = () => {
             socketRef?.current?.disconnect();
             socketRef?.current?.off(ACTIONS.DISCONNECTED);
         }
-    }, [])
+    }, []);
+
+    const handleSendMessage = (event) => {
+        event.preventDefault();
+        // const message = messageInputRef.current.value;
+        socketRef.current.emit('message', { message: messageInput, user: location?.state?.userName });
+        setMessageInput('');
+    };
 
 
     const copyRoomId = async () => {
@@ -104,20 +121,20 @@ const LiveEditor = () => {
 
     return (
         <div>
-            <div className="navbar place-content-end bg-black">
-                <button className='btn btn-success rounded-xl mx-5 text-white uppercase'
-                    onClick={copyRoomId}
-                >
-                    Copy ID
-                </button>
-                <button className='btn btn-error rounded-xl text-white uppercase'
-                    onClick={leaveRoome}
-                >
-                    Leave Room
-                </button>
+            <div className="navbar bg-black">
+                <div>
+                    <h3 className='people font-bold mx-2'>Connected</h3>
+                    {/* clients avatar show -----  */}
+                    <div className='flex gap-2'>
+                        {clients && clients?.map((client, index) => (
+                            <Client key={index} client={client} />
+                        ))}
+                    </div>
+                </div>
+
             </div>
             <div className='flex'>
-                <div className='w-11/12 bg-[#282A36] editor'>
+                <div className='lg:w-9/12 w-4/6 bg-[#282A36] editor'>
 
                     {/* this is code editor textarea -------------- */}
                     <EditorPart
@@ -128,16 +145,39 @@ const LiveEditor = () => {
                         }}
                     />
                 </div>
-                <div className='text-black text-center'>
+                <div className='text-black border lg:w-2/6'>
+                    <div className='mb-2 flex justify-between bg-[#cbd5e1] p-2'>
+                        <button className='btn btn-success rounded text-white uppercase btn-xs text-[10px]'
+                            onClick={copyRoomId}
+                        >
+                            Copy ID
+                        </button>
+                        <button className='btn btn-error rounded text-white uppercase btn-xs text-[10px]'
+                            onClick={leaveRoome}
+                        >
+                            Leave Room
+                        </button>
+                    </div>
                     <div className=''>
-                        <h3 className='people font-bold'>Connected People</h3>
-
-                        {/* clients avatar show -----  */}
-                        <div className='flex items-center justify-center flex-wrap gap-4 py-4 max-w-[160px]'>
-                            {clients && clients?.map((client, index) => (
-                                <Client key={index} client={client} />
+                        <div className='chat chat-start lg:h-[58vh] h-[54vh] sm:h-[43vh] overflow-auto block'>
+                            {messages.map((message, index) => (
+                                <div className='text-[14px] chat-bubble mb-1 rounded-xl' key={index}>
+                                    <strong className='lg:text-[12px] text-[10px]'><Avatar name={message.user} round="14px" size="30" />{message.user}: </strong>{message.message}
+                                </div>
                             ))}
                         </div>
+                        <div >
+                            <form className='flex' onSubmit={handleSendMessage}>
+                                <input className="w-full input input-bordered input-sm bg-white input-success"
+                                    type="text"
+                                    value={messageInput}
+                                    onChange={(event) => setMessageInput(event.target.value)}
+                                    placeholder="Type Message here"
+                                />
+                                <button className='text-2xl' type="submit"><BiSend /></button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>

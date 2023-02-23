@@ -8,7 +8,10 @@ import 'aos/dist/aos.css';
 
 const Services = () => {
     useEffect(() => {
-        AOS.init({ duration: 3000 });
+        AOS.init({ 
+            disable: "mobile",
+            duration: 3000 
+        });
     })
 
 

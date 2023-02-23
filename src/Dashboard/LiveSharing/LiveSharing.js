@@ -10,7 +10,7 @@ const LiveSharing = () => {
     const navigate = useNavigate();
 
     const [roomId, setRoomId] = useState('');
-    const [userName, setuserName] = useState('');
+    const [userName, setuserName] = useState(user?.displayName);
     const createNewRoom = (e) => {
         e.preventDefault();
         const id = uuidV4();
@@ -38,14 +38,14 @@ const LiveSharing = () => {
     return (
         <div className='grid place-items-center h-screen'>
             <div className="card card-compact sm:w-2/3 bg-base-100 shadow-xl rounded-xl py-12">
-                <figure><img src="https://i.ibb.co/XFmb29G/logo.png" alt="Shoes" /></figure>
+                <figure><img src="https://i.ibb.co/XFmb29G/logo.png" alt="logo" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">Share your Code With Others - {user?.displayName}</h2>
+                    <h2 className="card-title">Share your Room ID with others to join together</h2>
+                    <h2 className="text-[#fca5a5]">If Joining failed, then try again later after 1/2 minutes</h2>
                     <div className='sm:flex'>
                         <input type="text" onChange={(e) => setRoomId(e.target.value)} value={roomId} placeholder="Room ID" className="input w-full bg-white text-black" />
                         <button onClick={createNewRoom} className="btn btn-outline btn-warning uppercase">Generate New ID</button>
                     </div>
-                    <input type="text" onChange={(e) => setuserName(e.target.value)} value={userName} placeholder="User" className="input w-1/3 bg-white text-black" />
                     <div className="card-actions justify-Start">
                         <button onClick={joinRoom} className="btn btn-primary bg-[#66C555] text-white rounded-xl uppercase">Join Room</button>
                     </div>

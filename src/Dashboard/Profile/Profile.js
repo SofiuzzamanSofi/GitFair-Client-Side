@@ -5,7 +5,6 @@ import { useLoaderData } from 'react-router-dom';
 
 const Profile = () => {
     const userInfo = useLoaderData();
-    console.log(userInfo);
     const { name, email, premiumUser } = userInfo;
 
     // loader

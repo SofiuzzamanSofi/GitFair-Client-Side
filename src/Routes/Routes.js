@@ -45,19 +45,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <PrivateRoute><About /></PrivateRoute>
+                element: <About />
             },
             {
                 path: '/contact',
-                element: <PrivateRoute><Contact /></PrivateRoute>
+                element: <Contact />
             },
             {
                 path: '/privacyandpolicy',
-                element: <PrivateRoute><Privacyandpolicy /></PrivateRoute>
+                element: <Privacyandpolicy />
             },
             {
                 path: '/termsandvondition',
-                element: <PrivateRoute><TermsandCondition /></PrivateRoute>,
+                element: <TermsandCondition />
             },
             {
                 path: '/compiler',
@@ -132,7 +132,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/bloglayout',
-        element: <PrivateRoute><BlogLayout /></PrivateRoute>,
+        element: <BlogLayout />,
         children: [
             {
                 path: '/bloglayout/blog',
@@ -140,7 +140,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/bloglayout/detailblog/:id',
-                element: <DetailBlog></DetailBlog>,
+                element: <PrivateRoute>,<DetailBlog/></PrivateRoute>,
                 loader: async ({ params }) => fetch(`https://gitfair-server-hopefyjamshed.vercel.app/uploaded/${params.id}`)
             }
 
@@ -148,7 +148,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/adminDashboard',
-        element: <AdminDashboardLayout /> ,
+        element: <PrivateRoute><AdminDashboardLayout /></PrivateRoute>,
        
         children: [
           {

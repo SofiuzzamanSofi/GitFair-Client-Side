@@ -1,7 +1,13 @@
 
 .editor{
-    height: 87vh;
+    height: 67vh;
 }
 .people{
-    font-size: 20px;
+    font-size: 10px;
+}
+.drawer-toggle ~ .drawer-side{
+    max-height: 78vh;
+}
+.drawer{
+    height: 78dvh;
 }

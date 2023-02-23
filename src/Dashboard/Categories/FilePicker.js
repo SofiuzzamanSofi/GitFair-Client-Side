@@ -30,7 +30,6 @@ const FilePicker = ({ setShowPicker }) => {
                         url: res.filesUploaded[0].url,
                         size: res.filesUploaded[0].size,
                         handle: res.filesUploaded[0].handle,
-                        mimetype: res.filesUploaded[0].mimetype
                     }
                     // console.log(myFiles);
                     fetch('https://file-upload-server-gitfair.glitch.me/files', {

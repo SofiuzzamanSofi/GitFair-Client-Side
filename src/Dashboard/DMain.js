@@ -6,10 +6,10 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 const DMain = () => {
     const { user } = useContext(AuthContext)
     return (
-        <div className='lg:w-[1240px] mx-auto bg-white rounded-xl p-4 gap-2'>
+        <div className='lg:w-[1240px] mx-auto bg-white rounded-xl lg:p-4 gap-2'>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col p-5">
+                <div className="drawer-content flex flex-col lg:p-5">
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                     <>
                         <Outlet />
@@ -17,7 +17,7 @@ const DMain = () => {
                 </div>
                 <div className="drawer-side rounded-xl">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-black text-white">
+                    <ul className="menu p-4 w-60 bg-black text-white">
                         <div>
                             <div className='flex flex-col items-center border-b-2 pb-6'>
                                 {user?.email ?
@@ -32,7 +32,7 @@ const DMain = () => {
                                         <p>NaN</p>
                                     }
                                     {user?.email ?
-                                        <p>
+                                        <p className='hidden'>
                                             <span>Email: </span>
                                             {user?.email}
                                         </p>
