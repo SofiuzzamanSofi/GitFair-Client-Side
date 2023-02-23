@@ -13,12 +13,12 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const { login, google,gitHub, facebook, user } = useContext(AuthContext)
+    const { login, google, gitHub, facebook, user } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const [createdUser, setCreatedUser] = useState("");
- 
+
 
     // const location = useLocation()
     const Navigate = useNavigate()
@@ -34,16 +34,16 @@ const Login = () => {
                 setLoginError(err.message)
                 console.error(err)
             })
-            fetch(`https://file-upload-server-gitfair.glitch.me/users/${data?.email}`)
+        fetch(`https://file-upload-server-gitfair.glitch.me/users/${data?.email}`)
             .then(res => res.json())
-            .then(adminData =>{
+            .then(adminData => {
                 console.log(adminData);
-                if(adminData?.role === 'adminLogin'){
+                if (adminData?.role === 'adminLogin') {
                     Navigate('/adminDashboard')
                     return
                 }
             });
-            Navigate('/');
+        Navigate('/');
 
     }
 
@@ -52,27 +52,27 @@ const Login = () => {
             .then(result => {
                 setCreatedUser(result.user)
                 console.log(result.user);
-                if(result?.user?.email){
-                    
-                 fetch(`https://file-upload-server-gitfair.glitch.me/users/${result?.user?.email}`)
-                .then(res => res.json())
-                .then(adminData =>{
-                    console.log(adminData);
-                    if(adminData?.role === 'adminLogin'){
-                        Navigate('/adminDashboard')
-                        return
-                    }
-                });
-                Navigate('/')
+                if (result?.user?.email) {
+
+                    fetch(`https://file-upload-server-gitfair.glitch.me/users/${result?.user?.email}`)
+                        .then(res => res.json())
+                        .then(adminData => {
+                            console.log(adminData);
+                            if (adminData?.role === 'adminLogin') {
+                                Navigate('/adminDashboard')
+                                return
+                            }
+                        });
+                    Navigate('/')
                 }
-               
+
             })
             .catch(err => {
                 setLoginError(err.message)
             })
     };
 
-   
+
     const gitHandler = () => {
         gitHub()
             .then(result => {
