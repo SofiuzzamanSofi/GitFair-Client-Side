@@ -57,7 +57,6 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        toast.success('user data added successfully')
                     })
                 Navigate('/')
 
@@ -98,7 +97,6 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        toast.success('user data added successfully')
                     })
                 Navigate('/')
             })

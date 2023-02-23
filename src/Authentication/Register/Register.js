@@ -20,7 +20,6 @@ const Register = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
-                toast.success('User Created Successfully!')
                 const userInfo = {
                     displayName: data.fullName
                 }
@@ -43,7 +42,7 @@ const Register = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        toast.success('user data added successfully')
+
                     })
 
                 Navigate('/')
@@ -64,7 +63,7 @@ const Register = () => {
                 console.log(user)
                 Navigate('/')
                 const users = {
-                    uid:user?.uid,
+                    uid: user?.uid,
                     name: user?.displayName,
                     email: user?.email,
                     premiumUser: false,
@@ -81,7 +80,7 @@ const Register = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        toast.success('user data added successfully')
+
                     })
             })
             .catch(err => {
@@ -111,7 +110,6 @@ const Register = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        toast.success('user data added successfully')
                     })
             })
             .catch(err => {
