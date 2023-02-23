@@ -8,7 +8,7 @@ const ChatOnline = () => {
 
     useEffect(() => {
         if (user && premiumUser) {
-            console.log(premiumUser, user);
+            // console.log(premiumUser, user);
             window.onload = () => {
                 window.$zoho = window.$zoho || {};
                 window.$zoho.salesiq = window.$zoho.salesiq || {
@@ -29,7 +29,13 @@ const ChatOnline = () => {
         }
     }, [user, premiumUser, loading]);
 
-    return <div id="zsiqchat" />;
+
+
+    if (user && premiumUser) {
+        return <div id="zsiqchat" className='print:hidden' />;
+    } else {
+        return <div className='print:hidden' />;
+    }
 };
 
 export default ChatOnline;

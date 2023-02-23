@@ -19,17 +19,23 @@ function PaymentForm() {
     const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
+    const [usdBdt, setUsdBdt] = useState("usd");
 
 
-    const url = `${process.env.REACT_APP_URL}/create-payment-intent`
 
-
+    // stripe pay api is connected and pay button enable ---
     useEffect(() => {
+        const url = `${process.env.REACT_APP_URL}/create-payment-intent`
         axios.post(url, { price, })
             .then(data => setClientSecret(data.data.clientSecret))
             .catch(err => console.log(err))
-    }, [price, url])
+    }, [price])
 
+
+
+
+
+    // payment processs start ---
     const handleSubmit = async (event) => {
         event.preventDefault();
         setProcessingButton(true);
@@ -78,7 +84,6 @@ function PaymentForm() {
             toast.success(`Dear ${user?.displayName} your $${price} payment is success. Transaction Id is ${paymentIntent?.id} Thank you.`)
             console.log("paymentIntentpaymentIntent", paymentIntent);
 
-            const url2 = `${process.env.REACT_APP_URL}/premiumuser`;
             const payConfirmUserDb = {
                 name: user?.displayName,
                 email: user?.email,
@@ -89,6 +94,8 @@ function PaymentForm() {
             };
             // console.log(payConfirmUserDb)
 
+            // payment success data store on mongodb
+            const url2 = `${process.env.REACT_APP_URL}/premiumuser`;
             axios.post(url2, payConfirmUserDb)
                 .then(res => {
                     setProcessingButton(false);
@@ -102,8 +109,15 @@ function PaymentForm() {
                     toast.error("Something wrong to user information on mongoDb.")
                 })
         }
-
     };
+
+
+    // usdBdt button colorchange ---
+    const usdBdtButtonFn = (e) => {
+        setUsdBdt(e);
+    }
+    console.log(usdBdt);
+
 
 
     return (
@@ -111,16 +125,41 @@ function PaymentForm() {
             className='container rounded-2xl mx-auto py-14 mt-8 md:p-20 flex-col flex justify-center items-center border bg-slate-100'
         >
             <img className='w-[350px] rounded-md' src={cardLogo} alt="" />
-            <p className='text-black py-5'>Your net Payable amount is <span className='font-bold'>$ {price}.00</span></p>
+            <p className='text-black py-5'>
+                Your net Payable amount is:
+                {usdBdt === "usd" ? <span className='font-extrabold'> $</span> : ""}
+                <span className='font-bold'>
+                    {usdBdt === "usd" ? price : price * 107} .00
+                </span>
+                {usdBdt === "bdt" ? <span className='font-extrabold'> &#x9F3;</span> : ""}
+
+            </p>
+            <div className='text-black text-left py-2'>
+                <div>Please Choose your Currency:</div>
+                <div className='flex gap-4'>
+                    <button
+                        className={`btn bg-[#66C555] uppercase text-sm] text-white rounded-lg hover:opacity-100 ${usdBdt !== "usd" ? "opacity-20" : ""}`}
+                        onClick={() => usdBdtButtonFn("usd")}
+                    >
+                        International: USD
+                    </button>
+                    <button
+                        className={`btn bg-[#66C555] uppercase text-sm] text-white rounded-lg hover:opacity-100 ${usdBdt !== "bdt" ? "opacity-20" : ""}`}
+                        onClick={() => usdBdtButtonFn("bdt")}
+                    >
+                        Bangladesh: BDT
+                    </button>
+                </div>
+            </div>
             <form
-                className='text-black border px-1 pt-6 rounded-lg min-w-[300px] max-w-[450px] w-full mx-auto'
+                className='text-black border border-[#66C555] px-1 pt-6 rounded-lg min-w-[300px] max-w-[450px] w-full mx-auto'
                 onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
                             base: {
                                 fontSize: '16px',
-                                color: '#424770',
+                                color: '#000000',
                                 '::placeholder': {
                                     color: '#aab7c4',
                                 },
