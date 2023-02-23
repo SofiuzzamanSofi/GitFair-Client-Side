@@ -51,10 +51,10 @@ const AuthProvider = ({ children }) => {
     }, []);
 
 
-    const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
     useEffect(() => {
+        const urlPremium = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
         if (user?.email) {
-            axios.post(url2, { email: user?.email })
+            axios.post(urlPremium, { email: user?.email })
                 .then(res => {
                     if (res.data.success) {
                         console.log("Before premium user:", premiumUser);
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
                     console.log(e)
                 })
         }
-    }, [user, url2, premiumUser]);
+    }, [user, premiumUser]);
 
 
     const authInfo = {
