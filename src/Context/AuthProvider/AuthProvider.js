@@ -67,7 +67,6 @@ const AuthProvider = ({ children }) => {
         }
     }, [user, url2, premiumUser]);
 
-    const a = "testing"
 
     const authInfo = {
         user,
