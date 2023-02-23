@@ -57,18 +57,21 @@ const AuthProvider = ({ children }) => {
             axios.post(url2, { email: user?.email })
                 .then(res => {
                     if (res.data.success) {
+                        console.log("Before premium user:", premiumUser);
                         setPremiumUser(true);
+                        console.log("After premium user:", premiumUser);
                     }
                 }).catch(e => {
                     console.log(e)
                 })
         }
-    }, [user, url2]);
+    }, [user, url2, premiumUser]);
 
 
     const authInfo = {
         user,
         premiumUser,
+        setPremiumUser,
         google,
         gitHub,
         signUp,

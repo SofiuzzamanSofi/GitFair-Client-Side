@@ -11,7 +11,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 function PaymentForm() {
 
-    const { user } = useContext(AuthContext)
+    const { user, setPremiumUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const { price } = useParams();
     const [processingButton, setProcessingButton] = useState(false);
@@ -93,6 +93,7 @@ function PaymentForm() {
                 .then(res => {
                     setProcessingButton(false);
                     if (res.data?.success) {
+                        setPremiumUser(true);
                         navigate("/dashboard")
                     }
                 }).catch(e => {
