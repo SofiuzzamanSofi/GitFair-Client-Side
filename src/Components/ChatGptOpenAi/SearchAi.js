@@ -46,13 +46,7 @@ const SearchAi = () => {
         }, 20)
     };
 
-    // generate unique Id for each async.. ---
-    const generateUniqueId = () => {
-        const timeStamp = Date.now();
-        const randomNumber = Math.random();
-        const hexadecimalString = randomNumber.toString(16);
-        return `id-${timeStamp}-${hexadecimalString}`;
-    };
+
 
     function chatStripe(isAi, value, uniqueId) {
         return (
@@ -81,6 +75,31 @@ const SearchAi = () => {
     const handleOpenAiChatGptFunction = () => {
 
         if (searchInputText) {
+            setSearchInputText({ text: "" });
+
+
+            // generate unique Id for each async.. ---
+            const generateUniqueId = () => {
+                const timeStamp = Date.now();
+                const randomNumber = Math.random();
+                const hexadecimalString = randomNumber.toString(16);
+                return `id-${timeStamp}-${hexadecimalString}`;
+            };
+
+            // get uniqueId from uniqueId function ----
+            const uniqueId = generateUniqueId();
+            // insert ans to the useState ---
+            setChatLog([...chatLog, {
+                uniqueId: "",
+                question: searchInputText?.text,
+            }, {
+                uniqueId: uniqueId,
+                answer: "data",
+            }]);
+            const element = document.getElementById(uniqueId);
+            console.log("id paise:", element);
+
+
             // setChatLog([...chatLog, {
             //     uniqueId: "",
             //     question: searchInputText?.text,
@@ -100,19 +119,20 @@ const SearchAi = () => {
                 .then(res => {
                     const data = res?.data?.bot?.trim()
                     // console.log("this is axios back:", data);
-                    setSearchInputText({ text: "" });
+                    // setSearchInputText({ text: "" });
 
-                    // get uniqueId from uniqueId function ----
-                    const uniqueId = generateUniqueId();
 
-                    // insert ans to the useState ---
-                    setChatLog([...chatLog, {
-                        uniqueId: "",
-                        question: searchInputText?.text,
-                    }, {
-                        uniqueId: uniqueId,
-                        answer: data,
-                    }])
+
+                    // // insert ans to the useState ---
+                    // setChatLog([...chatLog, {
+                    //     uniqueId: "",
+                    //     question: searchInputText?.text,
+                    // }, {
+                    //     uniqueId: uniqueId,
+                    //     answer: data,
+                    // }])
+                    document.getElementById(uniqueId).innerText = data;
+
                 }).catch(error => console.log(error))
             // console.log({ searchInputText });
             // setSearchInputText("");
