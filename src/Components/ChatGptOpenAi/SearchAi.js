@@ -33,18 +33,18 @@ const SearchAi = () => {
         }, 200)
     };
 
-    // text typed every 20 millisecond---
-    const typeText = (element, text) => {
-        let index = 0;
-        let interval = setInterval(() => {
-            if (index < text.length) {
-                element.innerHtml += text.chartAt(index);
-                index++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 20)
-    };
+    // // text typed every 20 millisecond---
+    // const typeText = (element, text) => {
+    //     let index = 0;
+    //     let interval = setInterval(() => {
+    //         if (index < text.length) {
+    //             element.innerHtml += text.chartAt(index);
+    //             index++;
+    //         } else {
+    //             clearInterval(interval);
+    //         }
+    //     }, 20)
+    // };
 
 
 
@@ -94,10 +94,10 @@ const SearchAi = () => {
                 question: searchInputText?.text,
             }, {
                 uniqueId: uniqueId,
-                answer: "data",
+                answer: "loading...",
             }]);
-            const element = document.getElementById(uniqueId);
-            console.log("id paise:", element);
+            // const element = document.getElementById(uniqueId);
+            // console.log("id paise:", element);
 
 
             // setChatLog([...chatLog, {
@@ -117,6 +117,9 @@ const SearchAi = () => {
             const url = `${process.env.REACT_APP_URL_CHAT_GPT}/searchai`
             axios.post(url, { prompt: searchInputText?.text })
                 .then(res => {
+                    const element = document.getElementById(uniqueId);
+                    // console.log("id paise:", element);
+
                     const data = res?.data?.bot?.trim()
                     // console.log("this is axios back:", data);
                     // setSearchInputText({ text: "" });
@@ -131,7 +134,24 @@ const SearchAi = () => {
                     //     uniqueId: uniqueId,
                     //     answer: data,
                     // }])
-                    document.getElementById(uniqueId).innerText = data;
+                    // document.getElementById(uniqueId).innerText = data;
+                    // typeText(element, data)
+                    element.innerText = "";
+                    // text typed every 20 millisecond---
+                    const typeText = (element, text) => {
+                        let index = 0;
+                        let interval = setInterval(() => {
+                            if (index < text.length) {
+                                element.innerHTML += text.charAt(index);
+                                index++;
+                            } else {
+                                clearInterval(interval);
+                            }
+                        }, 20)
+                    };
+
+                    typeText(element, data)
+                    console.log("function shesh");
 
                 }).catch(error => console.log(error))
             // console.log({ searchInputText });
