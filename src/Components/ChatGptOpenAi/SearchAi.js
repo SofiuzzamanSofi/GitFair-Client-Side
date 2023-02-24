@@ -113,7 +113,16 @@ const SearchAi = () => {
             //     user: `${searchInputText?.text}`,
             //     message: "m2",
             // }])
-
+            let loadInterval;
+            setTimeout(() => {
+                const element = document.getElementById(uniqueId);
+                loadInterval = setInterval(() => {
+                    element.textContent += ".";
+                    if (element.textContent === "......") {
+                        element.textContent = ".";
+                    }
+                }, 300)
+            }, 100);
             const url = `${process.env.REACT_APP_URL_CHAT_GPT}/searchai`
             axios.post(url, { prompt: searchInputText?.text })
                 .then(res => {
@@ -136,6 +145,7 @@ const SearchAi = () => {
                     // }])
                     // document.getElementById(uniqueId).innerText = data;
                     // typeText(element, data)
+                    clearInterval(loadInterval)
                     element.innerText = "";
                     // text typed every 20 millisecond---
                     const typeText = (element, text) => {
