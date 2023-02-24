@@ -49,7 +49,7 @@ const DataCard = ({ data, refetch }) => {
 
         <div>
 
-            <a href={`/bloglayout/detailblog/${_id}`}>
+            <Link to={`/bloglayout/detailblog/${_id}`}>
                 <div className="card lg:hidden md:hidden rounded-2xl mb-12 lg:h-[600px] bg-white shadow-xl lg:min-h-[600px] relative max-w-md lg:w-[400px] mx-auto">
 
                     <figure><img src={image} className='md:h-[350px] lg:h-[350px] md:w-[400px] w-full lg:w-full' alt="Album" /></figure>
@@ -119,10 +119,10 @@ const DataCard = ({ data, refetch }) => {
                     </div>
 
                 </div>
-            </a>
+            </Link>
 
             <div className='p-5 mt-6  hidden lg:inline md:inline'>
-                < a href={`/bloglayout/detailblog/${_id}`}>
+                <Link to={`/bloglayout/detailblog/${_id}`}>
                     <div className='card bg-white shadow-xl hover:shadow-2xl duration-500 p-10'>
 
                         {
@@ -170,7 +170,7 @@ const DataCard = ({ data, refetch }) => {
                             </div>
                         </div>
                     </div>
-                </a >
+                </Link >
             </div>
 
         </div>
