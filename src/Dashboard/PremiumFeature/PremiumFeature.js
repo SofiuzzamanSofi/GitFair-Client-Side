@@ -14,7 +14,8 @@ function PremiumFeature() {
         return (
             <div className='text-black flex flex-col justify-center items-center'>
                 <h1 className='text-4xl'>You are a premium user.</h1>
-                <p className='font-bold'>Your dashboard is updated soon.</p>
+                <p className='font-bold'> Real Time Live chat available now.</p>
+                <p className='font-bold'>More Premium Feature is coming soon.</p>
                 <PayBillVoucher />
             </div>
         )
