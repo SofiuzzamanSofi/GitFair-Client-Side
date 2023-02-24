@@ -4,7 +4,6 @@ import NavBar from './NavBar/NavBar';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import logo from "../../../assets/logo.png"
-import axios from 'axios';
 import userimg from '../../../assets/resources/avatar2.png'
 
 const Header = () => {
@@ -13,7 +12,8 @@ const Header = () => {
     const handleLogout = () => {
         logout()
             .then(() => {
-                Navigate('/login')
+                window.location.replace("/login")
+                // Navigate('/login')
             })
             .catch(err => {
                 console.log(err)

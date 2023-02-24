@@ -36,7 +36,7 @@ const ViewBlogs = () => {
             return data
         }
     })
-    refetch()
+
 
 
     const handleUpload = data => {

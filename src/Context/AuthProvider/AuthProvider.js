@@ -8,7 +8,7 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [premiumUser, setPremiumUser] = useState(false);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider()
     const gitProvider = new GithubAuthProvider()
 
@@ -51,24 +51,28 @@ const AuthProvider = ({ children }) => {
     }, []);
 
 
-    const url2 = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
     useEffect(() => {
+        const urlPremium = `${process.env.REACT_APP_URL}/premiumuserfromdb`;
         if (user?.email) {
-            axios.post(url2, { email: user?.email })
+            axios.post(urlPremium, { email: user?.email })
                 .then(res => {
                     if (res.data.success) {
-                        setPremiumUser(true);
+                        // console.log(res.data.success);
+                        // console.log("Before premium user:", premiumUser);
+                        setPremiumUser(res.data?.data);
+                        // console.log("After premium user:", premiumUser);
                     }
                 }).catch(e => {
                     console.log(e)
                 })
         }
-    }, [user, url2]);
+    }, [user]);
 
 
     const authInfo = {
         user,
         premiumUser,
+        setPremiumUser,
         google,
         gitHub,
         signUp,
@@ -76,8 +80,7 @@ const AuthProvider = ({ children }) => {
         login,
         logout,
         passReset,
-        loading
-
+        loading,
     }
     return (
         <AuthContext.Provider value={authInfo}>

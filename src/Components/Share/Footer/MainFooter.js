@@ -4,7 +4,7 @@ import { BsFacebook, BsTwitter, BsLinkedin, BsYoutube } from "react-icons/bs";
 
 const MainFooter = () => {
     return (
-        <div className='grid mx-auto grid-cols-1 md:grid-cols-3 lg:w-[1240px] py-16 lg:px-0 md:px-11 sm:px-11 small-display small-d-p-top'>
+        <div className='grid mx-auto grid-cols-1 md:grid-cols-3 lg:w-[1240px] py-16 lg:px-0 md:px-11 sm:px-11 small-display small-d-p-top print:hidden'>
             <div>
                 <img src='https://i.ibb.co/XFmb29G/logo.png' alt='logo' />
                 <p>GitFair is a powerful platform for developers, providing a range of features that make it easier for them to manage their projects and collaborate with others.</p>

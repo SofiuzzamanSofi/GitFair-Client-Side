@@ -11,7 +11,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 function PaymentForm() {
 
-    const { user } = useContext(AuthContext)
+    const { user, setPremiumUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const { price } = useParams();
     const [processingButton, setProcessingButton] = useState(false);
@@ -19,17 +19,25 @@ function PaymentForm() {
     const [clientSecret, setClientSecret] = useState("");
     const stripe = useStripe();
     const elements = useElements();
-
+    const [usdBdt, setUsdBdt] = useState("usd");
 
     const url = `${process.env.REACT_APP_URL}/create-payment-intent`
+    const url2 = `${process.env.REACT_APP_URL}/premiumuser`;
+    const url3 = `${process.env.REACT_APP_URL}/pay-sslcommerz`;
 
-
+    // stripe pay api is connected and pay button enable ---
     useEffect(() => {
+
         axios.post(url, { price, })
             .then(data => setClientSecret(data.data.clientSecret))
             .catch(err => console.log(err))
-    }, [price, url])
+    }, [price])
 
+
+
+
+
+    // payment processs start ---
     const handleSubmit = async (event) => {
         event.preventDefault();
         setProcessingButton(true);
@@ -76,9 +84,8 @@ function PaymentForm() {
         }
         if (paymentIntent.status === "succeeded") {
             toast.success(`Dear ${user?.displayName} your $${price} payment is success. Transaction Id is ${paymentIntent?.id} Thank you.`)
-            console.log("paymentIntentpaymentIntent", paymentIntent);
+            // console.log("paymentIntentpaymentIntent", paymentIntent);
 
-            const url2 = `${process.env.REACT_APP_URL}/premiumuser`;
             const payConfirmUserDb = {
                 name: user?.displayName,
                 email: user?.email,
@@ -86,23 +93,65 @@ function PaymentForm() {
                 price,
                 userPremiumDuration: "1 year",
                 paymentDate: new Date(),
+                transactionId: paymentIntent.id,
             };
             // console.log(payConfirmUserDb)
 
+            // payment success data store on mongodb
             axios.post(url2, payConfirmUserDb)
                 .then(res => {
                     setProcessingButton(false);
                     if (res.data?.success) {
-                        navigate("/dashboard")
+
+                        setPremiumUser(res.data?.data);
+                        window.location.replace("/dashboard/premiumfeature") // navigate("/dashboard/premiumfeature")
+                        // window.location.replace(res?.data?.url)
                     }
                 }).catch(e => {
                     setProcessingButton(false);
-                    console.log(error)
+                    console.log(e)
                     toast.error("Something wrong to user information on mongoDb.")
                 })
         }
-
     };
+
+
+
+
+    // usdBdt button colorchange ---
+    const usdBdtButtonFn = (e) => {
+        setUsdBdt(e);
+    }
+
+    // ssl commerz function start --- 
+    const sslPayButtonFn = (e) => {
+        e.preventDefault();
+
+        const payConfirmUserDb = {
+            name: user?.displayName,
+            email: user?.email,
+            premiumUser: true,
+            price: price * 107,
+            userPremiumDuration: "1 year",
+            paymentDate: new Date(),
+        };
+        // payment success data store on mongodb
+        axios.post(url3, payConfirmUserDb)
+            .then(res => {
+                if (res.data?.success) {
+                    setProcessingButton(false);
+                    //  setPremiumUser(true);
+                    //  navigate("/dashboard");
+                    window.location.replace(res?.data?.url)
+                } else {
+                    toast.error(res?.data?.message)
+                }
+            }).catch(e => {
+                setProcessingButton(false);
+                console.log(e)
+                toast.error("Something wrong to user information on mongoDb.")
+            })
+    }
 
 
     return (
@@ -110,37 +159,92 @@ function PaymentForm() {
             className='container rounded-2xl mx-auto py-14 mt-8 md:p-20 flex-col flex justify-center items-center border bg-slate-100'
         >
             <img className='w-[350px] rounded-md' src={cardLogo} alt="" />
-            <p className='text-black py-5'>Your net Payable amount is <span className='font-bold'>$ {price}.00</span></p>
-            <form
-                className='text-black border px-1 pt-6 rounded-lg min-w-[300px] max-w-[450px] w-full mx-auto'
-                onSubmit={handleSubmit}>
-                <CardElement
-                    options={{
-                        style: {
-                            base: {
-                                fontSize: '16px',
-                                color: '#424770',
-                                '::placeholder': {
-                                    color: '#aab7c4',
-                                },
-                            },
-                            invalid: {
-                                color: '#9e2146',
-                            },
-                        },
-                    }}
-                />
-                <div>
-                    <p className={`mt-2 text-red-700 none ${cardError ? "" : "invisible"}`}>
-                        {cardError ? cardError : "error hidden"}
-                    </p>
+            <p className='text-black py-5'>
+                Your net Payable amount is:
+                {usdBdt === "usd" ? <span className='font-extrabold'> $</span> : ""}
+                <span className='font-bold'>
+                    {usdBdt === "usd" ? price : price * 107} .00
+                </span>
+                {usdBdt === "bdt" ? <span className='font-extrabold'> &#x9F3;</span> : ""}
+
+            </p>
+            <div className='text-black text-left py-2'>
+                <div>Please Choose your Currency:</div>
+                <div className='flex gap-4'>
+                    <button
+                        className={`btn bg-[#66C555] uppercase text-sm] text-white rounded-lg hover:opacity-100 ${usdBdt !== "usd" ? "opacity-20" : ""}`}
+                        onClick={() => usdBdtButtonFn("usd")}
+                    >
+                        International: USD
+                    </button>
+                    <button
+                        className={`btn bg-[#66C555] uppercase text-sm] text-white rounded-lg hover:opacity-100 ${usdBdt !== "bdt" ? "opacity-20" : ""}`}
+                        onClick={() => usdBdtButtonFn("bdt")}
+                    >
+                        Bangladesh: BDT
+                    </button>
                 </div>
-                <button
-                    className='border-none btn btn-md px-8 my-2 bg-[#58b149] hover:bg-[#66C555] rounded-lg text-white'
-                    type="submit" disabled={!stripe || !clientSecret || !user}>
-                    {processingButton ? "processing..." : "Pay"}
-                </button>
-            </form>
+            </div>
+            {
+                usdBdt === "usd" ?
+                    <form
+                        className='text-black border border-[#66C555] px-1 pt-6 rounded-lg min-w-[300px] max-w-[450px] w-full mx-auto'
+                        onSubmit={handleSubmit}>
+                        <CardElement
+                            options={{
+                                style: {
+                                    base: {
+                                        fontSize: '16px',
+                                        color: '#000000',
+                                        '::placeholder': {
+                                            color: '#aab7c4',
+                                        },
+                                    },
+                                    invalid: {
+                                        color: '#9e2146',
+                                    },
+                                },
+                            }}
+                        />
+                        <div>
+                            <p className={`mt-2 text-red-700 none ${cardError ? "" : "invisible"}`}>
+                                {cardError ? cardError : "error hidden"}
+                            </p>
+                        </div>
+                        <button
+                            className='border-none btn btn-md px-8 my-2 bg-[#58b149] hover:bg-[#66C555] rounded-lg text-white'
+                            type="submit" disabled={!stripe || !clientSecret || !user}>
+                            {processingButton ? "processing..." : "Pay"}
+                        </button>
+                    </form>
+                    :
+                    // <button
+                    //     className={`btn bg-[#66C555] uppercase text-sm] text-white rounded-lg pt-20`}
+                    //     onClick={() => sslPayButtonFn("bdt")}
+                    // >
+                    //     Process To Payment.
+                    // </button>
+                    <form
+                        className='text-black border border-[#66C555] px-1 pt-6 rounded-lg min-w-[300px] max-w-[450px] w-full mx-auto'
+
+                    >
+                        <div className='font-bold'>
+                            All types of Bangladeshi payment method.
+                        </div>
+                        <div>
+                            <p className={`mt-2 text-red-700 none ${cardError ? "" : "invisible"}`}>
+                                {cardError ? cardError : "error hidden"}
+                            </p>
+                        </div>
+                        <button
+                            className='border-none btn btn-md px-8 my-2 bg-[#58b149] hover:bg-[#66C555] rounded-lg text-white'
+                            onClick={sslPayButtonFn}
+                            disabled={!user}>
+                            {processingButton ? "processing..." : "Pay"}
+
+                        </button>
+                    </form>
+            }
         </div>
     )
 }

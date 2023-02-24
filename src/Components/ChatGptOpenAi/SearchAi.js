@@ -33,26 +33,20 @@ const SearchAi = () => {
         }, 200)
     };
 
-    // text typed every 20 millisecond---
-    const typeText = (element, text) => {
-        let index = 0;
-        let interval = setInterval(() => {
-            if (index < text.length) {
-                element.innerHtml += text.chartAt(index);
-                index++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 20)
-    };
+    // // text typed every 20 millisecond---
+    // const typeText = (element, text) => {
+    //     let index = 0;
+    //     let interval = setInterval(() => {
+    //         if (index < text.length) {
+    //             element.innerHtml += text.chartAt(index);
+    //             index++;
+    //         } else {
+    //             clearInterval(interval);
+    //         }
+    //     }, 20)
+    // };
 
-    // generate unique Id for each async.. ---
-    const generateUniqueId = () => {
-        const timeStamp = Date.now();
-        const randomNumber = Math.random();
-        const hexadecimalString = randomNumber.toString(16);
-        return `id-${timeStamp}-${hexadecimalString}`;
-    };
+
 
     function chatStripe(isAi, value, uniqueId) {
         return (
@@ -81,6 +75,31 @@ const SearchAi = () => {
     const handleOpenAiChatGptFunction = () => {
 
         if (searchInputText) {
+            setSearchInputText({ text: "" });
+
+
+            // generate unique Id for each async.. ---
+            const generateUniqueId = () => {
+                const timeStamp = Date.now();
+                const randomNumber = Math.random();
+                const hexadecimalString = randomNumber.toString(16);
+                return `id-${timeStamp}-${hexadecimalString}`;
+            };
+
+            // get uniqueId from uniqueId function ----
+            const uniqueId = generateUniqueId();
+            // insert ans to the useState ---
+            setChatLog([...chatLog, {
+                uniqueId: "",
+                question: searchInputText?.text,
+            }, {
+                uniqueId: uniqueId,
+                answer: "loading...",
+            }]);
+            // const element = document.getElementById(uniqueId);
+            // console.log("id paise:", element);
+
+
             // setChatLog([...chatLog, {
             //     uniqueId: "",
             //     question: searchInputText?.text,
@@ -94,25 +113,57 @@ const SearchAi = () => {
             //     user: `${searchInputText?.text}`,
             //     message: "m2",
             // }])
-
-            const url = `${process.env.REACT_APP_URL}/searchai`
+            let loadInterval;
+            setTimeout(() => {
+                const element = document.getElementById(uniqueId);
+                loadInterval = setInterval(() => {
+                    if (element.textContent === "......") {
+                        element.innerText = "";
+                    } else {
+                        element.textContent += ".";
+                    }
+                }, 300)
+            }, 100);
+            const url = `${process.env.REACT_APP_URL_CHAT_GPT}/searchai`
             axios.post(url, { prompt: searchInputText?.text })
                 .then(res => {
+                    const element = document.getElementById(uniqueId);
+                    // console.log("id paise:", element);
+
                     const data = res?.data?.bot?.trim()
                     // console.log("this is axios back:", data);
-                    setSearchInputText({ text: "" });
+                    // setSearchInputText({ text: "" });
 
-                    // get uniqueId from uniqueId function ----
-                    const uniqueId = generateUniqueId();
 
-                    // insert ans to the useState ---
-                    setChatLog([...chatLog, {
-                        uniqueId: "",
-                        question: searchInputText?.text,
-                    }, {
-                        uniqueId: uniqueId,
-                        answer: data,
-                    }])
+
+                    // // insert ans to the useState ---
+                    // setChatLog([...chatLog, {
+                    //     uniqueId: "",
+                    //     question: searchInputText?.text,
+                    // }, {
+                    //     uniqueId: uniqueId,
+                    //     answer: data,
+                    // }])
+                    // document.getElementById(uniqueId).innerText = data;
+                    // typeText(element, data)
+                    clearInterval(loadInterval)
+                    element.innerText = "";
+                    // text typed every 20 millisecond---
+                    const typeText = (element, text) => {
+                        let index = 0;
+                        let interval = setInterval(() => {
+                            if (index < text.length) {
+                                element.innerHTML += text.charAt(index);
+                                index++;
+                            } else {
+                                clearInterval(interval);
+                            }
+                        }, 20)
+                    };
+
+                    typeText(element, data)
+                    // console.log("function shesh");
+
                 }).catch(error => console.log(error))
             // console.log({ searchInputText });
             // setSearchInputText("");
@@ -121,7 +172,7 @@ const SearchAi = () => {
 
     const handleKeyDown = (e) => {
         if (e.keyCode === 13) {
-            console.log("object");
+            // console.log("object");
             handleOpenAiChatGptFunction();
         }
     }

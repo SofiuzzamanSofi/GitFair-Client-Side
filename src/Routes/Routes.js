@@ -100,10 +100,6 @@ const router = createBrowserRouter([
                 element: <FileShare />
             },
             {
-                path: '/dashboard/searchai',
-                element: <SearchAi />
-            },
-            {
                 path: '/dashboard/linkshortener',
                 element: <LinkShortener />
             },
@@ -149,21 +145,21 @@ const router = createBrowserRouter([
     {
         path: '/adminDashboard',
         element: <PrivateRoute><AdminDashboardLayout /></PrivateRoute>,
-       
+
         children: [
-          {
-             path:'/adminDashboard',
-             element: <DashBoardCard />
-          },
             {
-            path:'/adminDashboard/allusers',
-            element: <Allusers />
-          },
-        
+                path: '/adminDashboard',
+                element: <DashBoardCard />
+            },
             {
-            path:'/adminDashboard/paidusers',
-            element: <PaidUsers />
-          },
+                path: '/adminDashboard/allusers',
+                element: <Allusers />
+            },
+
+            {
+                path: '/adminDashboard/paidusers',
+                element: <PaidUsers />
+            },
         ]
 
     },
