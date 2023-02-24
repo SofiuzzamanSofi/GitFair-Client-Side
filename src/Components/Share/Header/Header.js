@@ -13,7 +13,8 @@ const Header = () => {
     const handleLogout = () => {
         logout()
             .then(() => {
-                Navigate('/login')
+                window.location.replace("/login")
+                // Navigate('/login')
             })
             .catch(err => {
                 console.log(err)
