@@ -48,7 +48,7 @@ const LiveEditor = () => {
                 roomId,
                 userName: location?.state?.userName
             });
-
+            //for messaging to store on chat box temporary
             socketRef.current.on('message', (data) => {
                 setMessages((messages) => [
                     ...messages,
@@ -90,7 +90,7 @@ const LiveEditor = () => {
             socketRef?.current?.off(ACTIONS.DISCONNECTED);
         }
     }, []);
-
+    //Message submit handle
     const handleSendMessage = (event) => {
         event.preventDefault();
         // const message = messageInputRef.current.value;

@@ -7,11 +7,12 @@ import './FilePicker.css'
 const FilePicker = ({ setShowPicker }) => {
     
     const {user} = useContext(AuthContext);
+    const apiKey = process.env.REACT_APP_FILESTACK_API_KEY;
 
     return (
         <div className='mr-5'>
             <PickerOverlay
-                apikey="A4GovH9aYQxekmQn2uFOLz"
+                apikey={apiKey}
                 
                 pickerOptions={{
                     accept: [".js",".jsx",".json",".css"]
