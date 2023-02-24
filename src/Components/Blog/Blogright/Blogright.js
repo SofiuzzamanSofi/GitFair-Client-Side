@@ -8,7 +8,7 @@ import DataCard from './DataCard';
 
 const Blogright = () => {
     const { user } = useContext(AuthContext)
-    const url = 'https://file-upload-server-gitfair.glitch.me/upload'
+    const url = 'https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/upload'
     const { data: users = [], refetch } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {

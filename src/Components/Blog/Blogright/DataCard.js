@@ -19,7 +19,7 @@ const DataCard = ({ data, refetch }) => {
 
     useEffect(() => {
 
-        fetch(`https://file-upload-server-gitfair.glitch.me/comment/${_id}`)
+        fetch(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/comment/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComment(data)
@@ -32,7 +32,7 @@ const DataCard = ({ data, refetch }) => {
 
     useEffect(() => {
 
-        fetch(`https://file-upload-server-gitfair.glitch.me/likes/${_id}`)
+        fetch(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/likes/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setLikes(data)

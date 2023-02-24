@@ -30,7 +30,7 @@ const DetailBlog = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://file-upload-server-gitfair.glitch.me/likes/${_id}`)
+            fetch(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/likes/${_id}`)
                 .then(res => res.json())
                 .then(data => {
                     setLikes(data)
@@ -56,7 +56,7 @@ const DetailBlog = () => {
 
 
         //     })
-        axios.post(`https://file-upload-server-gitfair.glitch.me/comment`, commentData)
+        axios.post(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/comment`, commentData)
             .then(data => {
                 reset()
             })
@@ -71,7 +71,7 @@ const DetailBlog = () => {
             id: _id
         }
 
-        fetch('https://file-upload-server-gitfair.glitch.me/like', {
+        fetch('https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/like', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -89,7 +89,7 @@ const DetailBlog = () => {
 
     const handleDeleteLike = () => {
 
-        fetch(`https://file-upload-server-gitfair.glitch.me/likes/${user?.email}`, {
+        fetch(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/likes/${user?.email}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -105,7 +105,7 @@ const DetailBlog = () => {
 
         alert('Are you sure you want to delete this blog?')
         if (user?.email === email) {
-            axios.delete(`https://file-upload-server-gitfair.glitch.me/uploaded/${_id}`,)
+            axios.delete(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/uploaded/${_id}`,)
                 .then(data => {
                     toast.success('Blog Deleted')
                     navigate('/bloglayout/blog')
@@ -121,7 +121,7 @@ const DetailBlog = () => {
 
     useEffect(() => {
 
-        fetch(`https://file-upload-server-gitfair.glitch.me/comment/${_id}`)
+        fetch(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/comment/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComments(data)
@@ -132,7 +132,7 @@ const DetailBlog = () => {
 
 
     return (
-        <div className='w-full lg:w-[1240px] mx-auto bg-white px-5 py-12 min-h-screen'>
+        <div className='w-full relative lg:w-[1240px] mx-auto bg-white px-5 py-12 min-h-screen'>
 
             <div className='hidden'>
                 <span>{time.toLocaleString("en-US", {
@@ -144,7 +144,7 @@ const DetailBlog = () => {
                 })} </span>;
             </div>
             {/* blog delete button  */}
-            <button onClick={handleDeleteBlog} title='Delete Blog' className='text-3xl h-12 w-12 text-black hover:bg-gray-400 hover:text-white rounded-full'><span>X</span></button>
+            <button onClick={handleDeleteBlog} title='Delete Blog' className='btn btn-error rounded-xl text-white normal-case flex justify-end absolute right-2'>Delete Post</button>
 
             <h1 className='font-bold text-2xl lg:text-5xl mb-5 text-slate-600 mt-8 text-center'>{title}</h1>
             <hr />

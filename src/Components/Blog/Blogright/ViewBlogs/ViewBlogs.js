@@ -25,7 +25,7 @@ const ViewBlogs = () => {
 
 
 
-    const url = `https://file-upload-server-gitfair.glitch.me/upload`;
+    const url = `https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/upload`;
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { data: users = [], refetch } = useQuery({
@@ -69,7 +69,7 @@ const ViewBlogs = () => {
                         time: date
                     }
 
-                    fetch('https://file-upload-server-gitfair.glitch.me/upload', {
+                    fetch('https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/upload', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

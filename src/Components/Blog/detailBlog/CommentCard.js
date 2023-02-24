@@ -17,7 +17,7 @@ const CommentCard = ({ u }) => {
     const handleDeleteComment = () => {
         alert('Are you sure you want to delete this comment?')
         if (user?.email === email) {
-            axios.delete(`https://file-upload-server-gitfair.glitch.me/comments/${_id}`)
+            axios.delete(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/comments/${_id}`)
                 .then(data => {
                     console.log("like deleted success:", data?.data);
                     // cll refetch to update ontime ----

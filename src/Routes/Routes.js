@@ -137,7 +137,7 @@ const router = createBrowserRouter([
             {
                 path: '/bloglayout/detailblog/:id',
                 element: <DetailBlog></DetailBlog>,
-                loader: async ({ params }) => fetch(`https://file-upload-server-gitfair.glitch.me/uploaded/${params.id}`)
+                loader: async ({ params }) => fetch(`https://git-fair-server-a8yyvsb4r-hopefyjamshed.vercel.app/uploadedData/${params.id}`)
             }
 
         ]
