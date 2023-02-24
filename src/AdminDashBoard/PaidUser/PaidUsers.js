@@ -13,7 +13,7 @@ const PaidUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("https://file-upload-server-gitfair.glitch.me/users");
+      const res = await fetch("http://localhost:5000/users");
       const data = await res.json();
       return data;
     },
@@ -21,7 +21,7 @@ const PaidUsers = () => {
 
   const handleDeleteUser = (user) => {
     console.log(user);
-    fetch(`https://file-upload-server-gitfair.glitch.me/user/${user._id}`, {
+    fetch(`http://localhost:5000/user/${user._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -64,7 +64,7 @@ const PaidUsers = () => {
                         <label
                           onClick={() => setDeletingUser(user)}
                           htmlFor="confirmation-modal"
-                          className="btn btn-xs btn-danger  text-[20px] text-center rounded-md pb-3"
+                          className="btn btn-xs btn-danger bg-red-600 uppercase  text-[15px] text-center rounded-md "
                         >
                           Delete
                         </label>
