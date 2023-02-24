@@ -71,12 +71,18 @@ const DetailBlog = () => {
             id: _id
         }
 
-
-        axios.post(`http://localhost:5000/like`, likeData)
+        fetch('http://localhost:5000/like', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(likeData)
+        })
+            .then(res => res.json())
             .then(data => {
                 setRefreshReview(!refreshReview)
+
             })
-            .catch(error => console.log("error from comment add axios catch:", error));
 
 
     }
