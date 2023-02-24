@@ -4,7 +4,8 @@ import userimg from '../../../assets/resources/avatar2.png'
 import { FaRegCommentAlt } from "react-icons/fa";
 import { AiTwotoneLike } from "react-icons/ai"
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
-import axios from 'axios';
+
+
 
 
 
@@ -12,26 +13,34 @@ const DataCard = ({ data, refetch }) => {
     const { user } = useContext(AuthContext)
     const [comment, setComment] = useState([])
     const [likes, setLikes] = useState([])
+    const [refreshReview, setRefreshReview] = useState(false)
     const { image, post, userName, _id, profilepic, time, title } = data
 
-    refetch()
-
-    axios.get(`http://localhost:5000/comment/${_id}`).then(res => {
-
-        setComment(res?.data)
-        refetch()
-    }).catch(err => {
-        console.log(err)
-    })
 
 
-    axios.get(`http://localhost:5000/likes/${_id}`).then(res => {
+    useEffect(() => {
 
-        setLikes(res?.data)
-        refetch()
-    }).catch(err => {
-        console.log(err)
-    })
+        fetch(`http://localhost:5000/comment/${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                setComment(data)
+                setRefreshReview(!refreshReview)
+            })
+    }, [_id, refreshReview])
+
+
+
+
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/likes/${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                setLikes(data)
+                setRefreshReview(!refreshReview)
+            })
+
+    }, [_id, refreshReview])
 
 
 
@@ -40,7 +49,7 @@ const DataCard = ({ data, refetch }) => {
 
         <div>
 
-            <Link to={`/bloglayout/detailblog/${_id}`}>
+            <a href={`/bloglayout/detailblog/${_id}`}>
                 <div className="card lg:hidden md:hidden rounded-2xl mb-12 lg:h-[600px] bg-white shadow-xl lg:min-h-[600px] relative max-w-md lg:w-[400px] mx-auto">
 
                     <figure><img src={image} className='md:h-[350px] lg:h-[350px] md:w-[400px] w-full lg:w-full' alt="Album" /></figure>
@@ -110,10 +119,10 @@ const DataCard = ({ data, refetch }) => {
                     </div>
 
                 </div>
-            </Link>
+            </a>
 
             <div className='p-5 mt-6  hidden lg:inline md:inline'>
-                < Link to={`/bloglayout/detailblog/${_id}`}>
+                < a href={`/bloglayout/detailblog/${_id}`}>
                     <div className='card bg-white shadow-xl hover:shadow-2xl duration-500 p-10'>
 
                         {
@@ -161,7 +170,7 @@ const DataCard = ({ data, refetch }) => {
                             </div>
                         </div>
                     </div>
-                </Link >
+                </a >
             </div>
 
         </div>

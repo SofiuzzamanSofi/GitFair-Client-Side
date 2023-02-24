@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useNavigate, } from 'react-router-dom';
@@ -15,15 +14,10 @@ const DetailBlog = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const infos = useLoaderData();
     const [date, setDate] = React.useState(new Date());
-    const [like, setLike] = useState(false)
     const [comments, setComments] = useState([])
     const [likes, setLikes] = useState('')
     const navigate = useNavigate()
-
-
-
-
-
+    const [refreshReview, setRefreshReview] = useState(false)
 
     React.useEffect(() => {
         setInterval(() => {
@@ -33,24 +27,19 @@ const DetailBlog = () => {
     console.log()
 
     const { post, profilepic, email, image, time, userName, title, _id } = infos
-    const link = ``
-    const { data: li = [], refetch } = useQuery({
-        queryKey: ["li"],
-        queryFn: async () => {
-            const res = await fetch(link)
-            const data = await res.json()
-            return data
+
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`http://localhost:5000/likes/${_id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setLikes(data)
+                    setRefreshReview(!refreshReview)
+                })
         }
-    })
-    refetch()
+    }, [refreshReview, _id, user?.email])
 
-    axios.get(`http://localhost:5000/likes/${_id}`).then(res => {
 
-        setLikes(res?.data)
-        refetch()
-    }).catch(err => {
-        console.log(err)
-    })
 
 
     const handleComment = data => {
@@ -69,9 +58,6 @@ const DetailBlog = () => {
         //     })
         axios.post(`http://localhost:5000/comment`, commentData)
             .then(data => {
-                console.log("comment axios success:", data?.data);
-                // cll refetch to update ontime ----
-                refetch();
                 reset()
             })
             .catch(error => console.log("error from comment add axios catch:", error));
@@ -79,8 +65,6 @@ const DetailBlog = () => {
     }
 
     const handlelike = () => {
-        setLike(!like)
-
         const likeData = {
             email: user?.email,
             userName: user?.displayName,
@@ -90,29 +74,25 @@ const DetailBlog = () => {
 
         axios.post(`http://localhost:5000/like`, likeData)
             .then(data => {
-                console.log("like axios success:", data?.data);
-                // cll refetch to update ontime ----
-                refetch();
-
+                setRefreshReview(!refreshReview)
             })
             .catch(error => console.log("error from comment add axios catch:", error));
-
 
 
     }
 
     const handleDeleteLike = () => {
-        setLike(!like)
 
-        axios.delete(`http://localhost:5000/likes/${user?.email}`,)
+        fetch(`http://localhost:5000/likes/${user?.email}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
             .then(data => {
-                console.log("like deleted success:", data?.data);
-                // cll refetch to update ontime ----
-                refetch();
+                setRefreshReview(!refreshReview)
             })
-            .catch(error => console.log("error from comment add axios catch:", error));
+
     }
-    refetch()
+
 
 
     const handleDeleteBlog = () => {
@@ -121,11 +101,8 @@ const DetailBlog = () => {
         if (user?.email === email) {
             axios.delete(`http://localhost:5000/uploaded/${_id}`,)
                 .then(data => {
-                    console.log("like deleted success:", data?.data);
-                    // cll refetch to update ontime ----
                     toast.success('Blog Deleted')
                     navigate('/bloglayout/blog')
-                    refetch();
                 })
                 .catch(error => console.log("error from comment add axios catch:", error));
         }
@@ -136,16 +113,15 @@ const DetailBlog = () => {
     }
 
 
+    useEffect(() => {
 
-    axios.get(`http://localhost:5000/comment/${_id}`).then(res => {
-
-        setComments(res?.data)
-        refetch()
-    }).catch(err => {
-        console.log(err)
-    })
-
-
+        fetch(`http://localhost:5000/comment/${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                setComments(data)
+                setRefreshReview(!refreshReview)
+            })
+    }, [refreshReview, _id])
 
 
 
@@ -252,7 +228,6 @@ const DetailBlog = () => {
                             key={u._id}
                             u={u}
                             _id={_id}
-                            refetch={refetch}
                         ></CommentCard>)
                     }
                 </div>

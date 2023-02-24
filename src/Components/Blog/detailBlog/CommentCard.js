@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import userimg from '../../../assets/resources/avatar2.png'
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
-const CommentCard = ({ u, refetch }) => {
+const CommentCard = ({ u }) => {
     const { user } = useContext(AuthContext)
     const { comment,
         profilepic,
@@ -14,7 +14,6 @@ const CommentCard = ({ u, refetch }) => {
         email
     } = u
 
-
     const handleDeleteComment = () => {
         alert('Are you sure you want to delete this comment?')
         if (user?.email === email) {
@@ -23,7 +22,7 @@ const CommentCard = ({ u, refetch }) => {
                     console.log("like deleted success:", data?.data);
                     // cll refetch to update ontime ----
                     toast.success('comment deleted succssfully')
-                    refetch();
+
                 })
                 .catch(error => console.log("error from comment add axios catch:", error));
         }
