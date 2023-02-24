@@ -117,9 +117,10 @@ const SearchAi = () => {
             setTimeout(() => {
                 const element = document.getElementById(uniqueId);
                 loadInterval = setInterval(() => {
-                    element.textContent += ".";
                     if (element.textContent === "......") {
-                        element.textContent = ".";
+                        element.innerText = "";
+                    } else {
+                        element.textContent += ".";
                     }
                 }, 300)
             }, 100);
@@ -161,7 +162,7 @@ const SearchAi = () => {
                     };
 
                     typeText(element, data)
-                    console.log("function shesh");
+                    // console.log("function shesh");
 
                 }).catch(error => console.log(error))
             // console.log({ searchInputText });
@@ -171,7 +172,7 @@ const SearchAi = () => {
 
     const handleKeyDown = (e) => {
         if (e.keyCode === 13) {
-            console.log("object");
+            // console.log("object");
             handleOpenAiChatGptFunction();
         }
     }
