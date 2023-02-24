@@ -30,7 +30,7 @@ const DetailBlog = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/likes/${_id}`)
+            fetch(`https://file-upload-server-gitfair.glitch.me/likes/${_id}`)
                 .then(res => res.json())
                 .then(data => {
                     setLikes(data)
@@ -56,7 +56,7 @@ const DetailBlog = () => {
 
 
         //     })
-        axios.post(`http://localhost:5000/comment`, commentData)
+        axios.post(`https://file-upload-server-gitfair.glitch.me/comment`, commentData)
             .then(data => {
                 reset()
             })
@@ -71,7 +71,7 @@ const DetailBlog = () => {
             id: _id
         }
 
-        fetch('http://localhost:5000/like', {
+        fetch('https://file-upload-server-gitfair.glitch.me/like', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -89,7 +89,7 @@ const DetailBlog = () => {
 
     const handleDeleteLike = () => {
 
-        fetch(`http://localhost:5000/likes/${user?.email}`, {
+        fetch(`https://file-upload-server-gitfair.glitch.me/likes/${user?.email}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -105,7 +105,7 @@ const DetailBlog = () => {
 
         alert('Are you sure you want to delete this blog?')
         if (user?.email === email) {
-            axios.delete(`http://localhost:5000/uploaded/${_id}`,)
+            axios.delete(`https://file-upload-server-gitfair.glitch.me/uploaded/${_id}`,)
                 .then(data => {
                     toast.success('Blog Deleted')
                     navigate('/bloglayout/blog')
@@ -121,7 +121,7 @@ const DetailBlog = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/comment/${_id}`)
+        fetch(`https://file-upload-server-gitfair.glitch.me/comment/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComments(data)

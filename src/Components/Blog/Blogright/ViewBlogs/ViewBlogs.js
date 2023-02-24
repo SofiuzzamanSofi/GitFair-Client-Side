@@ -25,7 +25,7 @@ const ViewBlogs = () => {
 
 
 
-    const url = `http://localhost:5000/upload`;
+    const url = `https://file-upload-server-gitfair.glitch.me/upload`;
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { data: users = [], refetch } = useQuery({
@@ -69,7 +69,7 @@ const ViewBlogs = () => {
                         time: date
                     }
 
-                    fetch('http://localhost:5000/upload', {
+                    fetch('https://file-upload-server-gitfair.glitch.me/upload', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

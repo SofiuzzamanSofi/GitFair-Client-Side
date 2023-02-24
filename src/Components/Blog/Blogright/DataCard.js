@@ -19,7 +19,7 @@ const DataCard = ({ data, refetch }) => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/comment/${_id}`)
+        fetch(`https://file-upload-server-gitfair.glitch.me/comment/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComment(data)
@@ -32,7 +32,7 @@ const DataCard = ({ data, refetch }) => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/likes/${_id}`)
+        fetch(`https://file-upload-server-gitfair.glitch.me/likes/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setLikes(data)

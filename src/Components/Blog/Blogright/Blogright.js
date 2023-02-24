@@ -8,7 +8,7 @@ import DataCard from './DataCard';
 
 const Blogright = () => {
     const { user } = useContext(AuthContext)
-    const url = 'http://localhost:5000/upload'
+    const url = 'https://file-upload-server-gitfair.glitch.me/upload'
     const { data: users = [], refetch } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {

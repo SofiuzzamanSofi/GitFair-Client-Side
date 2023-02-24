@@ -57,7 +57,7 @@ const Login = () => {
                     premiumUser: false,
                     photo: user?.photoURL
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://file-upload-server-gitfair.glitch.me/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
