@@ -95,7 +95,7 @@ const SearchAi = () => {
             //     message: "m2",
             // }])
 
-            const url = `${process.env.REACT_APP_URL}/searchai`
+            const url = `${process.env.REACT_APP_URL_CHAT_GPT}/searchai`
             axios.post(url, { prompt: searchInputText?.text })
                 .then(res => {
                     const data = res?.data?.bot?.trim()
