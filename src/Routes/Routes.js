@@ -140,8 +140,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/bloglayout/detailblog/:id',
-                element: <PrivateRoute>,<DetailBlog/></PrivateRoute>,
-                loader: async ({ params }) => fetch(`https://gitfair-server-hopefyjamshed.vercel.app/uploaded/${params.id}`)
+                element: <DetailBlog></DetailBlog>,
+                loader: async ({ params }) => fetch(`http://localhost:5000/uploaded/${params.id}`)
             }
 
         ]

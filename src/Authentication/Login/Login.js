@@ -51,20 +51,25 @@ const Login = () => {
         google()
             .then(result => {
                 setCreatedUser(result.user)
-                console.log(result.user);
-                if(result?.user?.email){
-                    
-                 fetch(`https://file-upload-server-gitfair.glitch.me/users/${result?.user?.email}`)
-                .then(res => res.json())
-                .then(adminData =>{
-                    console.log(adminData);
-                    if(adminData?.role === 'adminLogin'){
-                        Navigate('/adminDashboard')
-                        return
-                    }
-                });
-                Navigate('/')
+                const users = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    premiumUser: false,
+                    photo: user?.photoURL
                 }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(users)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+                Navigate('/')
+                
                
             })
             .catch(err => {
@@ -94,7 +99,6 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        toast.success('user data added successfully')
                     })
                 Navigate('/')
             })

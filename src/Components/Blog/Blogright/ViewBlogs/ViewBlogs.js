@@ -25,7 +25,7 @@ const ViewBlogs = () => {
 
 
 
-    const url = `https://gitfair-server-hopefyjamshed.vercel.app/upload`;
+    const url = `http://localhost:5000/upload`;
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { data: users = [], refetch } = useQuery({
@@ -60,7 +60,7 @@ const ViewBlogs = () => {
                     const img = imginfo?.url;
                     const date = time.toLocaleString()
                     const uploadData = {
-                        image: img,
+                        image: img === "no Image Uploaded" ? "no image uploaded" : img,
                         title: data.title,
                         post: data.text,
                         email: user?.email,
@@ -69,7 +69,7 @@ const ViewBlogs = () => {
                         time: date
                     }
 
-                    fetch('https://gitfair-server-hopefyjamshed.vercel.app/upload', {
+                    fetch('http://localhost:5000/upload', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
