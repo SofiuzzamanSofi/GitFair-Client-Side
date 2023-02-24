@@ -12,7 +12,7 @@ const ChatOnline = () => {
             window.onload = () => {
                 window.$zoho = window.$zoho || {};
                 window.$zoho.salesiq = window.$zoho.salesiq || {
-                    widgetcode: "700a8570cb17a06ac3035b6a3729d395cc5af768207a20a324e90e82b91c97ee1a2010ab7b6727677d37b27582c0e9c4",
+                    widgetcode: "f32abfcb240dd004787941d78bc8b5026c4c608419ae34550737ab73b14e66fd",
                     values: {},
                     ready: function () { }
                 };

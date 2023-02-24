@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
             axios.post(urlPremium, { email: user?.email })
                 .then(res => {
                     if (res.data.success) {
-                        console.log(res.data.success);
+                        // console.log(res.data.success);
                         // console.log("Before premium user:", premiumUser);
                         setPremiumUser(res.data?.data);
                         // console.log("After premium user:", premiumUser);
