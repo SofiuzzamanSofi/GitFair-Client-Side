@@ -21,4 +21,4 @@ export default function useLocalStorage(key, initialValue) {
     }, [prefixedKey, value])
 
     return [value, setValue];
-}
+};

@@ -1,72 +1,87 @@
 import React from "react";
-import "./DashBoardCard.css";
-import TransactionChart from "./TransactionChart";
-import { BiUserPlus } from "react-icons/bi";
+import "../DashBoardCard/DashBoardCard.css";
+import MileChart from "../DashBoardCard/Charts/MileChart";
+import CarStatsChart from "../DashBoardCard/Charts/CarStatsChart";
 import { useQuery } from "@tanstack/react-query";
+import {  BiUserPlus } from "react-icons/bi";
+import {  FaDollarSign } from "react-icons/fa";
+import {  TbFreeRights } from "react-icons/tb";
+import {  MdAccountBalance } from "react-icons/md";
 
 
-const dashBoardCards = [
-
-    
-
-  {
-    image: <BiUserPlus />,
-    title: "Total Blance",
-    incom: "$150k",
-    increment:<span><span className="text-[#5DAF50]">+25%</span> than last week</span> 
-  },
-  {
-    image: <BiUserPlus />,
-    title: "Total User",
-    incom: 1500,
-    increment:<span> <span className="text-[#5DAF50]">+35%</span> than last week</span> 
-  },
-  {
-    image: <BiUserPlus />,
-    title: "paid User",
-    incom: 500,
-    increment:<span> <span className="text-[#5DAF50]">+5%</span> than last week</span> 
-  },
-  {
-    image: <BiUserPlus />,
-    title: "Total Upload",
-    incom: 1000,
-    increment:<span> <span className="text-[#5DAF50]">+25%</span> than last week</span> ,
-  },
-  
-  
-];
 
 const DashBoardCard = () => {
+  const { data: usersData = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/users");
+      const data = await res.json();
+      return data;
+    },
+  });
+ 
+  const dashboardData = [
+    {
+      id: "1",
+      title: "Total user",
+      totalNumber: usersData.length,
+      icon: <BiUserPlus />,
+    },
 
-   
+    {
+      id: "2",
+      title: "Paid User",
+      totalNumber: 1,
+      icon:<FaDollarSign />,
+    },
 
+    {
+      id:"3",
+      title: "Unpaid user",
+      totalNumber: "15",
+      icon:<TbFreeRights />,
+    },
+
+    {
+      id: "4",
+      title: "Total Balance",
+      totalNumber: "1500k",
+      icon:<MdAccountBalance />,
+    },
+  ];
+
+  
   return (
-    <div className=" ">
-        {/* <AdminNavber /> */}
-      <div className=" grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 mt-[50px] gap-3">
-        {dashBoardCards?.map((dashBoardC) => (
-          <div className="text-black mx-auto admin-card shadow-2xl w-full mb-6 ">
-            <div className="flex flex-row justify-between cards-deatails  ">
-              <div className="iconbx">
-                <div className="icons">{dashBoardC?.image}</div>
+    <div className="dashboard ">
+      <div className="dashboard__wrapper ">
+        <div className="dashboard__cards  ">
+          
+          {dashboardData.map((dashboardDatas,index) => (
+            <>
+              <div key={index} className="single__card  ">
+                <div   className="card__content ">
+                  <h4 >{dashboardDatas.title}</h4>
+                  <span>{dashboardDatas.totalNumber}+</span>
+                </div>
+                <span className="card__icon">
+                  <i>{dashboardDatas.icon}</i>
+                </span>
               </div>
-              <div>
-                <h1 className="">{dashBoardC?.title}</h1>
-                <p>{dashBoardC?.incom}</p>
-              </div>
-            </div>
-            <div className="text-center card-text">
-              <p>
-              {dashBoardC?.increment}
-                {/* <span className="text-[#5DAF50]">+55%</span> than last week */}
-              </p>
-            </div>
+            </>
+          ))}
+        </div>
+
+        <div className="statics">
+          <div className="stats">
+            <h3 className="stats__title">Total User</h3>
+            <MileChart />
           </div>
-        ))}      
-      </div>
-      <div className="mt-10">
-        <TransactionChart />
+
+          <div className="stats">
+            <h3 className="stats__title">Paid User</h3>
+            <CarStatsChart />
+          </div>
+        </div>
       </div>
     </div>
   );
