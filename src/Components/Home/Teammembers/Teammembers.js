@@ -32,7 +32,7 @@ const Members = [
         designation: "Web Developer",
         github: "https://github.com/mrseeker53",
         linkedin: "https://www.linkedin.com/in/mrseeker53",
-        portfolio: "https://mrseeker53-df0e7c.netlify.app"
+        portfolio: "https://portfolio-mrseeker53.netlify.app"
     },
     {
         id: 3,
